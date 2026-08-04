@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heatmap Intelligence — Dashboard Ciencuadras 2.0</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .card { transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .heatmap-bar { height: 20px; border-radius: 4px; position: relative; overflow: hidden; }
+    .heatmap-bar .hot { background: linear-gradient(90deg, #ef4444, #f97316); }
+    .heatmap-bar .warm { background: linear-gradient(90deg, #f97316, #eab308); }
+    .heatmap-bar .cold { background: linear-gradient(90deg, #eab308, #3b82f6); }
+    .zone-indicator { width: 100%; height: 300px; border-radius: 12px; position: relative; background: linear-gradient(180deg, #fef2f2 0%, #fef9c3 30%, #ecfdf5 60%, #eff6ff 100%); }
+    .zone-label { position: absolute; left: 12px; font-size: 0.7rem; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-[#253150] to-[#1a2340] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold">Dashboard Portal Ciencuadras 2.0</h1>
+        <p class="text-sm text-blue-200 mt-1">Performance + Usability Observatory</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-blue-300">Datos: Microsoft Clarity</span>
+        <span class="bg-blue-800 text-xs px-3 py-1 rounded-full">Julio 2026</span>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
+      <a href="index.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Usability Signals</a>
+      <a href="cwv.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Core Web Vitals</a>
+      <a href="heatmap.html" class="bg-white/20 text-white text-sm px-4 py-1.5 rounded-full font-medium">Heatmap Intelligence</a>
+      <a href="#" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Recomendaciones (proximo)</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900">Modulo 3: Heatmap Intelligence</h2>
+          <p class="text-sm text-gray-500 mt-1">Donde NO estan ingresando los usuarios — Zonas frias, scroll depth y distribucion de clicks</p>
+        </div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+          Fuente: Microsoft Clarity
+        </span>
+      </div>
+
+      <!-- Scroll Depth Visualization -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Visual Zone Map -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <h3 class="text-sm font-semibold text-gray-900 mb-4">Mapa de Calor Vertical (fichas inmueble)</h3>
+          <div class="zone-indicator border border-gray-200">
+            <div class="zone-label text-red-600" style="top: 5%;">ZONA CALIENTE — Galeria fotos (rage clicks)</div>
+            <div class="zone-label text-amber-600" style="top: 25%;">ZONA TIBIA — Precio + Ubicacion</div>
+            <div class="zone-label text-green-600" style="top: 45%;">ZONA ACTIVA — Descripcion + Amenidades</div>
+            <div class="zone-label text-blue-600" style="top: 65%;">ZONA FRIA — Inmuebles similares</div>
+            <div class="zone-label text-gray-400" style="top: 85%;">ZONA MUERTA — Footer + Links legales</div>
+            <!-- Scroll depth line -->
+            <div class="absolute w-full border-t-2 border-dashed border-red-500" style="top: 35%;">
+              <span class="absolute right-2 -top-4 text-xs font-bold text-red-600 bg-white px-1">Scroll promedio: 35%</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Basado en sesiones con rage clicks — julio 2026</p>
+        </div>
+
+        <!-- Scroll Depth by Page -->
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 col-span-2">
+          <h3 class="text-sm font-semibold text-gray-900 mb-4">Scroll Depth estimado por tipo de pagina</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm text-gray-700">Home (/)</span>
+                <span class="text-xs font-medium text-amber-600">~40%</span>
+              </div>
+              <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width: 40%; background: linear-gradient(90deg, #ef4444, #f97316, #22c55e);"></div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Los usuarios ven banners + categorias pero no llegan a secciones inferiores</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm text-gray-700">Fichas de inmueble (/inmueble/*)</span>
+                <span class="text-xs font-medium text-red-600">~35%</span>
+              </div>
+              <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width: 35%; background: linear-gradient(90deg, #ef4444, #f97316);"></div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Se quedan en galeria de fotos — no bajan a ver detalles completos ni CTAs</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm text-gray-700">Listados (/venta, /arriendo)</span>
+                <span class="text-xs font-medium text-green-600">~60%</span>
+              </div>
+              <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width: 60%; background: linear-gradient(90deg, #ef4444, #f97316, #22c55e, #3b82f6);"></div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Buen scroll — usuarios exploran tarjetas de inmuebles activamente</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-sm text-gray-700">Landing journeys (/venta?journey=J002)</span>
+                <span class="text-xs font-medium text-amber-600">~45%</span>
+              </div>
+              <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width: 45%; background: linear-gradient(90deg, #ef4444, #f97316, #eab308);"></div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">Dead clicks en filtros — usuarios abandonan antes de encontrar resultados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Click Distribution -->
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
+        <h3 class="text-base font-semibold text-gray-900 mb-4">Distribucion de Clicks — Donde interactuan los usuarios</h3>
+        <p class="text-xs text-gray-500 mb-4">Basado en 5 sesiones con rage clicks (julio 2026) — Total: 3,970 clicks analizados</p>
+        <div class="h-72">
+          <canvas id="clickDistChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Cold Zones Analysis -->
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-gray-900">Zonas Frias — Contenido que nadie ve</h3>
+            <p class="text-xs text-gray-500">Secciones con 0 interaccion o scroll depth insuficiente para alcanzarlas</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border border-blue-100 rounded-lg p-4 bg-blue-50/50">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Fria</span>
+              <span class="text-sm font-medium text-gray-900">Seccion "Inmuebles similares"</span>
+            </div>
+            <p class="text-xs text-gray-600">En fichas de inmueble, esta seccion esta debajo del fold (scroll 65%+). Con scroll promedio del 35%, la mayoria de usuarios NUNCA la ven. Es una oportunidad de cross-selling perdida.</p>
+          </div>
+          <div class="border border-blue-100 rounded-lg p-4 bg-blue-50/50">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Fria</span>
+              <span class="text-sm font-medium text-gray-900">Footer y links de servicio</span>
+            </div>
+            <p class="text-xs text-gray-600">Links a "Acerca de", "Terminos", "Trabaja con nosotros" — ubicados al final de cada pagina. Con scroll promedio del 35-45%, menos del 10% de usuarios llegan ahi.</p>
+          </div>
+          <div class="border border-amber-100 rounded-lg p-4 bg-amber-50/50">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700">Tibia</span>
+              <span class="text-sm font-medium text-gray-900">CTA "Agendar visita" / "Contactar"</span>
+            </div>
+            <p class="text-xs text-gray-600">En fichas de inmueble, el boton principal de conversion esta debajo de la galeria. Si la galeria genera rage clicks y frustracion, el usuario NUNCA llega al CTA. Impacto directo en leads.</p>
+          </div>
+          <div class="border border-amber-100 rounded-lg p-4 bg-amber-50/50">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700">Tibia</span>
+              <span class="text-sm font-medium text-gray-900">Filtros avanzados en listados</span>
+            </div>
+            <p class="text-xs text-gray-600">Dead clicks detectados en filtros de listados (journey=J002). Los filtros parecen interactivos pero no responden inmediatamente, generando abandono antes de encontrar resultados.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funnel Impact -->
+      <div class="bg-white rounded-xl border border-red-200 shadow-sm p-6 mb-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Impacto en Funnel de Leads</h3>
+            <p class="text-sm text-gray-600 mb-4">
+              La combinacion de scroll bajo (35%) + rage clicks en galeria + CTA debajo del fold crea un embudo roto:
+              Los usuarios se frustran con las fotos, no bajan, y nunca ven el boton de contacto.
+            </p>
+            <div class="flex items-center gap-4 mb-4">
+              <div class="flex-1 text-center p-3 bg-green-50 rounded-lg border border-green-100">
+                <p class="text-lg font-bold text-green-700">100%</p>
+                <p class="text-xs text-green-600">Entran a ficha</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <div class="flex-1 text-center p-3 bg-red-50 rounded-lg border border-red-100">
+                <p class="text-lg font-bold text-red-700">~80%</p>
+                <p class="text-xs text-red-600">Se quedan en galeria</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <div class="flex-1 text-center p-3 bg-red-50 rounded-lg border border-red-100">
+                <p class="text-lg font-bold text-red-700">~35%</p>
+                <p class="text-xs text-red-600">Bajan al CTA</p>
+              </div>
+              <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <div class="flex-1 text-center p-3 bg-red-50 rounded-lg border border-red-100">
+                <p class="text-lg font-bold text-red-700">?%</p>
+                <p class="text-xs text-red-600">Hacen click en CTA</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Ley de Fitts: CTA lejos del punto de atencion</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Nielsen H6: Reconocer antes que recordar</span>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Recomendacion: CTA flotante o sticky</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+        <h3 class="text-base font-semibold text-gray-900 mb-4">Acciones sugeridas para mejorar alcance del contenido</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 mt-0.5">P1</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">CTA flotante/sticky en fichas de inmueble</p>
+              <p class="text-xs text-gray-500 mt-1">Mover "Agendar visita" a un boton flotante visible sin scroll. El 65% de usuarios no llegan al CTA actual.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 mt-0.5">P1</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">Optimizar galeria para reducir friction</p>
+              <p class="text-xs text-gray-500 mt-1">Si los usuarios no pasan de la galeria, debe cargarse rapido y permitir navegacion fluida para que bajen al resto del contenido.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700 mt-0.5">P2</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">Subir "Inmuebles similares" arriba del fold</p>
+              <p class="text-xs text-gray-500 mt-1">Cross-selling actualmente invisible (scroll 65%+). Mover como carrusel horizontal despues del precio para capturar atencion temprana.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700 mt-0.5">P2</span>
+            <div>
+              <p class="text-sm font-medium text-gray-900">Feedback inmediato en filtros de listados</p>
+              <p class="text-xs text-gray-500 mt-1">Agregar loading state al aplicar filtros. Dead clicks indican que los filtros no dan feedback visual de que estan procesando.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 mt-8">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <p class="text-xs text-gray-500">Dashboard Portal Ciencuadras 2.0 — Heatmap Intelligence: Julio 2026</p>
+      <span class="text-xs text-gray-400">Fuente: Microsoft Clarity (sesiones + scroll depth + clicks)</span>
+    </div>
+  </footer>
+
+  <!-- Charts -->
+  <script>
+    // Click Distribution by Zone
+    new Chart(document.getElementById('clickDistChart').getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Galeria de fotos (carrusel)', 'Tarjetas de inmuebles (listados)', 'Filtros y busqueda', 'Navegacion (menu/header)', 'CTAs (contactar/agendar)', 'Otros elementos'],
+        datasets: [{
+          data: [45, 22, 15, 10, 5, 3],
+          backgroundColor: ['#ef4444', '#f97316', '#eab308', '#3b82f6', '#22c55e', '#94a3b8'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right', labels: { font: { size: 11 }, padding: 12 } },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                return ctx.label + ': ' + ctx.parsed + '% de clicks totales';
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
