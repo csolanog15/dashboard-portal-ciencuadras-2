@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recomendaciones — Dashboard Ciencuadras 2.0</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .card { transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-gradient-to-r from-[#253150] to-[#1a2340] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold">Dashboard Portal Ciencuadras 2.0</h1>
+        <p class="text-sm text-blue-200 mt-1">Performance + Usability Observatory</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs text-blue-300">Consolidado: PageSpeed + Clarity + Nielsen</span>
+        <span class="bg-blue-800 text-xs px-3 py-1 rounded-full">Agosto 2026</span>
+      </div>
+    </div>
+    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
+      <a href="index.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Usability Signals</a>
+      <a href="cwv.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Core Web Vitals</a>
+      <a href="heatmap.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Heatmap Intelligence</a>
+      <a href="recommendations.html" class="bg-white/20 text-white text-sm px-4 py-1.5 rounded-full font-medium">Recomendaciones</a>
+    </nav>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900">Modulo 4: Recomendaciones Inteligentes</h2>
+          <p class="text-sm text-gray-500 mt-1">Acciones priorizadas por impacto — Tecnicas (Performance) + UX (Nielsen/Leyes de UX)</p>
+        </div>
+      </div>
+      <!-- Priority Matrix -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="card bg-white rounded-xl p-5 border-l-4 border-red-500 shadow-sm">
+          <p class="text-3xl font-bold text-gray-900">4</p>
+          <p class="text-xs text-gray-500 mt-1">Criticas (P1)</p>
+          <p class="text-xs text-red-600 mt-2">Impacto alto + Bloquean leads</p>
+        </div>
+        <div class="card bg-white rounded-xl p-5 border-l-4 border-amber-500 shadow-sm">
+          <p class="text-3xl font-bold text-gray-900">3</p>
+          <p class="text-xs text-gray-500 mt-1">Importantes (P2)</p>
+          <p class="text-xs text-amber-600 mt-2">Impacto medio + Mejoran UX</p>
+        </div>
+        <div class="card bg-white rounded-xl p-5 border-l-4 border-blue-500 shadow-sm">
+          <p class="text-3xl font-bold text-gray-900">3</p>
+          <p class="text-xs text-gray-500 mt-1">Mejoras (P3)</p>
+          <p class="text-xs text-blue-600 mt-2">Quick wins de performance</p>
+        </div>
+        <div class="card bg-white rounded-xl p-5 border-l-4 border-green-500 shadow-sm">
+          <p class="text-3xl font-bold text-gray-900">2</p>
+          <p class="text-xs text-gray-500 mt-1">Oportunidades (P4)</p>
+          <p class="text-xs text-green-600 mt-2">SEO + Accesibilidad</p>
+        </div>
+      </div>
+
+      <!-- P1 Critical -->
+      <div class="mb-8">
+        <h3 class="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-3 h-3 bg-red-500 rounded-full"></span> Prioridad 1 — Criticas (bloquean generacion de leads)
+        </h3>
+        <div class="space-y-4">
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">UX</span>
+                <h4 class="text-sm font-semibold text-gray-900">Optimizar galeria de fotos en fichas de inmueble</h4>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Alto</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Medio</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">El carrusel genera 794 clicks/sesion frustrada. Botones no responden durante carga.</p>
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+              <p class="text-xs font-medium text-gray-700 mb-1">Implementacion:</p>
+              <ul class="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                <li>Lazy loading con placeholder blur (LQIP) para imagenes</li>
+                <li>Skeleton loader mientras carga siguiente imagen</li>
+                <li>Precargar imagen N+1 mientras ve imagen N</li>
+                <li>Disabled state visual en botones durante transicion</li>
+                <li>Soporte gestos swipe en mobile</li>
+              </ul>
+            </div>
+            <div class="flex items-center gap-1 flex-wrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H1: Visibilidad estado</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H4: Consistencia</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">Doherty: &lt;400ms</span>
+            </div>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">UX</span>
+                <h4 class="text-sm font-semibold text-gray-900">CTA flotante "Agendar visita" en fichas</h4>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Alto</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Bajo</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">65% no llega al CTA (scroll 35% promedio). Boton de contacto invisible para la mayoria.</p>
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+              <p class="text-xs font-medium text-gray-700 mb-1">Implementacion:</p>
+              <ul class="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                <li>Sticky bar inferior (mobile) con precio + CTA</li>
+                <li>Mostrar tras scroll pasado el hero/galeria</li>
+                <li>A/B test: sticky bar vs boton flotante circular</li>
+              </ul>
+            </div>
+            <div class="flex items-center gap-1 flex-wrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">Fitts: Reducir distancia</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H6: Reconocer vs recordar</span>
+            </div>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+                <h4 class="text-sm font-semibold text-gray-900">Reducir LCP Home mobile: 10.8s a &lt;2.5s</h4>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Alto</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Medio</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">LCP 8.3x peor en mobile vs desktop. Imagen hero no optimizada para mobile.</p>
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+              <p class="text-xs font-medium text-gray-700 mb-1">Implementacion:</p>
+              <ul class="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                <li>Imagenes responsivas con srcset (WebP/AVIF para mobile)</li>
+                <li>Preload del LCP element</li>
+                <li>Eliminar 279 KiB de JS sin usar</li>
+                <li>Eliminar 124 KiB de CSS sin usar</li>
+                <li>Critical CSS inline para above-the-fold</li>
+              </ul>
+            </div>
+            <div class="flex items-center gap-1 flex-wrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-50 text-blue-700">LCP target: &lt;2.5s</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-50 text-blue-700">Score actual: 55</span>
+            </div>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+                <h4 class="text-sm font-semibold text-gray-900">Reducir TBT Arriendo mobile: 830ms a &lt;200ms</h4>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Alto</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Alto</span>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">Hilo principal bloqueado ~1s. Usuarios no pueden usar filtros ni tarjetas.</p>
+            <div class="bg-gray-50 rounded-lg p-3 mb-3">
+              <p class="text-xs font-medium text-gray-700 mb-1">Implementacion:</p>
+              <ul class="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                <li>Code splitting: solo JS para above-the-fold</li>
+                <li>Defer scripts terceros (analytics, ads, chat)</li>
+                <li>Reducir 222 KiB JS sin usar</li>
+                <li>Tree shaking agresivo en bundle Angular</li>
+              </ul>
+            </div>
+            <div class="flex items-center gap-1 flex-wrap">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-50 text-blue-700">TBT target: &lt;200ms</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H7: Eficiencia de uso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2 Important -->
+      <div class="mb-8">
+        <h3 class="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-3 h-3 bg-amber-500 rounded-full"></span> Prioridad 2 — Importantes (mejoran UX y engagement)
+        </h3>
+        <div class="space-y-4">
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">UX</span>
+              <h4 class="text-sm font-semibold text-gray-900">Subir "Inmuebles similares" arriba del fold</h4>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Cross-selling invisible (scroll 65%+). Mover como carrusel horizontal despues del precio.</p>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">Ley de Miller</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H8: Diseno minimalista</span>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-800">UX</span>
+              <h4 class="text-sm font-semibold text-gray-900">Feedback inmediato en filtros de listados</h4>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Dead clicks en filtros: no dan feedback visual. Agregar loading state + contador de resultados en tiempo real.</p>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">H1: Visibilidad del estado</span>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-purple-50 text-purple-700">Ley de Jakob</span>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+              <h4 class="text-sm font-semibold text-gray-900">Corregir CLS 0.106 en listados</h4>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Layout shift visible al cargar tarjetas. Reservar espacio con aspect-ratio y dimensiones explicitas en imagenes.</p>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-50 text-blue-700">CLS target: &lt;0.1</span>
+          </div>
+        </div>
+      </div>
+      <!-- P3 Quick Wins -->
+      <div class="mb-8">
+        <h3 class="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-3 h-3 bg-blue-500 rounded-full"></span> Prioridad 3 — Quick wins de performance
+        </h3>
+        <div class="space-y-4">
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+              <h4 class="text-sm font-semibold text-gray-900">Eliminar CSS sin usar (~106-124 KiB por pagina)</h4>
+            </div>
+            <p class="text-sm text-gray-600">PurgeCSS o Tailwind purge. Impacto en FCP y Speed Index.</p>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+              <h4 class="text-sm font-semibold text-gray-900">Imagenes en formato moderno (WebP/AVIF)</h4>
+            </div>
+            <p class="text-sm text-gray-600">Reduccion 30-50% en peso. Impacto directo en LCP mobile. Usar picture con fallback.</p>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">Tech</span>
+              <h4 class="text-sm font-semibold text-gray-900">Preconnect a dominios de terceros</h4>
+            </div>
+            <p class="text-sm text-gray-600">Agregar preconnect hints para CDN, APIs y tracking. Ahorra ~100-300ms por recurso.</p>
+          </div>
+        </div>
+      </div>
+      <!-- P4 Opportunities -->
+      <div class="mb-8">
+        <h3 class="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-3 h-3 bg-green-500 rounded-full"></span> Prioridad 4 — Oportunidades (SEO + Accesibilidad)
+        </h3>
+        <div class="space-y-4">
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">SEO</span>
+              <h4 class="text-sm font-semibold text-gray-900">Mobile-first: cerrar brecha mobile vs desktop</h4>
+            </div>
+            <p class="text-sm text-gray-600">Google indexa mobile-first. Score desktop 96-100 pero mobile 55-85. Mobile ES la experiencia SEO.</p>
+          </div>
+          <div class="card bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">A11y</span>
+              <h4 class="text-sm font-semibold text-gray-900">Accesibilidad del carrusel de imagenes</h4>
+            </div>
+            <p class="text-sm text-gray-600">Verificar ARIA labels, alt text en imagenes de inmuebles, navegacion por teclado del carrusel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-white border-t border-gray-200 mt-8">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <p class="text-xs text-gray-500">Dashboard Portal Ciencuadras 2.0 — Recomendaciones: Agosto 2026</p>
+      <span class="text-xs text-gray-400">Fuentes: PageSpeed + Clarity + Nielsen + Leyes de UX</span>
+    </div>
+  </footer>
+</body>
+</html>
