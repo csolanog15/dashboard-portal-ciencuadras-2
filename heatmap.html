@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heatmap Intelligence — Dashboard Ciencuadras 2.0</title>
+  <title>Heatmap Intelligence - Dashboard Ciencuadras 2.0</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
       <div class="flex items-center justify-between mb-6">
         <div>
           <h2 class="text-xl font-bold text-gray-900">Modulo 3: Heatmap Intelligence</h2>
-          <p class="text-sm text-gray-500 mt-1">Donde NO estan ingresando los usuarios — Zonas frias, scroll depth y distribucion de clicks</p>
+          <p class="text-sm text-gray-500 mt-1">Donde NO estan ingresando los usuarios - Zonas frias, scroll depth y distribucion de clicks</p>
         </div>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
           Fuente: Microsoft Clarity
@@ -59,17 +59,17 @@
         <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
           <h3 class="text-sm font-semibold text-gray-900 mb-4">Mapa de Calor Vertical (fichas inmueble)</h3>
           <div class="zone-indicator border border-gray-200">
-            <div class="zone-label text-red-600" style="top: 5%;">ZONA CALIENTE — Galeria fotos (rage clicks)</div>
-            <div class="zone-label text-amber-600" style="top: 25%;">ZONA TIBIA — Precio + Ubicacion</div>
-            <div class="zone-label text-green-600" style="top: 45%;">ZONA ACTIVA — Descripcion + Amenidades</div>
-            <div class="zone-label text-blue-600" style="top: 65%;">ZONA FRIA — Inmuebles similares</div>
-            <div class="zone-label text-gray-400" style="top: 85%;">ZONA MUERTA — Footer + Links legales</div>
+            <div class="zone-label text-red-600" style="top: 5%;">ZONA CALIENTE - Galeria fotos (rage clicks)</div>
+            <div class="zone-label text-amber-600" style="top: 25%;">ZONA TIBIA - Precio + Ubicacion</div>
+            <div class="zone-label text-green-600" style="top: 45%;">ZONA ACTIVA - Descripcion + Amenidades</div>
+            <div class="zone-label text-blue-600" style="top: 65%;">ZONA FRIA - Inmuebles similares</div>
+            <div class="zone-label text-gray-400" style="top: 85%;">ZONA MUERTA - Footer + Links legales</div>
             <!-- Scroll depth line -->
             <div class="absolute w-full border-t-2 border-dashed border-red-500" style="top: 35%;">
               <span class="absolute right-2 -top-4 text-xs font-bold text-red-600 bg-white px-1">Scroll promedio: 35%</span>
             </div>
           </div>
-          <p class="text-xs text-gray-400 mt-3">Basado en sesiones con rage clicks — julio 2026</p>
+          <p class="text-xs text-gray-400 mt-3">Basado en sesiones con rage clicks - julio 2026</p>
         </div>
 
         <!-- Scroll Depth by Page -->
@@ -94,7 +94,7 @@
               <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div class="h-full rounded-full" style="width: 35%; background: linear-gradient(90deg, #ef4444, #f97316);"></div>
               </div>
-              <p class="text-xs text-gray-400 mt-1">Se quedan en galeria de fotos — no bajan a ver detalles completos ni CTAs</p>
+              <p class="text-xs text-gray-400 mt-1">Se quedan en galeria de fotos - no bajan a ver detalles completos ni CTAs</p>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1">
@@ -104,7 +104,7 @@
               <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div class="h-full rounded-full" style="width: 60%; background: linear-gradient(90deg, #ef4444, #f97316, #22c55e, #3b82f6);"></div>
               </div>
-              <p class="text-xs text-gray-400 mt-1">Buen scroll — usuarios exploran tarjetas de inmuebles activamente</p>
+              <p class="text-xs text-gray-400 mt-1">Buen scroll - usuarios exploran tarjetas de inmuebles activamente</p>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1">
@@ -114,7 +114,7 @@
               <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div class="h-full rounded-full" style="width: 45%; background: linear-gradient(90deg, #ef4444, #f97316, #eab308);"></div>
               </div>
-              <p class="text-xs text-gray-400 mt-1">Dead clicks en filtros — usuarios abandonan antes de encontrar resultados</p>
+              <p class="text-xs text-gray-400 mt-1">Dead clicks en filtros - usuarios abandonan antes de encontrar resultados</p>
             </div>
           </div>
         </div>
@@ -122,8 +122,8 @@
 
       <!-- Click Distribution -->
       <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
-        <h3 class="text-base font-semibold text-gray-900 mb-4">Distribucion de Clicks — Donde interactuan los usuarios</h3>
-        <p class="text-xs text-gray-500 mb-4">Basado en 5 sesiones con rage clicks (julio 2026) — Total: 3,970 clicks analizados</p>
+        <h3 class="text-base font-semibold text-gray-900 mb-4">Distribucion de Clicks - Donde interactuan los usuarios</h3>
+        <p class="text-xs text-gray-500 mb-4">Basado en 5 sesiones con rage clicks (julio 2026) - Total: 3,970 clicks analizados</p>
         <div class="h-72">
           <canvas id="clickDistChart"></canvas>
         </div>
@@ -138,7 +138,7 @@
             </svg>
           </div>
           <div>
-            <h3 class="text-base font-semibold text-gray-900">Zonas Frias — Contenido que nadie ve</h3>
+            <h3 class="text-base font-semibold text-gray-900">Zonas Frias - Contenido que nadie ve</h3>
             <p class="text-xs text-gray-500">Secciones con 0 interaccion o scroll depth insuficiente para alcanzarlas</p>
           </div>
         </div>
@@ -155,7 +155,7 @@
               <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">Fria</span>
               <span class="text-sm font-medium text-gray-900">Footer y links de servicio</span>
             </div>
-            <p class="text-xs text-gray-600">Links a "Acerca de", "Terminos", "Trabaja con nosotros" — ubicados al final de cada pagina. Con scroll promedio del 35-45%, menos del 10% de usuarios llegan ahi.</p>
+            <p class="text-xs text-gray-600">Links a "Acerca de", "Terminos", "Trabaja con nosotros" - ubicados al final de cada pagina. Con scroll promedio del 35-45%, menos del 10% de usuarios llegan ahi.</p>
           </div>
           <div class="border border-amber-100 rounded-lg p-4 bg-amber-50/50">
             <div class="flex items-center gap-2 mb-2">
@@ -258,7 +258,7 @@
   <!-- Footer -->
   <footer class="bg-white border-t border-gray-200 mt-8">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <p class="text-xs text-gray-500">Dashboard Portal Ciencuadras 2.0 — Heatmap Intelligence: Julio 2026</p>
+      <p class="text-xs text-gray-500">Dashboard Portal Ciencuadras 2.0 - Heatmap Intelligence: Julio 2026</p>
       <span class="text-xs text-gray-400">Fuente: Microsoft Clarity (sesiones + scroll depth + clicks)</span>
     </div>
   </footer>
