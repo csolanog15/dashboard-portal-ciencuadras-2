@@ -3,72 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Portal Ciencuadras 2.0</title>
+  <title>Observatorio de Usabilidad y Performance</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>body{font-family:'Montserrat',sans-serif}.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.1)}.pulse-red{animation:pulseRed 2s infinite}@keyframes pulseRed{0%,100%{opacity:1}50%{opacity:.6}}</style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-  <header class="bg-gradient-to-r from-[#253150] to-[#1a2340] text-white">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div><h1 class="text-2xl font-bold">Dashboard Portal Ciencuadras 2.0</h1><p class="text-sm text-blue-200 mt-1">Performance + Usability Observatory</p></div>
-      <div class="flex items-center gap-4"><span class="text-xs text-blue-300">Datos: Microsoft Clarity</span><span class="bg-blue-800 text-xs px-3 py-1 rounded-full">Ultimo 30 dias</span></div>
-    </div>
-    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
-      <a href="index.html" class="bg-white/20 text-white text-sm px-4 py-1.5 rounded-full font-medium">Usability Signals</a>
-      <a href="cwv.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Core Web Vitals</a>
-      <a href="heatmap.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Heatmap Intelligence</a>
-      <a href="recommendations.html" class="text-blue-200 text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Recomendaciones</a>
+<body class="bg-[#f0f3f4] min-h-screen">
+  <header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-5"><h1 class="text-2xl font-bold">Observatorio de Usabilidad y Performance</h1></div>
+    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2 items-center">
+      <a href="home.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Home</a>
+      <a href="ciencuadras.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Ciencuadras</a>
+      <span class="text-white/30 px-1">|</span>
+      <a href="index.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">Usability Signals</a>
+      <a href="cwv.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Core Web Vitals</a>
+      <a href="heatmap.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Heatmap</a>
+      <a href="recommendations.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Recomendaciones</a>
     </nav>
   </header>
   <main class="max-w-7xl mx-auto px-6 py-8">
     <section id="usability-signals">
       <div class="flex items-center justify-between mb-6">
-        <div><h2 class="text-xl font-bold text-gray-900">Modulo 2: Usability Signals</h2><p class="text-sm text-gray-500 mt-1">Senales de confusion y frustracion de usuarios - Fuente: Microsoft Clarity</p></div>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 pulse-red">5 problemas criticos detectados</span>
+        <div><h2 class="text-xl font-bold text-[#00273d]">Usability Signals</h2><p class="text-sm text-[#333] mt-1">Senales de confusion y frustracion de usuarios - Fuente: Microsoft Clarity</p></div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 pulse-red">5 problemas criticos</span>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Dead Clicks</span><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Critico</span></div><p class="text-3xl font-bold text-gray-900">156</p><p class="text-xs text-gray-500 mt-1">sesiones afectadas / 30 dias</p><div class="mt-3 flex items-center gap-1"><span class="text-xs text-red-600 font-medium">+12% vs periodo anterior</span></div></div>
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Rage Clicks</span><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Critico</span></div><p class="text-3xl font-bold text-gray-900">5</p><p class="text-xs text-gray-500 mt-1">sesiones con frustracion extrema</p><div class="mt-3"><span class="text-xs text-gray-500">Promedio: 794 clicks/sesion</span></div></div>
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Quick Backs</span><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Atencion</span></div><p class="text-3xl font-bold text-gray-900">&mdash;</p><p class="text-xs text-gray-500 mt-1">pendiente medicion</p></div>
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Excessive Scroll</span><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Atencion</span></div><p class="text-3xl font-bold text-gray-900">&mdash;</p><p class="text-xs text-gray-500 mt-1">pendiente medicion</p></div>
+        <div class="card bg-white rounded-xl p-6 border border-[#ced4da] shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-[#333] uppercase">Dead Clicks</span><span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Critico</span></div><p class="text-3xl font-bold text-[#00273d]">156</p><p class="text-xs text-[#333] mt-1">sesiones / 30 dias</p><span class="text-xs text-red-600">+12% vs anterior</span></div>
+        <div class="card bg-white rounded-xl p-6 border border-[#ced4da] shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-[#333] uppercase">Rage Clicks</span><span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">Critico</span></div><p class="text-3xl font-bold text-[#00273d]">5</p><p class="text-xs text-[#333] mt-1">sesiones extremas</p><span class="text-xs text-[#333]">794 clicks/sesion</span></div>
+        <div class="card bg-white rounded-xl p-6 border border-[#ced4da] shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-[#333] uppercase">Quick Backs</span><span class="px-2 py-0.5 rounded-full text-xs font-medium bg-[#ffaa00]/30 text-[#00273d]">Atencion</span></div><p class="text-3xl font-bold text-[#00273d]">&mdash;</p><p class="text-xs text-[#333] mt-1">pendiente</p></div>
+        <div class="card bg-white rounded-xl p-6 border border-[#ced4da] shadow-sm"><div class="flex items-center justify-between mb-3"><span class="text-xs font-medium text-[#333] uppercase">Excessive Scroll</span><span class="px-2 py-0.5 rounded-full text-xs font-medium bg-[#ffaa00]/30 text-[#00273d]">Atencion</span></div><p class="text-3xl font-bold text-[#00273d]">&mdash;</p><p class="text-xs text-[#333] mt-1">pendiente</p></div>
       </div>
       <div class="bg-white rounded-xl border border-red-200 shadow-sm p-6 mb-8">
         <div class="flex items-start gap-4">
           <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg></div>
           <div class="flex-1">
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Hallazgo Critico: Carrusel de Imagenes No Responde</h3>
-            <p class="text-sm text-gray-600 mb-4">El componente de galeria de fotos en fichas de inmueble genera rage clicks masivos. Los usuarios hacen clicks repetitivos (~1 click/segundo) en botones de navegacion que no responden o responden con latencia extrema.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">794</p><p class="text-xs text-red-600">clicks promedio por sesion frustrada</p></div>
-              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">3h+</p><p class="text-xs text-red-600">sesiones mas largas afectadas</p></div>
-              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">140s</p><p class="text-xs text-red-600">LCP maximo detectado</p></div>
+            <h3 class="text-lg font-bold text-[#00273d] mb-2">Hallazgo Critico: Carrusel de Imagenes No Responde</h3>
+            <p class="text-sm text-[#333] mb-4">Los usuarios hacen clicks repetitivos (~1/segundo) en botones de navegacion de fotos que no responden.</p>
+            <div class="grid grid-cols-3 gap-4 mb-4">
+              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">794</p><p class="text-xs text-red-600">clicks/sesion</p></div>
+              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">3h+</p><p class="text-xs text-red-600">sesion mas larga</p></div>
+              <div class="bg-red-50 rounded-lg p-3"><p class="text-2xl font-bold text-red-700">140s</p><p class="text-xs text-red-600">LCP maximo</p></div>
             </div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Nielsen H4: Consistencia</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Ley de Doherty: Respuesta &lt;400ms</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Impacto: Alto</span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Esfuerzo: Medio</span>
-            </div>
+            <div class="flex gap-2 flex-wrap"><span class="px-2.5 py-0.5 rounded-full text-xs bg-purple-100 text-purple-800">Nielsen H4</span><span class="px-2.5 py-0.5 rounded-full text-xs bg-purple-100 text-purple-800">Ley de Doherty</span><span class="px-2.5 py-0.5 rounded-full text-xs bg-[#3e98cc]/20 text-[#00273d]">Impacto Alto</span></div>
           </div>
         </div>
       </div>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden mb-8">
-        <div class="px-6 py-4 border-b border-gray-100"><h3 class="text-base font-semibold text-gray-900">Sesiones con Rage Clicks (Julio 2026)</h3></div>
-        <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-gray-50"><tr><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fecha</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Duracion</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Paginas</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clicks</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">LCP</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Score</th><th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Elemento</th></tr></thead>
-        <tbody class="divide-y divide-gray-100">
-          <tr class="hover:bg-gray-50"><td class="px-4 py-3">24 Jul</td><td class="px-4 py-3 font-medium">6h 40m</td><td class="px-4 py-3">82</td><td class="px-4 py-3"><span class="font-bold text-red-600">1,313</span></td><td class="px-4 py-3 text-red-600">67s</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-700">0</span></td><td class="px-4 py-3 text-xs text-gray-500">Carrusel fotos</td></tr>
-          <tr class="hover:bg-gray-50"><td class="px-4 py-3">24 Jul</td><td class="px-4 py-3 font-medium">3h 05m</td><td class="px-4 py-3">29</td><td class="px-4 py-3"><span class="font-bold text-red-600">1,040</span></td><td class="px-4 py-3 text-red-600">54s</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-700">33</span></td><td class="px-4 py-3 text-xs text-gray-500">Carrusel fotos</td></tr>
-          <tr class="hover:bg-gray-50"><td class="px-4 py-3">14 Jul</td><td class="px-4 py-3 font-medium">2h 44m</td><td class="px-4 py-3">65</td><td class="px-4 py-3"><span class="font-bold text-amber-600">650</span></td><td class="px-4 py-3 text-red-600">100s</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-700">0</span></td><td class="px-4 py-3 text-xs text-gray-500">Carrusel fotos</td></tr>
-          <tr class="hover:bg-gray-50"><td class="px-4 py-3">09 Jul</td><td class="px-4 py-3 font-medium">1h 29m</td><td class="px-4 py-3">54</td><td class="px-4 py-3"><span class="font-bold text-amber-600">581</span></td><td class="px-4 py-3 text-red-600">140s</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-700">0</span></td><td class="px-4 py-3 text-xs text-gray-500">Detalle inmueble</td></tr>
-          <tr class="hover:bg-gray-50"><td class="px-4 py-3">08 Jul</td><td class="px-4 py-3 font-medium">1h 34m</td><td class="px-4 py-3">55</td><td class="px-4 py-3"><span class="font-bold text-amber-600">386</span></td><td class="px-4 py-3 text-red-600">170s</td><td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-700">0</span></td><td class="px-4 py-3 text-xs text-gray-500">Carrusel fotos</td></tr>
-        </tbody></table></div>
+      <div class="bg-white rounded-xl border border-[#ced4da] shadow-sm overflow-hidden mb-8">
+        <div class="px-6 py-4 border-b border-[#ced4da]"><h3 class="text-base font-semibold text-[#00273d]">Sesiones con Rage Clicks (Julio 2026)</h3></div>
+        <table class="w-full text-sm"><thead class="bg-[#f0f3f4]"><tr><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">Fecha</th><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">Duracion</th><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">Pags</th><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">Clicks</th><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">LCP</th><th class="px-4 py-3 text-left text-xs font-medium text-[#333] uppercase">Elemento</th></tr></thead>
+        <tbody class="divide-y divide-[#ced4da]">
+          <tr><td class="px-4 py-3">24 Jul</td><td class="px-4 py-3 font-medium">6h 40m</td><td class="px-4 py-3">82</td><td class="px-4 py-3 font-bold text-red-600">1,313</td><td class="px-4 py-3 text-red-600">67s</td><td class="px-4 py-3 text-xs">Carrusel</td></tr>
+          <tr><td class="px-4 py-3">24 Jul</td><td class="px-4 py-3 font-medium">3h 05m</td><td class="px-4 py-3">29</td><td class="px-4 py-3 font-bold text-red-600">1,040</td><td class="px-4 py-3 text-red-600">54s</td><td class="px-4 py-3 text-xs">Carrusel</td></tr>
+          <tr><td class="px-4 py-3">14 Jul</td><td class="px-4 py-3 font-medium">2h 44m</td><td class="px-4 py-3">65</td><td class="px-4 py-3 font-bold text-[#ffaa00]">650</td><td class="px-4 py-3 text-red-600">100s</td><td class="px-4 py-3 text-xs">Carrusel</td></tr>
+          <tr><td class="px-4 py-3">09 Jul</td><td class="px-4 py-3 font-medium">1h 29m</td><td class="px-4 py-3">54</td><td class="px-4 py-3 font-bold text-[#ffaa00]">581</td><td class="px-4 py-3 text-red-600">140s</td><td class="px-4 py-3 text-xs">Detalle</td></tr>
+          <tr><td class="px-4 py-3">08 Jul</td><td class="px-4 py-3 font-medium">1h 34m</td><td class="px-4 py-3">55</td><td class="px-4 py-3 font-bold text-[#ffaa00]">386</td><td class="px-4 py-3 text-red-600">170s</td><td class="px-4 py-3 text-xs">Carrusel</td></tr>
+        </tbody></table>
       </div>
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8"><h3 class="text-base font-semibold text-gray-900 mb-4">Distribucion de Clicks por Sesion Frustrada</h3><div class="h-64"><canvas id="clicksChart"></canvas></div></div>
+      <div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6"><h3 class="text-base font-semibold text-[#00273d] mb-4">Clicks por Sesion</h3><div class="h-64"><canvas id="clicksChart"></canvas></div></div>
     </section>
   </main>
-  <footer class="bg-white border-t border-gray-200 mt-8"><div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"><p class="text-xs text-gray-500">Dashboard Portal Ciencuadras 2.0 - Agosto 2026</p><span class="text-xs text-gray-400">Fuentes: Clarity + PageSpeed + Datadog</span></div></footer>
-  <script>new Chart(document.getElementById('clicksChart').getContext('2d'),{type:'bar',data:{labels:['8 Jul (1h34m)','9 Jul (1h29m)','14 Jul (2h44m)','24 Jul (3h05m)','24 Jul (6h40m)'],datasets:[{label:'Total Clicks',data:[386,581,650,1040,1313],backgroundColor:['#f59e0b','#f59e0b','#f59e0b','#ef4444','#ef4444'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'Clicks totales'}},x:{title:{display:true,text:'Sesion (fecha y duracion)'}}}}});</script>
+  <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-7xl mx-auto px-6 py-4"><p class="text-xs text-[#333]">Observatorio de Usabilidad y Performance - Agosto 2026</p></div></footer>
+  <script>new Chart(document.getElementById('clicksChart').getContext('2d'),{type:'bar',data:{labels:['8 Jul','9 Jul','14 Jul','24 Jul (3h)','24 Jul (6h)'],datasets:[{label:'Clicks',data:[386,581,650,1040,1313],backgroundColor:['#ffaa00','#ffaa00','#ffaa00','#ef4444','#ef4444'],borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true},x:{}}}});</script>
 </body>
 </html>

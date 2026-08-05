@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Dashboard Portal 2.0</title>
+  <title>Home - Observatorio de Usabilidad y Performance</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body class="bg-[#f0f3f4] min-h-screen">
   <header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <div><h1 class="text-2xl font-bold">Dashboard Portal 2.0</h1><p class="text-sm text-[#3e98cc] mt-1">Performance + Usability Observatory</p></div>
+      <div><h1 class="text-2xl font-bold">Observatorio de Usabilidad y Performance</h1><p class="text-sm text-[#3e98cc] mt-1">Performance + Usability Observatory</p></div>
     </div>
     <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
       <a href="home.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">Home</a>
@@ -48,7 +48,7 @@
       <div class="bg-[#3e98cc]/10 rounded-xl border border-[#3e98cc]/30 p-6"><h4 class="text-base font-semibold text-[#00273d] mb-2">Analisis UX con heuristicas de Nielsen</h4><p class="text-sm text-[#333]">Para un analisis heuristico completo (Playwright + Nielsen), solicitalo en Kiro: <code class="bg-white px-2 py-1 rounded text-[#3e98cc] font-mono text-xs">"Analiza UX de [url]"</code></p></div>
     </div>
   </main>
-  <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-7xl mx-auto px-6 py-4"><p class="text-xs text-[#333]">Dashboard Portal 2.0 - Powered by PageSpeed Insights API + Kiro</p></div></footer>
+  <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-7xl mx-auto px-6 py-4"><p class="text-xs text-[#333]">Observatorio de Usabilidad y Performance - Powered by PageSpeed Insights API + Kiro</p></div></footer>
   <script>
     let currentStrategy='mobile',currentUrl='';
     function switchStrategy(s){currentStrategy=s;document.getElementById('btnMobile').className=s==='mobile'?'px-3 py-1 text-sm rounded-full bg-[#3e98cc]/20 text-[#00273d] font-medium':'px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-600';document.getElementById('btnDesktop').className=s==='desktop'?'px-3 py-1 text-sm rounded-full bg-[#3e98cc]/20 text-[#00273d] font-medium':'px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-600';if(currentUrl)analyzeUrl();}
