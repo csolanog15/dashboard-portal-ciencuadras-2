@@ -56,11 +56,6 @@
           <div><p class="text-xs text-[#333] mb-1">Speed Index</p><p class="text-lg font-bold" id="metricSI">--</p></div>
         </div>
       </div>
-      <!-- Opportunities -->
-      <div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6">
-        <h4 class="text-base font-semibold text-[#00273d] mb-4">Oportunidades</h4>
-        <div id="opportunities" class="space-y-3"></div>
-      </div>
       <!-- UX -->
       <div class="bg-[#3e98cc]/10 rounded-xl border border-[#3e98cc]/30 p-6"><h4 class="text-base font-semibold text-[#00273d] mb-2">Analisis UX profundo</h4><p class="text-sm text-[#333]">Para evaluacion heuristica con Playwright + Nielsen, solicitalo en Kiro: <code class="bg-white px-2 py-1 rounded text-[#3e98cc] font-mono text-xs">"Analiza UX de [url]"</code></p></div>
     </div>
@@ -125,10 +120,7 @@
           if(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE)renderFieldMetric(fieldMetrics,'CLS',(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE.percentile/100).toFixed(2),'',0.1,0.25);
           if(field.metrics.FIRST_CONTENTFUL_PAINT_MS)renderFieldMetric(fieldMetrics,'FCP',(field.metrics.FIRST_CONTENTFUL_PAINT_MS.percentile/1000).toFixed(1),' s',1.8,3.0);
         }else{fieldSection.classList.add('hidden');}
-        const opps=document.getElementById('opportunities');opps.innerHTML='';
-        const oppIds=['unused-javascript','unused-css-rules','render-blocking-resources','uses-optimized-images','uses-text-compression','offscreen-images','uses-webp-images','efficient-animated-content','duplicated-javascript','legacy-javascript'];
-        oppIds.forEach(id=>{const a=lh.audits[id];if(a&&a.score!==null&&a.score<1){opps.innerHTML+=`<div class="flex items-center justify-between p-3 bg-[#f0f3f4] rounded-lg"><div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full ${a.score<0.5?'bg-red-500':'bg-[#ffaa00]'}"></span><span class="text-sm text-[#333]">${a.title}</span></div><span class="text-sm text-[#00273d] font-medium">${a.displayValue||''}</span></div>`;}});
-        if(!opps.innerHTML)opps.innerHTML='<p class="text-sm text-green-600">No se detectaron oportunidades significativas.</p>';
+        
         document.getElementById('results').classList.remove('hidden');
       }catch(e){alert('Error: '+e.message);}
       finally{document.getElementById('loading').classList.add('hidden');document.getElementById('analyzeBtn').disabled=false;document.getElementById('analyzeBtn').textContent='Analizar';}
