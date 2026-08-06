@@ -1,126 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Observatorio de Usabilidad y Performance</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Montserrat',sans-serif}.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.1)}.loader{border:4px solid #e5e7eb;border-top:4px solid #3e98cc;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.score-circle{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:#fff}.metric-bar{height:8px;border-radius:4px;background:#e5e7eb}.metric-bar .fill{height:100%;border-radius:4px}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Observatorio de Usabilidad y Performance</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:"Montserrat",sans-serif}.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.1)}.loader{border:4px solid #e5e7eb;border-top:4px solid #3e98cc;border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.score-circle{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:#fff}.metric-bar{height:8px;border-radius:4px;background:#e5e7eb}.metric-bar .fill{height:100%;border-radius:4px}</style>
 </head>
 <body class="bg-[#f0f3f4] min-h-screen">
-  <header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
-    <div class="max-w-7xl mx-auto px-6 py-5"><h1 class="text-2xl font-bold">Observatorio de Usabilidad y Performance</h1></div>
-    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
-      <a href="home.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">Home</a>
-      <a href="ciencuadras.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Ciencuadras</a>
-    </nav>
-  </header>
-  <main class="max-w-4xl mx-auto px-6 py-10">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl font-bold text-[#00273d] mb-2">Analiza el rendimiento y usabilidad</h2>
-      <p class="text-[#333] mb-6">Ingresa la URL de una pagina web</p>
-      <div class="flex gap-3 max-w-2xl mx-auto">
-        <input type="url" id="urlInput" placeholder="Ingresar la URL de una pagina web" class="flex-1 px-5 py-4 text-base border-2 border-[#ced4da] rounded-xl focus:border-[#3e98cc] focus:ring-2 focus:ring-[#3e98cc]/20 outline-none transition bg-white" />
-        <button onclick="analyzeUrl()" id="analyzeBtn" class="px-8 py-4 bg-[#3e98cc] hover:bg-[#2d7fb3] text-white font-semibold rounded-xl transition">Analizar</button>
-      </div>
-      <div class="flex justify-center gap-4 mt-4">
-        <label class="flex items-center gap-2 text-sm text-[#333] cursor-pointer"><input type="radio" name="strategy" value="mobile" checked onchange="currentStrategy='mobile'" class="accent-[#3e98cc]"/>Celulares</label>
-        <label class="flex items-center gap-2 text-sm text-[#333] cursor-pointer"><input type="radio" name="strategy" value="desktop" onchange="currentStrategy='desktop'" class="accent-[#3e98cc]"/>Escritorio</label>
-      </div>
-    </div>
-    <div id="loading" class="hidden text-center py-12"><div class="loader mx-auto mb-4"></div><p class="text-[#333]">Analizando... esto puede tomar 15-30 segundos</p></div>
-    <div id="results" class="hidden">
-      <!-- Field Data Section -->
-      <div id="fieldData" class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6 hidden">
-        <div class="flex items-center gap-2 mb-4"><div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center"><span class="text-blue-600 text-xs font-bold">i</span></div><h3 class="text-base font-semibold text-[#00273d]">Descubre lo que experimentan tus usuarios reales</h3></div>
-        <p id="fieldStatus" class="text-sm mb-4"></p>
-        <div id="fieldMetrics" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-        <p class="text-xs text-gray-400 mt-4">Datos de Chrome User Experience Report (CrUX) - Ultimos 28 dias</p>
-      </div>
-      <!-- Lab Data Section -->
-      <div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6">
-        <div class="flex items-center gap-2 mb-4"><div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center"><span class="text-blue-600 text-xs font-bold">!</span></div><h3 class="text-base font-semibold text-[#00273d]">Diagnostica problemas de rendimiento</h3></div>
-        <div class="flex flex-wrap items-center gap-6 mb-6">
-          <div class="text-center"><div id="scoreCircle" class="score-circle mx-auto mb-1 bg-gray-300">--</div><p class="text-xs text-[#333]">Rendimiento</p></div>
-          <div class="text-center"><div id="scoreA11y" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs text-[#333]">Accesibilidad</p></div>
-          <div class="text-center"><div id="scoreBP" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs text-[#333]">Buenas practicas</p></div>
-          <div class="text-center"><div id="scoreSEO" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs text-[#333]">SEO</p></div>
-        </div>
-        <h4 class="text-sm font-semibold text-[#00273d] mb-3">Metricas de laboratorio</h4>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-          <div><p class="text-xs text-[#333] mb-1">First Contentful Paint</p><p class="text-lg font-bold" id="metricFCP">--</p></div>
-          <div><p class="text-xs text-[#333] mb-1">Largest Contentful Paint</p><p class="text-lg font-bold" id="metricLCP">--</p></div>
-          <div><p class="text-xs text-[#333] mb-1">Total Blocking Time</p><p class="text-lg font-bold" id="metricTBT">--</p></div>
-          <div><p class="text-xs text-[#333] mb-1">Cumulative Layout Shift</p><p class="text-lg font-bold" id="metricCLS">--</p></div>
-          <div><p class="text-xs text-[#333] mb-1">Speed Index</p><p class="text-lg font-bold" id="metricSI">--</p></div>
-        </div>
-      </div>
-            <div id="heuristicSection" class="hidden"><div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2"><div class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center"><span class="text-purple-600 text-xs font-bold">H</span></div><h3 class="text-base font-semibold text-[#00273d]">Evaluacion Heuristica (Nielsen)</h3></div><span id="heuristicDate" class="text-xs text-gray-400"></span></div><p id="heuristicUrl" class="text-sm text-[#3e98cc] mb-4"></p><div id="heuristicResults" class="space-y-3"></div></div></div>
-      <div id="uxSection" class="hidden"><div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6"><div class="flex items-center gap-2 mb-4"><div class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center"><span class="text-purple-600 text-xs font-bold">H</span></div><h3 class="text-base font-semibold text-[#00273d]">Evaluacion de Usabilidad (Heuristicas de Nielsen)</h3></div><p class="text-xs text-gray-400 mb-4">Basado en audits de Lighthouse mapeados a heuristicas de Nielsen</p><div id="uxFindings" class="space-y-3"></div></div></div>
-      </div>`;
-    }
-    async function analyzeUrl(){
-      const url=document.getElementById('urlInput').value.trim();
-      if(!url){alert('Ingresa una URL');return;}
-      document.getElementById('loading').classList.remove('hidden');
-      document.getElementById('results').classList.add('hidden');
-      document.getElementById('analyzeBtn').disabled=true;
-      document.getElementById('analyzeBtn').textContent='Analizando...';
-      try{
-        const apiUrl=`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=${currentStrategy}&category=performance&category=accessibility&category=best-practices&category=seo&key=${PSI_KEY}`;
-        const res=await fetch(apiUrl);const data=await res.json();
-        if(data.error){alert('Error: '+data.error.message);return;}
-        const lh=data.lighthouseResult;
-        const perfScore=Math.round(lh.categories.performance.score*100);
-        const a11yScore=Math.round(lh.categories.accessibility.score*100);
-        const bpScore=Math.round(lh.categories['best-practices'].score*100);
-        const seoScore=Math.round(lh.categories.seo.score*100);
-        document.getElementById('scoreCircle').textContent=perfScore;
-        document.getElementById('scoreCircle').className='score-circle mx-auto mb-1 '+getColor(perfScore);
-        document.getElementById('scoreA11y').textContent=a11yScore;
-        document.getElementById('scoreA11y').className='score-circle mx-auto mb-1 '+getColor(a11yScore);
-        document.getElementById('scoreA11y').style.cssText='width:70px;height:70px;font-size:1.3rem';
-        document.getElementById('scoreBP').textContent=bpScore;
-        document.getElementById('scoreBP').className='score-circle mx-auto mb-1 '+getColor(bpScore);
-        document.getElementById('scoreBP').style.cssText='width:70px;height:70px;font-size:1.3rem';
-        document.getElementById('scoreSEO').textContent=seoScore;
-        document.getElementById('scoreSEO').className='score-circle mx-auto mb-1 '+getColor(seoScore);
-        document.getElementById('scoreSEO').style.cssText='width:70px;height:70px;font-size:1.3rem';
-        const m=lh.audits.metrics.details.items[0];
-        document.getElementById('metricFCP').textContent=(m.firstContentfulPaint/1000).toFixed(1)+' s';
-        document.getElementById('metricFCP').className='text-lg font-bold '+getTextColor(m.firstContentfulPaint,1800,3000);
-        document.getElementById('metricLCP').textContent=(m.largestContentfulPaint/1000).toFixed(1)+' s';
-        document.getElementById('metricLCP').className='text-lg font-bold '+getTextColor(m.largestContentfulPaint,2500,4000);
-        document.getElementById('metricTBT').textContent=m.totalBlockingTime+' ms';
-        document.getElementById('metricTBT').className='text-lg font-bold '+getTextColor(m.totalBlockingTime,200,600);
-        document.getElementById('metricCLS').textContent=m.cumulativeLayoutShift.toFixed(3);
-        document.getElementById('metricCLS').className='text-lg font-bold '+getTextColor(m.cumulativeLayoutShift*1000,100,250);
-        document.getElementById('metricSI').textContent=(m.speedIndex/1000).toFixed(1)+' s';
-        document.getElementById('metricSI').className='text-lg font-bold '+getTextColor(m.speedIndex,3400,5800);
-        const field=data.loadingExperience;
-        const fieldSection=document.getElementById('fieldData');
-        const fieldMetrics=document.getElementById('fieldMetrics');
-        fieldMetrics.innerHTML='';
-        if(field&&field.metrics&&Object.keys(field.metrics).length>0){
-          fieldSection.classList.remove('hidden');
-          const status=field.overall_category;
-          document.getElementById('fieldStatus').innerHTML='Evaluacion de metricas web esenciales: <span class="font-bold '+(status==='FAST'?'text-green-600':status==='AVERAGE'?'text-[#ffaa00]':'text-red-600')+'">'+(status==='FAST'?'aprobada':status==='AVERAGE'?'necesita mejoras':'desaprobada')+'</span>';
-          if(field.metrics.LARGEST_CONTENTFUL_PAINT_MS)renderFieldMetric(fieldMetrics,'LCP',(field.metrics.LARGEST_CONTENTFUL_PAINT_MS.percentile/1000).toFixed(1),' s',2.5,4.0);
-          if(field.metrics.INTERACTION_TO_NEXT_PAINT)renderFieldMetric(fieldMetrics,'INP',field.metrics.INTERACTION_TO_NEXT_PAINT.percentile,' ms',200,500);
-          if(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE)renderFieldMetric(fieldMetrics,'CLS',(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE.percentile/100).toFixed(2),'',0.1,0.25);
-          if(field.metrics.FIRST_CONTENTFUL_PAINT_MS)renderFieldMetric(fieldMetrics,'FCP',(field.metrics.FIRST_CONTENTFUL_PAINT_MS.percentile/1000).toFixed(1),' s',1.8,3.0);
-        }else{fieldSection.classList.add('hidden');}
-        
-                var uxFindings=[];var auditMap={'image-alt':{h:'H1 - Visibilidad del estado',f:'Imagenes sin texto alternativo: usuarios con lectores de pantalla no pueden identificar el contenido visual'},'color-contrast':{h:'H8 - Diseno minimalista',f:'Contraste de color insuficiente: dificulta la lectura para usuarios con vision reducida'},'tap-targets':{h:'H7 - Flexibilidad y eficiencia',f:'Elementos tactiles demasiado pequenos o cercanos: genera errores de toque en mobile'},'button-name':{h:'H4 - Consistencia y estandares',f:'Botones sin nombre accesible: el usuario no sabe que hace el boton'},'link-name':{h:'H6 - Reconocer antes que recordar',f:'Enlaces sin texto descriptivo: el usuario no puede anticipar a donde lleva el link'},'meta-viewport':{h:'H7 - Flexibilidad y eficiencia',f:'Viewport no configurado para mobile: la pagina no se adapta al dispositivo'},'document-title':{h:'H1 - Visibilidad del estado',f:'Pagina sin titulo: el usuario no sabe donde esta'},'heading-order':{h:'H4 - Consistencia y estandares',f:'Jerarquia de encabezados incorrecta: confunde la estructura del contenido'},'errors-in-console':{h:'H9 - Ayuda a reconocer errores',f:'Errores JavaScript en consola: funcionalidades pueden estar rotas'},'is-crawlable':{h:'H1 - Visibilidad del estado',f:'Pagina bloquea indexacion: no sera encontrada en buscadores'}};Object.keys(auditMap).forEach(function(id){var a=lh.audits[id];if(a&&a.score!==null&&a.score<1){uxFindings.push({h:auditMap[id].h,f:auditMap[id].f,s:a.score===0?'high':'medium'});}});if(perfScore<50)uxFindings.push({h:'Ley de Doherty',f:'Rendimiento critico (score '+perfScore+'): pagina tarda demasiado en ser interactiva',s:'high'});if(m.largestContentfulPaint>4000)uxFindings.push({h:'H1 - Visibilidad del estado',f:'LCP de '+(m.largestContentfulPaint/1000).toFixed(1)+'s: contenido principal tarda demasiado en aparecer',s:'high'});if(m.cumulativeLayoutShift>0.25)uxFindings.push({h:'H5 - Prevencion de errores',f:'CLS de '+m.cumulativeLayoutShift.toFixed(2)+': elementos se mueven causando clicks accidentales',s:'high'});if(m.totalBlockingTime>600)uxFindings.push({h:'H7 - Flexibilidad y eficiencia',f:'TBT de '+m.totalBlockingTime+'ms: pagina no responde durante mas de medio segundo',s:'medium'});var uxC=document.getElementById('uxFindings');if(uxFindings.length>0){document.getElementById('uxSection').classList.remove('hidden');uxC.innerHTML='';uxFindings.forEach(function(u){var sc=u.s==='high'?'bg-red-100 text-red-700':'bg-[#ffaa00]/20 text-[#00273d]';var sl=u.s==='high'?'Critico':'Mejora';uxC.innerHTML+='<div class="p-4 bg-[#f0f3f4] rounded-lg"><div class="flex items-center justify-between mb-2"><span class="text-sm font-semibold text-[#00273d]">'+u.h+'</span><span class="px-2 py-0.5 rounded-full text-xs font-medium '+sc+'">'+sl+'</span></div><p class="text-sm text-[#333]">'+u.f+'</p></div>';});}
-        document.getElementById('results').classList.remove('hidden');
-      }catch(e){alert('Error: '+e.message);}
-      finally{document.getElementById('loading').classList.add('hidden');document.getElementById('analyzeBtn').disabled=false;document.getElementById('analyzeBtn').textContent='Analizar';}
-    }
-    
-    async function loadLastAnalysis(){try{const res=await fetch('data/last-analysis.json?t='+Date.now());const data=await res.json();if(data.status==='empty'||!data.heuristics||data.heuristics.length===0)return;document.getElementById('heuristicSection').classList.remove('hidden');document.getElementById('heuristicUrl').textContent='URL: '+data.url;document.getElementById('heuristicDate').textContent=new Date(data.timestamp).toLocaleDateString('es-CO');const ct=document.getElementById('heuristicResults');ct.innerHTML='';data.heuristics.forEach(h=>{const sc=h.severity==='high'?'bg-red-100 text-red-700':h.severity==='medium'?'bg-[#ffaa00]/20 text-[#00273d]':'bg-green-100 text-green-700';const sl=h.severity==='high'?'Critico':h.severity==='medium'?'Mejora':'OK';ct.innerHTML+=`<div class="p-4 bg-[#f0f3f4] rounded-lg"><div class="flex items-center justify-between mb-2"><span class="text-sm font-semibold text-[#00273d]">+h.heuristic+`</span><span class="px-2 py-0.5 rounded-full text-xs font-medium +sc+"">+sl+`</span></div><p class="text-sm text-[#333]">+h.finding+`</p>+(h.recommendation?`<p class="text-xs text-[#3e98cc] mt-2">Recomendacion: +h.recommendation+`</p>`:`)+`</div>`;});} catch(e){}}loadLastAnalysis();
-    document.getElementById('urlInput').addEventListener('keypress',function(e){if(e.key==='Enter')analyzeUrl();});
-  </script>
-  <script src="data/heuristic-loader.js"></script>
-</body>
-</html>
+<header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
+<div class="max-w-7xl mx-auto px-6 py-5"><h1 class="text-2xl font-bold">Observatorio de Usabilidad y Performance</h1></div>
+<nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
+<a href="home.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">Home</a>
+<a href="ciencuadras.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Ciencuadras</a>
+</nav></header>
+<main class="max-w-4xl mx-auto px-6 py-10">
+<div class="text-center mb-10">
+<h2 class="text-2xl font-bold text-[#00273d] mb-2">Analiza el rendimiento y usabilidad</h2>
+<p class="text-[#333] mb-6">Ingresa la URL de una pagina web</p>
+<div class="flex gap-3 max-w-2xl mx-auto">
+<input type="url" id="urlInput" placeholder="Ingresar la URL de una pagina web" class="flex-1 px-5 py-4 text-base border-2 border-[#ced4da] rounded-xl focus:border-[#3e98cc] outline-none bg-white"/>
+<button onclick="analyzeUrl()" id="analyzeBtn" class="px-8 py-4 bg-[#3e98cc] hover:bg-[#2d7fb3] text-white font-semibold rounded-xl">Analizar</button>
+</div>
+<div class="flex justify-center gap-4 mt-4">
+<label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="strat" value="mobile" checked onchange="currentStrategy=this.value"/>Celulares</label>
+<label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="strat" value="desktop" onchange="currentStrategy=this.value"/>Escritorio</label>
+</div></div>
+<div id="loading" class="hidden text-center py-12"><div class="loader mx-auto mb-4"></div><p>Analizando... 15-30 segundos</p></div>
+<div id="results" class="hidden">
+<div id="fieldData" class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6 hidden">
+<h3 class="text-base font-semibold text-[#00273d] mb-4">Lo que experimentan tus usuarios reales</h3>
+<p id="fieldStatus" class="text-sm mb-4"></p>
+<div id="fieldMetrics" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+<p class="text-xs text-gray-400 mt-3">Chrome UX Report - Ultimos 28 dias</p></div>
+<div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6">
+<h3 class="text-base font-semibold text-[#00273d] mb-4">Diagnostica problemas de rendimiento</h3>
+<div class="flex flex-wrap items-center gap-6 mb-6">
+<div class="text-center"><div id="scoreCircle" class="score-circle mx-auto mb-1 bg-gray-300">--</div><p class="text-xs">Rendimiento</p></div>
+<div class="text-center"><div id="scoreA11y" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs">Accesibilidad</p></div>
+<div class="text-center"><div id="scoreBP" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs">Buenas practicas</p></div>
+<div class="text-center"><div id="scoreSEO" class="score-circle mx-auto mb-1 bg-gray-300" style="width:70px;height:70px;font-size:1.3rem">--</div><p class="text-xs">SEO</p></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div><p class="text-xs mb-1">FCP</p><p class="text-lg font-bold" id="metricFCP">--</p></div>
+<div><p class="text-xs mb-1">LCP</p><p class="text-lg font-bold" id="metricLCP">--</p></div>
+<div><p class="text-xs mb-1">TBT</p><p class="text-lg font-bold" id="metricTBT">--</p></div>
+<div><p class="text-xs mb-1">CLS</p><p class="text-lg font-bold" id="metricCLS">--</p></div>
+<div><p class="text-xs mb-1">Speed Index</p><p class="text-lg font-bold" id="metricSI">--</p></div>
+</div></div>
+<div id="uxSection" class="hidden"><div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6">
+<h3 class="text-base font-semibold text-[#00273d] mb-4">Evaluacion de Usabilidad (Heuristicas de Nielsen)</h3>
+<p class="text-xs text-gray-400 mb-4">Basado en audits de Lighthouse mapeados a heuristicas de Nielsen</p>
+<div id="uxFindings" class="space-y-3"></div></div></div>
+</div></main>
+<footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-4xl mx-auto px-6 py-4"><p class="text-xs">Observatorio de Usabilidad y Performance</p></div></footer>
+<script src="data/app.js"></script>
+</body></html>
