@@ -56,6 +56,7 @@
           <div><p class="text-xs text-[#333] mb-1">Speed Index</p><p class="text-lg font-bold" id="metricSI">--</p></div>
         </div>
       </div>
+            <div id="heuristicSection" class="hidden"><div class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2"><div class="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center"><span class="text-purple-600 text-xs font-bold">H</span></div><h3 class="text-base font-semibold text-[#00273d]">Evaluacion Heuristica (Nielsen)</h3></div><span id="heuristicDate" class="text-xs text-gray-400"></span></div><p id="heuristicUrl" class="text-sm text-[#3e98cc] mb-4"></p><div id="heuristicResults" class="space-y-3"></div></div></div>
       <!-- UX -->
       <div class="bg-[#3e98cc]/10 rounded-xl border border-[#3e98cc]/30 p-6"><h4 class="text-base font-semibold text-[#00273d] mb-2">Analisis UX profundo</h4><p class="text-sm text-[#333]">Para evaluacion heuristica con Playwright + Nielsen, solicitalo en Kiro: <code class="bg-white px-2 py-1 rounded text-[#3e98cc] font-mono text-xs">"Analiza UX de [url]"</code></p></div>
     </div>
@@ -125,7 +126,10 @@
       }catch(e){alert('Error: '+e.message);}
       finally{document.getElementById('loading').classList.add('hidden');document.getElementById('analyzeBtn').disabled=false;document.getElementById('analyzeBtn').textContent='Analizar';}
     }
+    
+    async function loadLastAnalysis(){try{const res=await fetch('data/last-analysis.json?t='+Date.now());const data=await res.json();if(data.status==='empty'||!data.heuristics||data.heuristics.length===0)return;document.getElementById('heuristicSection').classList.remove('hidden');document.getElementById('heuristicUrl').textContent='URL: '+data.url;document.getElementById('heuristicDate').textContent=new Date(data.timestamp).toLocaleDateString('es-CO');const ct=document.getElementById('heuristicResults');ct.innerHTML='';data.heuristics.forEach(h=>{const sc=h.severity==='high'?'bg-red-100 text-red-700':h.severity==='medium'?'bg-[#ffaa00]/20 text-[#00273d]':'bg-green-100 text-green-700';const sl=h.severity==='high'?'Critico':h.severity==='medium'?'Mejora':'OK';ct.innerHTML+=`<div class="p-4 bg-[#f0f3f4] rounded-lg"><div class="flex items-center justify-between mb-2"><span class="text-sm font-semibold text-[#00273d]">+h.heuristic+`</span><span class="px-2 py-0.5 rounded-full text-xs font-medium +sc+"">+sl+`</span></div><p class="text-sm text-[#333]">+h.finding+`</p>+(h.recommendation?`<p class="text-xs text-[#3e98cc] mt-2">Recomendacion: +h.recommendation+`</p>`:`)+`</div>`;});} catch(e){}}loadLastAnalysis();
     document.getElementById('urlInput').addEventListener('keypress',function(e){if(e.key==='Enter')analyzeUrl();});
   </script>
+  <script src="data/heuristic-loader.js"></script>
 </body>
 </html>
