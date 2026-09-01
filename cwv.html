@@ -11,15 +11,10 @@
     body { font-family: 'Montserrat', sans-serif; }
     .card { transition: transform 0.2s, box-shadow 0.2s; }
     .card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-    .score-ring { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; }
-    .score-good { background: conic-gradient(#22c55e var(--score), #e5e7eb var(--score)); }
-    .score-needs { background: conic-gradient(#f59e0b var(--score), #e5e7eb var(--score)); }
-    .score-poor { background: conic-gradient(#ef4444 var(--score), #e5e7eb var(--score)); }
   </style>
 </head>
 <body class="bg-[#f0f3f4] min-h-screen">
 
-  <!-- Header -->
   <header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <div>
@@ -28,15 +23,15 @@
       </div>
       <div class="flex items-center gap-4">
         <span class="text-xs text-blue-300">Datos: PageSpeed Insights API</span>
-        <span class="bg-blue-800 text-xs px-3 py-1 rounded-full">4 Ago 2026</span>
+        <span id="dataDate" class="bg-blue-800 text-xs px-3 py-1 rounded-full">—</span>
       </div>
     </div>
-            <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2 items-center">
+    <nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2 items-center">
       <a href="home.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Home</a>
       <a href="ciencuadras.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Ciencuadras</a>
       <span class="text-white/30 px-1">|</span>
       <a href="index.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Usability</a>
-      <a href="cwv.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">CWV</a>
+      <a href="cwv.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">CWV</a>
       <a href="heatmap.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Heatmap</a>
       <a href="recommendations.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Recomendaciones</a>
     </nav>
@@ -49,283 +44,215 @@
           <h2 class="text-xl font-bold text-gray-900">Modulo 1: Core Web Vitals Tracker</h2>
           <p class="text-sm text-gray-500 mt-1">Metricas de rendimiento por pagina — Mobile vs Desktop — Fuente: PageSpeed Insights API</p>
         </div>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-          Home mobile necesita atencion
-        </span>
+        <span id="headerBadge" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">Cargando…</span>
       </div>
 
-      <!-- Score Overview Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <!-- Home -->
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm font-semibold text-gray-700">Home (/)</h3>
-            <span class="text-xs text-gray-400">ciencuadras.com</span>
+      <div id="stateMsg" class="hidden bg-white rounded-xl border border-gray-200 shadow-sm p-8 text-center mb-8">
+        <p id="stateMsgText" class="text-sm text-gray-500"></p>
+      </div>
+
+      <div id="prodBlock" class="hidden">
+        <h3 class="text-base font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span> Produccion (www.ciencuadras.com)
+        </h3>
+        <div id="prodCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"></div>
+
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden mb-8">
+          <div class="px-6 py-4 border-b border-gray-100">
+            <h3 class="text-base font-semibold text-gray-900">Detalle de metricas — Mobile (Produccion)</h3>
+            <p class="text-xs text-gray-500 mt-1">Umbrales CWV: Verde = bueno | Amarillo = necesita mejora | Rojo = pobre</p>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-amber-500">55</div>
-              <p class="text-xs text-gray-500 mt-2">Mobile</p>
-            </div>
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-green-500">96</div>
-              <p class="text-xs text-gray-500 mt-2">Desktop</p>
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-gray-100">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-gray-500">LCP Mobile</span>
-              <span class="font-medium text-red-600">10.8s</span>
-            </div>
-            <div class="flex items-center justify-between text-xs mt-1">
-              <span class="text-gray-500">LCP Desktop</span>
-              <span class="font-medium text-green-600">1.3s</span>
-            </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pagina</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Score</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">FCP</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">LCP</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">TBT</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">CLS</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">SI</th>
+                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
+                </tr>
+              </thead>
+              <tbody id="prodTable" class="divide-y divide-gray-100"></tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Arriendo -->
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm font-semibold text-gray-700">Arriendo (/arriendo)</h3>
-            <span class="text-xs text-gray-400">listado</span>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-amber-500">66</div>
-              <p class="text-xs text-gray-500 mt-2">Mobile</p>
-            </div>
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-green-500">100</div>
-              <p class="text-xs text-gray-500 mt-2">Desktop</p>
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-gray-100">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-gray-500">LCP Mobile</span>
-              <span class="font-medium text-amber-600">2.4s</span>
-            </div>
-            <div class="flex items-center justify-between text-xs mt-1">
-              <span class="text-gray-500">LCP Desktop</span>
-              <span class="font-medium text-green-600">0.5s</span>
-            </div>
-          </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
+          <h3 class="text-base font-semibold text-gray-900 mb-4">Comparativa Mobile vs Desktop — Performance Score (Prod)</h3>
+          <div class="h-64"><canvas id="mobileDesktopChart"></canvas></div>
         </div>
 
-        <!-- Venta -->
-        <div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm font-semibold text-gray-700">Venta (/venta)</h3>
-            <span class="text-xs text-gray-400">listado</span>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-green-500">85</div>
-              <p class="text-xs text-gray-500 mt-2">Mobile</p>
-            </div>
-            <div class="text-center">
-              <div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white bg-green-500">100</div>
-              <p class="text-xs text-gray-500 mt-2">Desktop</p>
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-gray-100">
-            <div class="flex items-center justify-between text-xs">
-              <span class="text-gray-500">LCP Mobile</span>
-              <span class="font-medium text-amber-600">2.6s</span>
-            </div>
-            <div class="flex items-center justify-between text-xs mt-1">
-              <span class="text-gray-500">LCP Desktop</span>
-              <span class="font-medium text-green-600">0.5s</span>
-            </div>
-          </div>
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
+          <h3 class="text-base font-semibold text-gray-900 mb-4">LCP por Pagina — Mobile vs Desktop (segundos, Prod)</h3>
+          <div class="h-64"><canvas id="lcpChart"></canvas></div>
         </div>
       </div>
 
-      <!-- Detailed Metrics Table -->
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden mb-8">
-        <div class="px-6 py-4 border-b border-gray-100">
-          <h3 class="text-base font-semibold text-gray-900">Detalle de metricas — Mobile</h3>
-          <p class="text-xs text-gray-500 mt-1">Umbrales: Verde = bueno | Amarillo = necesita mejora | Rojo = pobre</p>
+      <div id="preprodBlock" class="hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-semibold text-gray-800 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#3e98cc]"></span> Pre-produccion (pre.ciencuadras.com)
+          </h3>
+          <span class="text-xs text-gray-400">Seguimiento del progreso de mejoras antes de salir a produccion</span>
         </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead class="bg-gray-50">
-              <tr>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pagina</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Score</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">FCP</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">LCP</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">TBT</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">CLS</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">SI</th>
-                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100">
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 font-medium text-gray-900">Home</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-700">55</span></td>
-                <td class="px-4 py-3 text-red-600 font-medium">8.7s</td>
-                <td class="px-4 py-3 text-red-600 font-medium">10.8s</td>
-                <td class="px-4 py-3 text-green-600">160ms</td>
-                <td class="px-4 py-3 text-green-600">0.005</td>
-                <td class="px-4 py-3 text-red-600 font-medium">8.7s</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Critico</span></td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 font-medium text-gray-900">Arriendo</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-700">66</span></td>
-                <td class="px-4 py-3 text-green-600">1.8s</td>
-                <td class="px-4 py-3 text-amber-600 font-medium">2.4s</td>
-                <td class="px-4 py-3 text-red-600 font-medium">830ms</td>
-                <td class="px-4 py-3 text-amber-600">0.106</td>
-                <td class="px-4 py-3 text-red-600 font-medium">7.7s</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Mejora</span></td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 font-medium text-gray-900">Venta</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-green-100 text-green-700">85</span></td>
-                <td class="px-4 py-3 text-green-600">1.1s</td>
-                <td class="px-4 py-3 text-amber-600 font-medium">2.6s</td>
-                <td class="px-4 py-3 text-amber-600">340ms</td>
-                <td class="px-4 py-3 text-amber-600">0.106</td>
-                <td class="px-4 py-3 text-green-600">3.4s</td>
-                <td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Bueno</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div id="preprodCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"></div>
       </div>
 
-      <!-- Mobile vs Desktop Comparison Chart -->
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
-        <h3 class="text-base font-semibold text-gray-900 mb-4">Comparativa Mobile vs Desktop — Performance Score</h3>
-        <div class="h-64">
-          <canvas id="mobileDesktopChart"></canvas>
-        </div>
-      </div>
-
-      <!-- LCP Breakdown Chart -->
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 mb-8">
-        <h3 class="text-base font-semibold text-gray-900 mb-4">LCP por Pagina — Mobile vs Desktop (segundos)</h3>
-        <div class="h-64">
-          <canvas id="lcpChart"></canvas>
-        </div>
-      </div>
-
-      <!-- Key Insight -->
-      <div class="bg-white rounded-xl border border-amber-200 shadow-sm p-6 mb-8">
+      <div id="compareBlock" class="hidden bg-white rounded-xl border border-[#3e98cc]/30 shadow-sm p-6 mb-8">
         <div class="flex items-start gap-4">
-          <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+          <div class="w-10 h-10 bg-[#3e98cc]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-[#3e98cc]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900 mb-2">Insight Principal: Brecha Mobile vs Desktop</h3>
-            <p class="text-sm text-gray-600 mb-3">
-              La experiencia desktop es excelente (96-100), pero mobile se degrada significativamente.
-              El Home mobile tiene un LCP de 10.8s (vs 1.3s en desktop) — una diferencia de 8x.
-              Esto indica que las imagenes hero y el contenido above-the-fold no estan optimizados para mobile.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div class="bg-amber-50 rounded-lg p-3">
-                <p class="text-lg font-bold text-amber-700">8.3x</p>
-                <p class="text-xs text-amber-600">diferencia LCP Home (mobile vs desktop)</p>
-              </div>
-              <div class="bg-amber-50 rounded-lg p-3">
-                <p class="text-lg font-bold text-amber-700">830ms</p>
-                <p class="text-xs text-amber-600">TBT en Arriendo mobile (bloquea interaccion)</p>
-              </div>
-              <div class="bg-amber-50 rounded-lg p-3">
-                <p class="text-lg font-bold text-amber-700">0.106</p>
-                <p class="text-xs text-amber-600">CLS en listados (layout shift visible)</p>
-              </div>
-            </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Prod vs Pre-prod: seguimiento de mejoras (Mobile)</h3>
+            <p class="text-sm text-gray-600 mb-3">Delta del performance score. Verde = pre-prod va mejor que produccion (mejora lista para promover).</p>
+            <div class="h-64"><canvas id="compareChart"></canvas></div>
           </div>
         </div>
       </div>
 
-      <!-- Opportunities -->
-      <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-        <h3 class="text-base font-semibold text-gray-900 mb-4">Oportunidades de mejora detectadas</h3>
-        <div class="space-y-3">
-          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">Alto</span>
-              <span class="text-sm text-gray-700">Reducir JavaScript sin usar</span>
-            </div>
-            <span class="text-sm font-medium text-gray-900">Ahorro: ~279 KiB (Home)</span>
-          </div>
-          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700">Alto</span>
-              <span class="text-sm text-gray-700">Reducir CSS sin usar</span>
-            </div>
-            <span class="text-sm font-medium text-gray-900">Ahorro: ~124 KiB (Home)</span>
-          </div>
-          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700">Medio</span>
-              <span class="text-sm text-gray-700">Reducir JavaScript sin usar (Arriendo)</span>
-            </div>
-            <span class="text-sm font-medium text-gray-900">Ahorro: ~222 KiB</span>
-          </div>
-          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700">Medio</span>
-              <span class="text-sm text-gray-700">Reducir CSS sin usar (Arriendo)</span>
-            </div>
-            <span class="text-sm font-medium text-gray-900">Ahorro: ~106 KiB</span>
-          </div>
-        </div>
+      <div id="oppBlock" class="hidden bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+        <h3 class="text-base font-semibold text-gray-900 mb-4">Oportunidades de mejora detectadas (Prod, mobile)</h3>
+        <div id="oppList" class="space-y-3"></div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-white border-t border-gray-200 mt-8">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <p class="text-xs text-gray-500">Observatorio de Usabilidad y Performance — Medicion: 4 Agosto 2026</p>
-      <span class="text-xs text-gray-400">Fuente: PageSpeed Insights API (Lighthouse)</span>
+      <p class="text-xs text-gray-500">Observatorio de Usabilidad y Performance — <span id="footerDate">—</span></p>
+      <span class="text-xs text-gray-400">Fuente: PageSpeed Insights API (Lighthouse + CrUX)</span>
     </div>
   </footer>
 
-  <!-- Charts -->
   <script>
-    // Mobile vs Desktop Score
-    new Chart(document.getElementById('mobileDesktopChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['Home', 'Arriendo', 'Venta'],
-        datasets: [
-          { label: 'Mobile', data: [55, 66, 85], backgroundColor: '#f59e0b', borderRadius: 6 },
-          { label: 'Desktop', data: [96, 100, 100], backgroundColor: '#22c55e', borderRadius: 6 }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'top' } },
-        scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Performance Score' } } }
-      }
-    });
+    var TH = { lcp:{g:2500,p:4000}, tbt:{g:200,p:600}, cls:{g:0.1,p:0.25}, fcp:{g:1800,p:3000}, si:{g:3400,p:5800} };
+    function scoreColor(s){ return s>=90?'bg-green-500':s>=50?'bg-amber-500':'bg-red-500'; }
+    function tc(v,g,p){ if(v==null) return 'text-gray-400'; return v<=g?'text-green-600':v<=p?'text-amber-600':'text-red-600'; }
+    function fmtMs(v){ return v==null?'—':(v/1000).toFixed(1)+'s'; }
+    function fmtTbt(v){ return v==null?'—':Math.round(v)+'ms'; }
+    function fmtCls(v){ return v==null?'—':v.toFixed(3); }
+    function estado(perf){ if(perf==null) return ['bg-gray-100 text-gray-600','—']; return perf>=90?['bg-green-100 text-green-700','Bueno']:perf>=50?['bg-amber-100 text-amber-700','Mejora']:['bg-red-100 text-red-700','Critico']; }
 
-    // LCP Comparison
-    new Chart(document.getElementById('lcpChart').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['Home', 'Arriendo', 'Venta'],
-        datasets: [
-          { label: 'LCP Mobile (s)', data: [10.8, 2.4, 2.6], backgroundColor: '#ef4444', borderRadius: 6 },
-          { label: 'LCP Desktop (s)', data: [1.3, 0.5, 0.5], backgroundColor: '#3b82f6', borderRadius: 6 }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { position: 'top' } },
-        scales: { y: { beginAtZero: true, title: { display: true, text: 'Segundos' } } }
+    function cardHtml(t){
+      var mo=t.strategies&&t.strategies.mobile, de=t.strategies&&t.strategies.desktop;
+      var moScore=mo?mo.score.performance:null, deScore=de?de.score.performance:null;
+      var moLcp=mo?mo.lab.lcp:null, deLcp=de?de.lab.lcp:null;
+      return '<div class="card bg-white rounded-xl p-6 border border-gray-100 shadow-sm">'+
+        '<div class="flex items-center justify-between mb-4"><h3 class="text-sm font-semibold text-gray-700">'+t.label+'</h3><span class="text-xs text-gray-400">'+t.type+'</span></div>'+
+        '<div class="grid grid-cols-2 gap-4">'+
+          '<div class="text-center"><div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white '+(moScore==null?'bg-gray-300':scoreColor(moScore))+'">'+(moScore==null?'—':moScore)+'</div><p class="text-xs text-gray-500 mt-2">Mobile</p></div>'+
+          '<div class="text-center"><div class="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white '+(deScore==null?'bg-gray-300':scoreColor(deScore))+'">'+(deScore==null?'—':deScore)+'</div><p class="text-xs text-gray-500 mt-2">Desktop</p></div>'+
+        '</div>'+
+        '<div class="mt-4 pt-4 border-t border-gray-100">'+
+          '<div class="flex items-center justify-between text-xs"><span class="text-gray-500">LCP Mobile</span><span class="font-medium '+tc(moLcp,TH.lcp.g,TH.lcp.p)+'">'+fmtMs(moLcp)+'</span></div>'+
+          '<div class="flex items-center justify-between text-xs mt-1"><span class="text-gray-500">LCP Desktop</span><span class="font-medium '+tc(deLcp,TH.lcp.g,TH.lcp.p)+'">'+fmtMs(deLcp)+'</span></div>'+
+        '</div></div>';
+    }
+
+    function rowHtml(t){
+      var mo=t.strategies&&t.strategies.mobile; if(!mo) return '';
+      var s=mo.score.performance, l=mo.lab; var est=estado(s);
+      return '<tr class="hover:bg-gray-50">'+
+        '<td class="px-4 py-3 font-medium text-gray-900">'+t.label+'</td>'+
+        '<td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold '+est[0]+'">'+s+'</span></td>'+
+        '<td class="px-4 py-3 font-medium '+tc(l.fcp,TH.fcp.g,TH.fcp.p)+'">'+fmtMs(l.fcp)+'</td>'+
+        '<td class="px-4 py-3 font-medium '+tc(l.lcp,TH.lcp.g,TH.lcp.p)+'">'+fmtMs(l.lcp)+'</td>'+
+        '<td class="px-4 py-3 font-medium '+tc(l.tbt,TH.tbt.g,TH.tbt.p)+'">'+fmtTbt(l.tbt)+'</td>'+
+        '<td class="px-4 py-3 font-medium '+tc(l.cls,TH.cls.g,TH.cls.p)+'">'+fmtCls(l.cls)+'</td>'+
+        '<td class="px-4 py-3 font-medium '+tc(l.si,TH.si.g,TH.si.p)+'">'+fmtMs(l.si)+'</td>'+
+        '<td class="px-4 py-3"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium '+est[0]+'">'+est[1]+'</span></td>'+
+      '</tr>';
+    }
+
+    function showState(msg){
+      document.getElementById('stateMsg').classList.remove('hidden');
+      document.getElementById('stateMsgText').textContent=msg;
+    }
+
+    async function loadCwv(){
+      var data;
+      try {
+        var res=await fetch('data/psi.json?t='+Date.now());
+        data=await res.json();
+      } catch(e){ showState('No se pudo cargar data/psi.json'); document.getElementById('headerBadge').textContent='Error'; return; }
+
+      if(data.status==='pending' || !data.targets || data.targets.length===0){
+        showState('Aun no hay datos de PageSpeed. Se generaran automaticamente en la proxima corrida del workflow (o ejecutalo manualmente en Actions).');
+        document.getElementById('headerBadge').textContent='Pendiente';
+        return;
       }
-    });
+
+      var d=data.generatedAt?new Date(data.generatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}):'—';
+      document.getElementById('dataDate').textContent=d;
+      document.getElementById('footerDate').textContent='Medicion: '+d;
+
+      var prod=data.targets.filter(function(t){return t.env==='prod';});
+      var pre=data.targets.filter(function(t){return t.env==='preprod';});
+
+      if(prod.length){
+        document.getElementById('prodBlock').classList.remove('hidden');
+        document.getElementById('prodCards').innerHTML=prod.map(cardHtml).join('');
+        document.getElementById('prodTable').innerHTML=prod.map(rowHtml).join('');
+
+        var worst=prod.reduce(function(acc,t){var s=t.strategies&&t.strategies.mobile?t.strategies.mobile.score.performance:100; return Math.min(acc,s);},100);
+        var b=document.getElementById('headerBadge');
+        var est=estado(worst);
+        b.className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium '+est[0];
+        b.textContent='Peor score mobile: '+worst;
+
+        var labels=prod.map(function(t){return t.label;});
+        new Chart(document.getElementById('mobileDesktopChart').getContext('2d'),{type:'bar',data:{labels:labels,datasets:[
+          {label:'Mobile',data:prod.map(function(t){return t.strategies.mobile?t.strategies.mobile.score.performance:null;}),backgroundColor:'#f59e0b',borderRadius:6},
+          {label:'Desktop',data:prod.map(function(t){return t.strategies.desktop?t.strategies.desktop.score.performance:null;}),backgroundColor:'#22c55e',borderRadius:6}
+        ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:100,title:{display:true,text:'Performance Score'}}}}});
+
+        new Chart(document.getElementById('lcpChart').getContext('2d'),{type:'bar',data:{labels:labels,datasets:[
+          {label:'LCP Mobile (s)',data:prod.map(function(t){return t.strategies.mobile&&t.strategies.mobile.lab.lcp!=null?+(t.strategies.mobile.lab.lcp/1000).toFixed(1):null;}),backgroundColor:'#ef4444',borderRadius:6},
+          {label:'LCP Desktop (s)',data:prod.map(function(t){return t.strategies.desktop&&t.strategies.desktop.lab.lcp!=null?+(t.strategies.desktop.lab.lcp/1000).toFixed(1):null;}),backgroundColor:'#3b82f6',borderRadius:6}
+        ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,title:{display:true,text:'Segundos'}}}}});
+
+        var opps=[];
+        prod.forEach(function(t){ if(t.strategies.mobile) (t.strategies.mobile.opportunities||[]).forEach(function(o){opps.push({label:t.label,o:o});}); });
+        opps.sort(function(a,b){return b.o.savingsBytes-a.o.savingsBytes;});
+        if(opps.length){
+          document.getElementById('oppBlock').classList.remove('hidden');
+          document.getElementById('oppList').innerHTML=opps.slice(0,8).map(function(x){
+            var kib=Math.round(x.o.savingsBytes/1024);
+            var sev=kib>=200?'bg-red-100 text-red-700':'bg-amber-100 text-amber-700';
+            var sevl=kib>=200?'Alto':'Medio';
+            return '<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg"><div class="flex items-center gap-3"><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium '+sev+'">'+sevl+'</span><span class="text-sm text-gray-700">'+x.o.title+' ('+x.label+')</span></div><span class="text-sm font-medium text-gray-900">Ahorro: ~'+kib+' KiB</span></div>';
+          }).join('');
+        }
+      }
+
+      if(pre.length){
+        document.getElementById('preprodBlock').classList.remove('hidden');
+        document.getElementById('preprodCards').innerHTML=pre.map(cardHtml).join('');
+      }
+
+      if(prod.length && pre.length){
+        var pairs=[];
+        pre.forEach(function(p){
+          var match=prod.find(function(t){return t.type===p.type;});
+          if(match && match.strategies.mobile && p.strategies.mobile){
+            pairs.push({label:p.label.replace(' (Pre-prod)',''), prod:match.strategies.mobile.score.performance, pre:p.strategies.mobile.score.performance});
+          }
+        });
+        if(pairs.length){
+          document.getElementById('compareBlock').classList.remove('hidden');
+          new Chart(document.getElementById('compareChart').getContext('2d'),{type:'bar',data:{labels:pairs.map(function(p){return p.label;}),datasets:[
+            {label:'Produccion',data:pairs.map(function(p){return p.prod;}),backgroundColor:'#22c55e',borderRadius:6},
+            {label:'Pre-produccion',data:pairs.map(function(p){return p.pre;}),backgroundColor:'#3e98cc',borderRadius:6}
+          ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{afterBody:function(items){var i=items[0].dataIndex;var dd=pairs[i].pre-pairs[i].prod;return 'Delta pre-prod: '+(dd>=0?'+':'')+dd;}}}},scales:{y:{beginAtZero:true,max:100,title:{display:true,text:'Performance Score Mobile'}}}}});
+        }
+      }
+    }
+    loadCwv();
   </script>
 </body>
 </html>
