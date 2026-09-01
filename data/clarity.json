@@ -1,0 +1,12 @@
+{
+  "generatedAt": null,
+  "source": "Microsoft Clarity Data Export API",
+  "status": "pending",
+  "note": "Se rellena automaticamente en la primera corrida del workflow update-data.yml",
+  "windowDays": 3,
+  "env": "prod",
+  "summary": {},
+  "byUrl": [],
+  "raw": {},
+  "error": null
+}

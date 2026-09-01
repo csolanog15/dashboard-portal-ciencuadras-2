@@ -1,0 +1,69 @@
+{
+  "clarityProjectName": "ciencuadras",
+  "targets": [
+    {
+      "id": "home-prod",
+      "label": "Home",
+      "url": "https://www.ciencuadras.com/",
+      "env": "prod",
+      "type": "home",
+      "psi": true,
+      "clarity": true
+    },
+    {
+      "id": "arriendo-prod",
+      "label": "Arriendo",
+      "url": "https://www.ciencuadras.com/arriendo",
+      "env": "prod",
+      "type": "listado",
+      "psi": true,
+      "clarity": true
+    },
+    {
+      "id": "venta-prod",
+      "label": "Venta",
+      "url": "https://www.ciencuadras.com/venta",
+      "env": "prod",
+      "type": "listado",
+      "psi": true,
+      "clarity": true
+    },
+    {
+      "id": "detalle-arriendo-prod",
+      "label": "Detalle Arriendo (rotativa)",
+      "url": "",
+      "env": "prod",
+      "type": "detalle",
+      "psi": true,
+      "clarity": false,
+      "note": "URL rotativa quincenal. Edita el campo 'url' con la ficha de detalle de arriendo a monitorear. Si queda vacia, se omite del analisis PSI."
+    },
+    {
+      "id": "home-preprod",
+      "label": "Home (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/",
+      "env": "preprod",
+      "type": "home",
+      "psi": true,
+      "clarity": false
+    },
+    {
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/arriendo",
+      "env": "preprod",
+      "type": "listado",
+      "psi": true,
+      "clarity": false
+    },
+    {
+      "id": "venta-preprod",
+      "label": "Venta (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/venta",
+      "env": "preprod",
+      "type": "listado",
+      "psi": true,
+      "clarity": false
+    }
+  ]
+}
