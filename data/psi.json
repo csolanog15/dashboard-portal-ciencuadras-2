@@ -1,7 +1,651 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-09-03T22:05:44.539Z",
   "source": "PageSpeed Insights API (Lighthouse + CrUX)",
-  "status": "pending",
-  "note": "Se rellena automaticamente en la primera corrida del workflow update-data.yml",
-  "targets": []
+  "targets": [
+    {
+      "id": "home-prod",
+      "label": "Home",
+      "url": "https://www.ciencuadras.com/",
+      "env": "prod",
+      "type": "home",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 53,
+            "accessibility": 77,
+            "bestPractices": 88,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 8980,
+            "lcp": 10834,
+            "tbt": 228,
+            "cls": 0.0003599590149124731,
+            "si": 8980
+          },
+          "field": {
+            "overall": "AVERAGE",
+            "lcp": 2327,
+            "inp": 245,
+            "cls": 0,
+            "fcp": 1567
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 288173
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 126496
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 0,
+              "title": "Links do not have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": "desktop: HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "id": "arriendo-prod",
+      "label": "Arriendo",
+      "url": "https://www.ciencuadras.com/arriendo",
+      "env": "prod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 63,
+            "accessibility": 78,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 1846,
+            "lcp": 7142,
+            "tbt": 325,
+            "cls": 0.10618871926216983,
+            "si": 3628
+          },
+          "field": {
+            "overall": "AVERAGE",
+            "lcp": 2165,
+            "inp": 350,
+            "cls": 12,
+            "fcp": 1254
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 231600
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 108383
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 0,
+              "title": "Links do not have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 1,
+              "title": "No browser errors logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 70,
+            "accessibility": 80,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 503,
+            "lcp": 1822,
+            "tbt": 460,
+            "cls": 0.028640970355009857,
+            "si": 1648
+          },
+          "field": {
+            "overall": "AVERAGE",
+            "lcp": 1543,
+            "inp": 205,
+            "cls": 6,
+            "fcp": 794
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 229759
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 108251
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 0,
+              "title": "Links do not have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 1,
+              "title": "No browser errors logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "venta-prod",
+      "label": "Venta",
+      "url": "https://www.ciencuadras.com/venta",
+      "env": "prod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 45,
+            "accessibility": 78,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 1688,
+            "lcp": 9590,
+            "tbt": 882,
+            "cls": 0.10782163239223769,
+            "si": 6045
+          },
+          "field": {
+            "overall": "AVERAGE",
+            "lcp": 2310,
+            "inp": 345,
+            "cls": 12,
+            "fcp": 1405
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 225869
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 108376
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 0,
+              "title": "Links do not have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 1,
+              "title": "No browser errors logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 85,
+            "accessibility": 80,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 251,
+            "lcp": 1738,
+            "tbt": 186,
+            "cls": 0.08190545878541096,
+            "si": 1390
+          },
+          "field": {
+            "overall": "AVERAGE",
+            "lcp": 1598,
+            "inp": 204,
+            "cls": 6,
+            "fcp": 842
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 226630
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 108234
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 0,
+              "title": "Links do not have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 1,
+              "title": "No browser errors logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "home-preprod",
+      "label": "Home (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/",
+      "env": "preprod",
+      "type": "home",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 1515,
+            "lcp": 1515,
+            "tbt": 0,
+            "cls": 0,
+            "si": 1515
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": "desktop: HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+    },
+    {
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/arriendo",
+      "env": "preprod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 1517,
+            "lcp": 1517,
+            "tbt": 0,
+            "cls": 0,
+            "si": 1517
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 422,
+            "lcp": 422,
+            "tbt": 0,
+            "cls": 0,
+            "si": 422
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "venta-preprod",
+      "label": "Venta (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/venta",
+      "env": "preprod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 1527,
+            "lcp": 1527,
+            "tbt": 0,
+            "cls": 0,
+            "si": 1527
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 448,
+            "lcp": 448,
+            "tbt": 0,
+            "cls": 0,
+            "si": 448
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    }
+  ]
 }
