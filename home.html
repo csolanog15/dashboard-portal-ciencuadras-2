@@ -65,6 +65,9 @@
 <div id="uxFindings" class="space-y-3"></div></div></div>
 </div></main>
 <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-4xl mx-auto px-6 py-4"><p class="text-xs">Observatorio de Usabilidad y Performance</p></div></footer>
-<script src="data/config.js"></script>
+<script>
+// Carga config.js con cache-busting para tomar siempre la key vigente (evita cache de Pages)
+document.write('<scr'+'ipt src="data/config.js?v='+Date.now()+'"><\/scr'+'ipt>');
+</script>
 <script src="data/app.js"></script>
 </body></html>
