@@ -23,7 +23,7 @@ const PSI_API_KEY = process.env.PSI_API_KEY;
 const PSI_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 const STRATEGIES = ['mobile', 'desktop'];
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
-const MAX_RETRIES = 3;
+const MAX_RETRIES = 4;
 const RETRY_BASE_MS = 4000;
 
 if (!PSI_API_KEY) {
@@ -56,7 +56,18 @@ async function fetchPsi(pageUrl, strategy) {
         }
         throw new Error(`HTTP ${res.status}: ${body.slice(0, 200)}`);
       }
-      return await res.json();
+      const data = await res.json();
+      // PageSpeed a veces responde HTTP 200 con un error interno de Lighthouse
+      // (code 500 "Lighthouse returned error"). Es transitorio: reintentar.
+      const innerCode = data?.error?.code;
+      if (innerCode && innerCode >= 500 && attempt < MAX_RETRIES) {
+        await sleep(RETRY_BASE_MS * attempt);
+        continue;
+      }
+      if (data?.error) {
+        throw new Error(`API error ${innerCode || ''}: ${(data.error.message || '').slice(0, 200)}`);
+      }
+      return data;
     } catch (err) {
       if (attempt < MAX_RETRIES) {
         await sleep(RETRY_BASE_MS * attempt);
