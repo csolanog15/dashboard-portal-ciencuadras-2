@@ -36,7 +36,7 @@
       "type": "detalle",
       "psi": true,
       "clarity": false,
-      "note": "URL rotativa quincenal. Edita el campo 'url' con la ficha de detalle de arriendo a monitorear. Si queda vacia, se omite del analisis PSI."
+      "note": "URL rotativa quincenal. Edita el campo 'url' con la ficha de detalle de arriendo en PRODUCCION a monitorear. Si queda vacia, se omite."
     },
     {
       "id": "home-preprod",
@@ -64,6 +64,16 @@
       "type": "listado",
       "psi": true,
       "clarity": false
+    },
+    {
+      "id": "detalle-arriendo-preprod",
+      "label": "Detalle Arriendo (Pre-prod, rotativa)",
+      "url": "",
+      "env": "preprod",
+      "type": "detalle",
+      "psi": true,
+      "clarity": false,
+      "note": "URL rotativa quincenal. Edita el campo 'url' con la ficha de detalle de arriendo en PRE-PRODUCCION (pre.ciencuadras.com). Si queda vacia, se omite."
     }
   ]
 }

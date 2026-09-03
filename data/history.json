@@ -1,0 +1,5 @@
+{
+  "updatedAt": null,
+  "note": "Historico diario de Core Web Vitals. Se acumula automaticamente en cada corrida del workflow (una entrada por URL/estrategia/dia). Empieza a llenarse desde la primera corrida.",
+  "entries": []
+}
