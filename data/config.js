@@ -15,4 +15,4 @@
  * NOTA: la key anterior habia expirado. Coloca una nueva aqui para reactivar
  * el analizador on-demand.
  */
-window.PSI_KEY = 'REEMPLAZAR_CON_TU_PAGESPEED_API_KEY';
+window.PSI_KEY = 'AIzaSyAbui6K7vWQJ0MYy_h4bIiFD2CTsytrwns';
