@@ -1,0 +1,7 @@
+{
+  "generatedAt": null,
+  "source": "PageSpeed Insights API (Lighthouse + CrUX)",
+  "status": "pending",
+  "note": "Se rellena automaticamente en la primera corrida del workflow update-data.yml",
+  "targets": []
+}

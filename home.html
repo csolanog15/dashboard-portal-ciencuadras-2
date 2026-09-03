@@ -11,11 +11,19 @@
 <body class="bg-[#f0f3f4] min-h-screen">
 <header class="bg-gradient-to-r from-[#00273d] to-[#003d5c] text-white">
 <div class="max-w-7xl mx-auto px-6 py-5"><h1 class="text-2xl font-bold">Observatorio de Usabilidad y Performance</h1></div>
-<nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2">
+<nav class="max-w-7xl mx-auto px-6 pb-3 flex gap-2 items-center">
 <a href="home.html" class="bg-[#3e98cc]/30 text-white text-sm px-4 py-1.5 rounded-full font-medium">Home</a>
 <a href="ciencuadras.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Ciencuadras</a>
+<span class="text-white/30 px-1">|</span>
+<a href="index.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Usability</a>
+<a href="cwv.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">CWV</a>
+<a href="heatmap.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Heatmap</a>
+<a href="recommendations.html" class="text-[#3e98cc] text-sm px-4 py-1.5 rounded-full hover:bg-white/10">Recomendaciones</a>
 </nav></header>
 <main class="max-w-4xl mx-auto px-6 py-10">
+<div class="bg-[#3e98cc]/10 border border-[#3e98cc]/30 rounded-xl p-4 mb-8 text-center">
+<p class="text-sm text-[#00273d]">El observatorio de Ciencuadras (Usability, CWV, Heatmap y Recomendaciones) se actualiza <strong>automaticamente cada dia</strong>. Este analizador es para revisar <strong>cualquier URL bajo demanda</strong>.</p>
+</div>
 <div class="text-center mb-10">
 <h2 class="text-2xl font-bold text-[#00273d] mb-2">Analiza el rendimiento y usabilidad</h2>
 <p class="text-[#333] mb-6">Ingresa la URL de una pagina web</p>
@@ -26,7 +34,9 @@
 <div class="flex justify-center gap-4 mt-4">
 <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="strat" value="mobile" checked onchange="currentStrategy=this.value"/>Celulares</label>
 <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="strat" value="desktop" onchange="currentStrategy=this.value"/>Escritorio</label>
-</div></div>
+</div>
+<div id="keyWarning" class="hidden max-w-2xl mx-auto mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm text-amber-800"></div>
+</div>
 <div id="loading" class="hidden text-center py-12"><div class="loader mx-auto mb-4"></div><p>Analizando... 15-30 segundos</p></div>
 <div id="results" class="hidden">
 <div id="fieldData" class="bg-white rounded-xl border border-[#ced4da] shadow-sm p-6 mb-6 hidden">
@@ -55,5 +65,6 @@
 <div id="uxFindings" class="space-y-3"></div></div></div>
 </div></main>
 <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-4xl mx-auto px-6 py-4"><p class="text-xs">Observatorio de Usabilidad y Performance</p></div></footer>
+<script src="data/config.js"></script>
 <script src="data/app.js"></script>
 </body></html>

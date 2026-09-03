@@ -1,5 +1,24 @@
-var PSI_KEY='AIzaSyDfQE6_bwSnee8HZWbs3nGXEi-M8EbRuDw';
-var currentStrategy='mobile';
+// Analizador on-demand de home.html — usa la key definida en data/config.js
+var PSI_KEY = window.PSI_KEY || '';
+var currentStrategy = 'mobile';
+var KEY_PLACEHOLDER = 'REEMPLAZAR_CON_TU_PAGESPEED_API_KEY';
+
+function keyIsMissing() { return !PSI_KEY || PSI_KEY === KEY_PLACEHOLDER; }
+
+function showKeyWarning(msg) {
+  var el = document.getElementById('keyWarning');
+  if (!el) { alert(msg); return; }
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+
+// Si no hay key configurada, avisar al cargar (no bloquear la pagina)
+document.addEventListener('DOMContentLoaded', function () {
+  if (keyIsMissing()) {
+    showKeyWarning('El analizador on-demand necesita una API key de PageSpeed vigente. Configurala en data/config.js (PSI_KEY). El observatorio automatico (CWV, Usability, etc.) no depende de esta key.');
+  }
+});
+
 function getColor(s){return s>=90?'bg-green-500':s>=50?'bg-[#ffaa00]':'bg-red-500';}
 function getTC(v,g,n){return v<=g?'text-green-600':v<=n?'text-[#ffaa00]':'text-red-600';}
 function renderField(c,label,val,unit,good,poor){
@@ -10,6 +29,10 @@ function renderField(c,label,val,unit,good,poor){
 async function analyzeUrl(){
   var url=document.getElementById('urlInput').value.trim();
   if(!url){alert('Ingresa una URL');return;}
+  if(keyIsMissing()){
+    showKeyWarning('No se puede analizar: falta configurar una API key de PageSpeed vigente en data/config.js (PSI_KEY).');
+    return;
+  }
   document.getElementById('loading').classList.remove('hidden');
   document.getElementById('results').classList.add('hidden');
   document.getElementById('analyzeBtn').disabled=true;
@@ -18,7 +41,15 @@ async function analyzeUrl(){
     var apiUrl='https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url='+encodeURIComponent(url)+'&strategy='+currentStrategy+'&category=performance&category=accessibility&category=best-practices&category=seo&key='+PSI_KEY;
     var res=await fetch(apiUrl);
     var data=await res.json();
-    if(data.error){alert('Error: '+data.error.message);return;}
+    if(data.error){
+      var msg=data.error.message||'Error desconocido';
+      if(/API key/i.test(msg)){
+        showKeyWarning('La API key de PageSpeed no es valida o expiro. Actualizala en data/config.js (PSI_KEY). Detalle: '+msg);
+      }else{
+        alert('Error: '+msg);
+      }
+      return;
+    }
     var lh=data.lighthouseResult;
     var perfScore=Math.round(lh.categories.performance.score*100);
     var a11yScore=Math.round(lh.categories.accessibility.score*100);
@@ -46,7 +77,6 @@ async function analyzeUrl(){
     document.getElementById('metricCLS').className='text-lg font-bold '+getTC(m.cumulativeLayoutShift*1000,100,250);
     document.getElementById('metricSI').textContent=(m.speedIndex/1000).toFixed(1)+' s';
     document.getElementById('metricSI').className='text-lg font-bold '+getTC(m.speedIndex,3400,5800);
-    // Field Data
     var field=data.loadingExperience;
     var fs2=document.getElementById('fieldData');
     var fm=document.getElementById('fieldMetrics');
@@ -60,7 +90,6 @@ async function analyzeUrl(){
       if(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE)renderField(fm,'CLS',(field.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE.percentile/100).toFixed(2),'',0.1,0.25);
       if(field.metrics.FIRST_CONTENTFUL_PAINT_MS)renderField(fm,'FCP',(field.metrics.FIRST_CONTENTFUL_PAINT_MS.percentile/1000).toFixed(1),' s',1.8,3.0);
     }else{fs2.classList.add('hidden');}
-    // UX Heuristic mapping
     var ux=[];
     var am={'image-alt':{h:'H1 - Visibilidad del estado',f:'Imagenes sin texto alternativo: usuarios con lectores de pantalla no identifican el contenido'},'color-contrast':{h:'H8 - Diseno minimalista',f:'Contraste insuficiente: dificulta lectura para usuarios con vision reducida'},'tap-targets':{h:'H7 - Flexibilidad y eficiencia',f:'Elementos tactiles muy pequenos o cercanos: errores de toque en mobile'},'button-name':{h:'H4 - Consistencia',f:'Botones sin nombre accesible: usuario no sabe que hace el boton'},'link-name':{h:'H6 - Reconocer antes que recordar',f:'Enlaces sin texto descriptivo: usuario no anticipa destino'},'document-title':{h:'H1 - Visibilidad del estado',f:'Pagina sin titulo: usuario no sabe donde esta'},'heading-order':{h:'H4 - Consistencia',f:'Jerarquia de encabezados incorrecta: confunde estructura'},'errors-in-console':{h:'H9 - Ayuda a reconocer errores',f:'Errores JavaScript en consola: funcionalidades pueden estar rotas'}};
     Object.keys(am).forEach(function(id){var a=lh.audits[id];if(a&&a.score!==null&&a.score<1){ux.push({h:am[id].h,f:am[id].f,s:a.score===0?'high':'medium'});}});

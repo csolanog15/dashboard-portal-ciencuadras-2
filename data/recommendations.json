@@ -1,0 +1,9 @@
+{
+  "generatedAt": null,
+  "source": "Consolidado: PageSpeed + Clarity + Nielsen",
+  "status": "pending",
+  "note": "Se rellena automaticamente en la primera corrida del workflow update-data.yml",
+  "basedOn": { "psiGeneratedAt": null, "clarityGeneratedAt": null },
+  "counts": { "p1": 0, "p2": 0, "p3": 0, "p4": 0 },
+  "recommendations": []
+}
