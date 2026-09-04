@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T22:05:44.539Z",
+  "generatedAt": "2026-09-04T13:11:58.151Z",
   "source": "PageSpeed Insights API (Lighthouse + CrUX)",
   "targets": [
     {
@@ -12,17 +12,17 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 53,
-            "accessibility": 77,
+            "performance": 46,
+            "accessibility": 90,
             "bestPractices": 88,
             "seo": 100
           },
           "lab": {
-            "fcp": 8980,
-            "lcp": 10834,
-            "tbt": 228,
-            "cls": 0.0003599590149124731,
-            "si": 8980
+            "fcp": 8626,
+            "lcp": 11851,
+            "tbt": 423,
+            "cls": 0,
+            "si": 8626
           },
           "field": {
             "overall": "AVERAGE",
@@ -35,12 +35,12 @@
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 288173
+              "savingsBytes": 288292
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 126496
+              "savingsBytes": 126575
             }
           ],
           "audits": {
@@ -57,8 +57,81 @@
               "title": "Buttons do not have an accessible name"
             },
             "link-name": {
+              "score": 1,
+              "title": "Links have a discernible name"
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
               "score": 0,
-              "title": "Links do not have a discernible name"
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 72,
+            "accessibility": 89,
+            "bestPractices": 92,
+            "seo": 100
+          },
+          "lab": {
+            "fcp": 1522,
+            "lcp": 1733,
+            "tbt": 326,
+            "cls": 0.00005995971447357072,
+            "si": 1785
+          },
+          "field": {
+            "overall": "FAST",
+            "lcp": 1558,
+            "inp": 122,
+            "cls": 0,
+            "fcp": 1145
+          },
+          "opportunities": [
+            {
+              "id": "unused-javascript",
+              "title": "Reduce unused JavaScript",
+              "savingsBytes": 289171
+            },
+            {
+              "id": "unused-css-rules",
+              "title": "Reduce unused CSS",
+              "savingsBytes": 126513
+            }
+          ],
+          "audits": {
+            "image-alt": {
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
+            },
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "button-name": {
+              "score": 0,
+              "title": "Buttons do not have an accessible name"
+            },
+            "link-name": {
+              "score": 1,
+              "title": "Links have a discernible name"
             },
             "meta-viewport": {
               "score": 1,
@@ -83,7 +156,7 @@
           }
         }
       },
-      "error": "desktop: HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
+      "error": null
     },
     {
       "id": "arriendo-prod",
@@ -95,35 +168,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 63,
-            "accessibility": 78,
+            "performance": 77,
+            "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1846,
-            "lcp": 7142,
-            "tbt": 325,
-            "cls": 0.10618871926216983,
-            "si": 3628
+            "fcp": 1835,
+            "lcp": 2481,
+            "tbt": 615,
+            "cls": 0.10628534514432743,
+            "si": 3567
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2165,
-            "inp": 350,
+            "lcp": 2171,
+            "inp": 349,
             "cls": 12,
-            "fcp": 1254
+            "fcp": 1255
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 231600
+              "savingsBytes": 229719
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108383
+              "savingsBytes": 108394
             }
           ],
           "audits": {
@@ -140,8 +213,8 @@
               "title": "Buttons do not have an accessible name"
             },
             "link-name": {
-              "score": 0,
-              "title": "Links do not have a discernible name"
+              "score": 1,
+              "title": "Links have a discernible name"
             },
             "meta-viewport": {
               "score": 1,
@@ -168,35 +241,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 70,
-            "accessibility": 80,
+            "performance": 75,
+            "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 503,
-            "lcp": 1822,
-            "tbt": 460,
-            "cls": 0.028640970355009857,
-            "si": 1648
+            "fcp": 512,
+            "lcp": 548,
+            "tbt": 597,
+            "cls": 0.027399126267727142,
+            "si": 1488
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 1543,
+            "lcp": 1542,
             "inp": 205,
             "cls": 6,
-            "fcp": 794
+            "fcp": 792
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 229759
+              "savingsBytes": 230045
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108251
+              "savingsBytes": 108233
             }
           ],
           "audits": {
@@ -251,35 +324,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 45,
-            "accessibility": 78,
+            "performance": 50,
+            "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1688,
-            "lcp": 9590,
-            "tbt": 882,
-            "cls": 0.10782163239223769,
-            "si": 6045
+            "fcp": 2251,
+            "lcp": 3601,
+            "tbt": 3204,
+            "cls": 0.1055477091219255,
+            "si": 6085
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2310,
-            "inp": 345,
+            "lcp": 2320,
+            "inp": 346,
             "cls": 12,
-            "fcp": 1405
+            "fcp": 1407
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 225869
+              "savingsBytes": 230010
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108376
+              "savingsBytes": 108394
             }
           ],
           "audits": {
@@ -296,8 +369,8 @@
               "title": "Buttons do not have an accessible name"
             },
             "link-name": {
-              "score": 0,
-              "title": "Links do not have a discernible name"
+              "score": 1,
+              "title": "Links have a discernible name"
             },
             "meta-viewport": {
               "score": 1,
@@ -324,35 +397,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 85,
-            "accessibility": 80,
+            "performance": 68,
+            "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 251,
-            "lcp": 1738,
-            "tbt": 186,
-            "cls": 0.08190545878541096,
-            "si": 1390
+            "fcp": 543,
+            "lcp": 543,
+            "tbt": 736,
+            "cls": 0.027401690532289455,
+            "si": 2429
           },
           "field": {
             "overall": "AVERAGE",
             "lcp": 1598,
-            "inp": 204,
+            "inp": 203,
             "cls": 6,
-            "fcp": 842
+            "fcp": 843
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 226630
+              "savingsBytes": 230733
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108234
+              "savingsBytes": 108247
             }
           ],
           "audits": {
@@ -413,65 +486,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 1515,
-            "lcp": 1515,
+            "fcp": 1524,
+            "lcp": 1524,
             "tbt": 0,
             "cls": 0,
-            "si": 1515
-          },
-          "field": null,
-          "opportunities": [],
-          "audits": {
-            "color-contrast": {
-              "score": 0,
-              "title": "Background and foreground colors do not have a sufficient contrast ratio."
-            },
-            "meta-viewport": {
-              "score": 1,
-              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
-            },
-            "document-title": {
-              "score": 1,
-              "title": "Document has a `<title>` element"
-            },
-            "heading-order": {
-              "score": 1,
-              "title": "Heading elements appear in a sequentially-descending order"
-            },
-            "errors-in-console": {
-              "score": 0,
-              "title": "Browser errors were logged to the console"
-            },
-            "is-crawlable": {
-              "score": 1,
-              "title": "Page isn’t blocked from indexing"
-            }
-          }
-        }
-      },
-      "error": "desktop: HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n      "
-    },
-    {
-      "id": "arriendo-preprod",
-      "label": "Arriendo (Pre-prod)",
-      "url": "https://pre.ciencuadras.com/arriendo",
-      "env": "preprod",
-      "type": "listado",
-      "strategies": {
-        "mobile": {
-          "strategy": "mobile",
-          "score": {
-            "performance": 100,
-            "accessibility": 87,
-            "bestPractices": 96,
-            "seo": 80
-          },
-          "lab": {
-            "fcp": 1517,
-            "lcp": 1517,
-            "tbt": 0,
-            "cls": 0,
-            "si": 1517
+            "si": 1524
           },
           "field": null,
           "opportunities": [],
@@ -511,11 +530,109 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 422,
-            "lcp": 422,
+            "fcp": 204,
+            "lcp": 204,
             "tbt": 0,
             "cls": 0,
-            "si": 422
+            "si": 204
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/arriendo",
+      "env": "preprod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 754,
+            "lcp": 754,
+            "tbt": 0,
+            "cls": 0,
+            "si": 754
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 443,
+            "lcp": 443,
+            "tbt": 0,
+            "cls": 0,
+            "si": 443
           },
           "field": null,
           "opportunities": [],
@@ -565,11 +682,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 1527,
-            "lcp": 1527,
+            "fcp": 1504,
+            "lcp": 1504,
             "tbt": 0,
             "cls": 0,
-            "si": 1527
+            "si": 1504
           },
           "field": null,
           "opportunities": [],
@@ -609,11 +726,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 448,
-            "lcp": 448,
+            "fcp": 449,
+            "lcp": 449,
             "tbt": 0,
             "cls": 0,
-            "si": 448
+            "si": 449
           },
           "field": null,
           "opportunities": [],
