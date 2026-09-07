@@ -111,6 +111,7 @@
   </footer>
 
   <script>
+    function fmtDateTime(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString('es-CO',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Bogota'})+' (Bogota)'; }catch(e){ return '—'; } }
     var METRIC_META = {
       score: { label: 'Rendimiento (score)', unit: '', transform: function(v){ return v; }, better: 'up', max: 100 },
       lcp:   { label: 'LCP', unit: 's', transform: function(v){ return v==null?null:+(v/1000).toFixed(2); }, better: 'down' },
@@ -237,7 +238,7 @@
         return;
       }
 
-      var d = HISTORY.updatedAt ? new Date(HISTORY.updatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}) : '—';
+      var d = fmtDateTime(HISTORY.updatedAt);
       document.getElementById('dataDate').textContent = d;
       document.getElementById('content').classList.remove('hidden');
       document.getElementById('downloadCsv').classList.remove('hidden');
