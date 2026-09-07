@@ -75,6 +75,7 @@
   </main>
   <footer class="bg-white border-t border-[#ced4da] mt-8"><div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"><p class="text-xs text-[#333]">Observatorio de Usabilidad y Performance — <span id="footerDate">—</span></p><span class="text-xs text-gray-400">Fuente: Microsoft Clarity Data Export API</span></div></footer>
   <script>
+    function fmtDateTime(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString('es-CO',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Bogota'})+' (Bogota)'; }catch(e){ return '—'; } }
     function badge(v){ if(v==null) return ['bg-gray-100 text-gray-600','—']; return v>=50?['bg-red-100 text-red-800','Critico']:v>0?['bg-[#ffaa00]/30 text-[#00273d]','Atencion']:['bg-green-100 text-green-700','OK']; }
     function setBadge(id,v){ var b=document.getElementById(id); var r=badge(v); b.className='px-2 py-0.5 rounded-full text-xs font-medium '+r[0]; b.textContent=r[1]; }
     function num(v){ return v==null?'—':Number(v).toLocaleString('es-CO'); }
@@ -93,7 +94,7 @@
       }
 
       var s=data.summary;
-      var d=data.generatedAt?new Date(data.generatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}):'—';
+      var d=fmtDateTime(data.generatedAt);
       document.getElementById('dataDate').textContent=d;
       document.getElementById('footerDate').textContent=d;
       document.getElementById('windowDays').textContent=data.windowDays||'—';
