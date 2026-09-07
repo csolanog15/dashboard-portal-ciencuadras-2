@@ -127,6 +127,7 @@
   </footer>
 
   <script>
+    function fmtDateTime(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString('es-CO',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Bogota'})+' (Bogota)'; }catch(e){ return '—'; } }
     function num(v){ return v==null?'—':Number(v).toLocaleString('es-CO'); }
     function shortUrl(u){ try{ var x=new URL(u); return x.pathname==='/'?'(home)':x.pathname; }catch(e){ return u; } }
     function showState(msg){ document.getElementById('stateMsg').classList.remove('hidden'); document.getElementById('stateMsgText').textContent=msg; }
@@ -141,7 +142,7 @@
         return;
       }
 
-      var d=data.generatedAt?new Date(data.generatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}):'—';
+      var d=fmtDateTime(data.generatedAt);
       document.getElementById('dataDate').textContent=d;
       document.getElementById('footerDate').textContent=d;
       document.getElementById('content').classList.remove('hidden');
