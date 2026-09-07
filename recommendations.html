@@ -60,6 +60,7 @@
   </footer>
 
   <script>
+    function fmtDateTime(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString('es-CO',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Bogota'})+' (Bogota)'; }catch(e){ return '—'; } }
     var P = {
       1: { title: 'Prioridad 1 — Criticas (bloquean generacion de leads)', dot: 'bg-red-500' },
       2: { title: 'Prioridad 2 — Importantes (mejoran UX y engagement)', dot: 'bg-amber-500' },
@@ -98,7 +99,7 @@
         return;
       }
 
-      var d=data.generatedAt?new Date(data.generatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}):'—';
+      var d=fmtDateTime(data.generatedAt);
       document.getElementById('dataDate').textContent=d;
       document.getElementById('footerDate').textContent=d;
       document.getElementById('content').classList.remove('hidden');
