@@ -132,6 +132,7 @@
 
   <script>
     var TH = { lcp:{g:2500,p:4000}, tbt:{g:200,p:600}, cls:{g:0.1,p:0.25}, fcp:{g:1800,p:3000}, si:{g:3400,p:5800} };
+    function fmtDateTime(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString('es-CO',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Bogota'})+' (Bogota)'; }catch(e){ return '—'; } }
     function scoreColor(s){ return s>=90?'bg-green-500':s>=50?'bg-amber-500':'bg-red-500'; }
     function tc(v,g,p){ if(v==null) return 'text-gray-400'; return v<=g?'text-green-600':v<=p?'text-amber-600':'text-red-600'; }
     function fmtMs(v){ return v==null?'—':(v/1000).toFixed(1)+'s'; }
@@ -188,7 +189,7 @@
         return;
       }
 
-      var d=data.generatedAt?new Date(data.generatedAt).toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}):'—';
+      var d=fmtDateTime(data.generatedAt);
       document.getElementById('dataDate').textContent=d;
       document.getElementById('footerDate').textContent='Medicion: '+d;
 
