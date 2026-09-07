@@ -1,10 +1,13 @@
 name: Actualizar datos del observatorio
 
-# Corre diariamente y actualiza los JSON de data/ con PageSpeed + Clarity.
+# Corre de lunes a viernes y actualiza los JSON de data/ con PageSpeed + Clarity.
+# La hora se eligio segun el trafico real del portal (pico a las 11:00 Bogota),
+# para medir el performance de laboratorio bajo carga representativa.
 on:
   schedule:
-    # 09:00 UTC = 04:00 America/Bogota (diario)
-    - cron: '0 9 * * *'
+    # 16:00 UTC = 11:00 America/Bogota, lunes a viernes.
+    # Nota: el cron de GitHub Actions no es puntual y puede retrasarse algunos minutos.
+    - cron: '0 16 * * 1-5'
   workflow_dispatch: {}   # permite ejecucion manual desde la pestana Actions
 
 # Permite al job hacer commit de los JSON generados
