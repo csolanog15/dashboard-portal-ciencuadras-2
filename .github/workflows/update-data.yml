@@ -1,14 +1,21 @@
 name: Actualizar datos del observatorio
 
-# Corre de lunes a viernes y actualiza los JSON de data/ con PageSpeed + Clarity.
-# La hora se eligio segun el trafico real del portal (pico a las 11:00 Bogota),
+# Actualiza los JSON de data/ con PageSpeed + Clarity.
+# La hora objetivo es 11:00 America/Bogota (pico de trafico real del portal),
 # para medir el performance de laboratorio bajo carga representativa.
+#
+# IMPORTANTE sobre la programacion:
+#   - El cron nativo de GitHub Actions NO es confiable: se retrasa horas y a veces
+#     omite dias enteros (cola global saturada + repos de baja actividad).
+#   - Por eso el disparo PRINCIPAL y confiable es EXTERNO (cron-job.org u otro),
+#     que invoca este workflow via la API de GitHub (evento workflow_dispatch)
+#     todos los dias a las 11:00 Bogota.
+#   - El cron de abajo queda como RESPALDO por si el disparador externo falla.
 on:
   schedule:
-    # 16:00 UTC = 11:00 America/Bogota, lunes a viernes.
-    # Nota: el cron de GitHub Actions no es puntual y puede retrasarse algunos minutos.
-    - cron: '0 16 * * 1-5'
-  workflow_dispatch: {}   # permite ejecucion manual desde la pestana Actions
+    # 16:00 UTC = 11:00 America/Bogota, TODOS los dias (respaldo; puede retrasarse u omitirse).
+    - cron: '0 16 * * *'
+  workflow_dispatch: {}   # disparo manual y disparo externo confiable (cron-job.org)
 
 # Permite al job hacer commit de los JSON generados
 permissions:
