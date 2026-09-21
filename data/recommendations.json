@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-20T18:27:29.813Z",
+  "generatedAt": "2026-09-21T20:16:03.282Z",
   "source": "Consolidado: PageSpeed + Clarity + Nielsen",
   "basedOn": {
-    "psiGeneratedAt": "2026-09-20T18:27:17.499Z",
-    "clarityGeneratedAt": "2026-09-20T18:27:17.546Z"
+    "psiGeneratedAt": "2026-09-21T20:15:51.512Z",
+    "clarityGeneratedAt": "2026-09-21T20:15:51.559Z"
   },
   "counts": {
     "p1": 5,
@@ -16,7 +16,21 @@
       "id": "R1",
       "priority": 1,
       "type": "tech",
-      "title": "Rendimiento critico en Home mobile (score 49)",
+      "title": "Reducir LCP en Home mobile: 10.8s a <2.5s",
+      "finding": "LCP mobile de 10.8s (umbral bueno: 2.5s). El contenido principal tarda demasiado en aparecer.",
+      "tags": [
+        "LCP target: <2.5s",
+        "H1: Visibilidad estado"
+      ],
+      "impact": "alto",
+      "effort": "medio",
+      "recommendation": "Imagenes responsivas (srcset WebP/AVIF), preload del LCP, critical CSS inline, eliminar recursos sin usar"
+    },
+    {
+      "id": "R12",
+      "priority": 1,
+      "type": "tech",
+      "title": "Rendimiento critico en Venta mobile (score 49)",
       "finding": "El performance score mobile es 49, por debajo del umbral critico (50). La pagina tarda demasiado en ser interactiva.",
       "tags": [
         "Ley de Doherty",
@@ -27,11 +41,11 @@
       "recommendation": "Priorizar optimizacion de recursos criticos (JS/CSS/imagenes) above-the-fold"
     },
     {
-      "id": "R2",
+      "id": "R13",
       "priority": 1,
       "type": "tech",
-      "title": "Reducir LCP en Home mobile: 11.0s a <2.5s",
-      "finding": "LCP mobile de 11.0s (umbral bueno: 2.5s). El contenido principal tarda demasiado en aparecer.",
+      "title": "Reducir LCP en Venta mobile: 7.2s a <2.5s",
+      "finding": "LCP mobile de 7.2s (umbral bueno: 2.5s). El contenido principal tarda demasiado en aparecer.",
       "tags": [
         "LCP target: <2.5s",
         "H1: Visibilidad estado"
@@ -41,11 +55,11 @@
       "recommendation": "Imagenes responsivas (srcset WebP/AVIF), preload del LCP, critical CSS inline, eliminar recursos sin usar"
     },
     {
-      "id": "R8",
+      "id": "R14",
       "priority": 1,
       "type": "tech",
-      "title": "Reducir TBT en Arriendo mobile: 622ms a <200ms",
-      "finding": "TBT mobile de 622ms bloquea el hilo principal. Los usuarios no pueden interactuar durante ese tiempo.",
+      "title": "Reducir TBT en Venta mobile: 652ms a <200ms",
+      "finding": "TBT mobile de 652ms bloquea el hilo principal. Los usuarios no pueden interactuar durante ese tiempo.",
       "tags": [
         "TBT target: <200ms",
         "H7: Eficiencia de uso"
@@ -55,25 +69,11 @@
       "recommendation": "Code splitting, defer de scripts de terceros, reducir JS sin usar, tree shaking"
     },
     {
-      "id": "R14",
-      "priority": 1,
-      "type": "tech",
-      "title": "Reducir LCP en Venta mobile: 6.9s a <2.5s",
-      "finding": "LCP mobile de 6.9s (umbral bueno: 2.5s). El contenido principal tarda demasiado en aparecer.",
-      "tags": [
-        "LCP target: <2.5s",
-        "H1: Visibilidad estado"
-      ],
-      "impact": "alto",
-      "effort": "medio",
-      "recommendation": "Imagenes responsivas (srcset WebP/AVIF), preload del LCP, critical CSS inline, eliminar recursos sin usar"
-    },
-    {
       "id": "R20",
       "priority": 1,
       "type": "ux",
       "title": "Investigar rage clicks detectados",
-      "finding": "Se detectaron 321 sesiones con rage clicks (clicks repetidos por frustracion). Indica elementos que no responden como el usuario espera.",
+      "finding": "Se detectaron 334 sesiones con rage clicks (clicks repetidos por frustracion). Indica elementos que no responden como el usuario espera.",
       "tags": [
         "Nielsen H1",
         "Nielsen H4",
@@ -88,7 +88,7 @@
       "priority": 2,
       "type": "tech",
       "title": "Corregir errores de script en produccion",
-      "finding": "15900 sesiones con errores de JavaScript. Pueden romper funcionalidades sin que el usuario lo reporte.",
+      "finding": "15190 sesiones con errores de JavaScript. Pueden romper funcionalidades sin que el usuario lo reporte.",
       "tags": [
         "H9: Ayuda a reconocer errores"
       ],
@@ -97,7 +97,7 @@
       "recommendation": "Monitorear y corregir errores JS; agregar manejo de errores y observabilidad"
     },
     {
-      "id": "R5",
+      "id": "R4",
       "priority": 2,
       "type": "a11y",
       "title": "H8 - Diseno minimalista en Home",
@@ -111,7 +111,7 @@
       "recommendation": "Ajustar colores a ratio minimo 4.5:1 (AA)"
     },
     {
-      "id": "R6",
+      "id": "R5",
       "priority": 2,
       "type": "a11y",
       "title": "H4 - Consistencia y estandares en Home",
@@ -125,7 +125,7 @@
       "recommendation": "Agregar aria-label o texto visible a los botones"
     },
     {
-      "id": "R7",
+      "id": "R6",
       "priority": 2,
       "type": "ux",
       "title": "H9 - Ayuda a reconocer errores en Home",
@@ -139,7 +139,7 @@
       "recommendation": "Revisar y corregir los errores de consola"
     },
     {
-      "id": "R9",
+      "id": "R7",
       "priority": 2,
       "type": "tech",
       "title": "Corregir CLS en Arriendo mobile: 0.106",
@@ -153,7 +153,7 @@
       "recommendation": "Reservar espacio con aspect-ratio y dimensiones explicitas en imagenes/embeds"
     },
     {
-      "id": "R12",
+      "id": "R10",
       "priority": 2,
       "type": "a11y",
       "title": "H8 - Diseno minimalista en Arriendo",
@@ -167,7 +167,7 @@
       "recommendation": "Ajustar colores a ratio minimo 4.5:1 (AA)"
     },
     {
-      "id": "R13",
+      "id": "R11",
       "priority": 2,
       "type": "a11y",
       "title": "H4 - Consistencia y estandares en Arriendo",
@@ -227,7 +227,7 @@
       "priority": 2,
       "type": "ux",
       "title": "Corregir dead clicks (clicks sin respuesta)",
-      "finding": "10198 sesiones con dead clicks: el usuario hace click en algo que parece interactivo pero no responde.",
+      "finding": "10084 sesiones con dead clicks: el usuario hace click en algo que parece interactivo pero no responde.",
       "tags": [
         "H1: Visibilidad del estado",
         "Ley de Jakob"
@@ -241,7 +241,7 @@
       "priority": 2,
       "type": "ux",
       "title": "Reducir quick backs (retrocesos rapidos)",
-      "finding": "17723 sesiones con quick backs: los usuarios entran a una pagina y regresan de inmediato, senal de que no encontraron lo esperado.",
+      "finding": "17465 sesiones con quick backs: los usuarios entran a una pagina y regresan de inmediato, senal de que no encontraron lo esperado.",
       "tags": [
         "H2: Correspondencia sistema-mundo real"
       ],
@@ -250,7 +250,7 @@
       "recommendation": "Alinear expectativa del enlace con el contenido de destino; revisar titulos y previews"
     },
     {
-      "id": "R3",
+      "id": "R2",
       "priority": 3,
       "type": "tech",
       "title": "Reduce unused JavaScript en Home",
@@ -263,33 +263,33 @@
       "recommendation": null
     },
     {
-      "id": "R4",
+      "id": "R3",
       "priority": 3,
       "type": "tech",
       "title": "Reduce unused CSS en Home",
-      "finding": "Ahorro potencial de ~123 KiB detectado por Lighthouse.",
+      "finding": "Ahorro potencial de ~124 KiB detectado por Lighthouse.",
       "tags": [
-        "Ahorro: ~123 KiB"
+        "Ahorro: ~124 KiB"
       ],
       "impact": "medio",
       "effort": "medio",
       "recommendation": null
     },
     {
-      "id": "R10",
+      "id": "R8",
       "priority": 3,
       "type": "tech",
       "title": "Reduce unused JavaScript en Arriendo",
-      "finding": "Ahorro potencial de ~226 KiB detectado por Lighthouse.",
+      "finding": "Ahorro potencial de ~231 KiB detectado por Lighthouse.",
       "tags": [
-        "Ahorro: ~226 KiB"
+        "Ahorro: ~231 KiB"
       ],
       "impact": "medio",
       "effort": "medio",
       "recommendation": null
     },
     {
-      "id": "R11",
+      "id": "R9",
       "priority": 3,
       "type": "tech",
       "title": "Reduce unused CSS en Arriendo",
@@ -306,9 +306,9 @@
       "priority": 3,
       "type": "tech",
       "title": "Reduce unused JavaScript en Venta",
-      "finding": "Ahorro potencial de ~227 KiB detectado por Lighthouse.",
+      "finding": "Ahorro potencial de ~222 KiB detectado por Lighthouse.",
       "tags": [
-        "Ahorro: ~227 KiB"
+        "Ahorro: ~222 KiB"
       ],
       "impact": "medio",
       "effort": "medio",
@@ -332,7 +332,7 @@
       "priority": 3,
       "type": "ux",
       "title": "Revisar excessive scroll",
-      "finding": "736 sesiones con scroll excesivo: los usuarios buscan contenido que no encuentran facilmente.",
+      "finding": "733 sesiones con scroll excesivo: los usuarios buscan contenido que no encuentran facilmente.",
       "tags": [
         "H6: Reconocer antes que recordar"
       ],

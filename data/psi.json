@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T18:27:17.499Z",
+  "generatedAt": "2026-09-21T20:15:51.512Z",
   "source": "PageSpeed Insights API (Lighthouse + CrUX)",
   "targets": [
     {
@@ -12,35 +12,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 49,
+            "performance": 52,
             "accessibility": 90,
             "bestPractices": 88,
             "seo": 100
           },
           "lab": {
-            "fcp": 8974,
-            "lcp": 10972,
-            "tbt": 321,
-            "cls": 0.0003599590149124731,
-            "si": 8974
+            "fcp": 7951,
+            "lcp": 10753,
+            "tbt": 259,
+            "cls": 0.0005449287767247441,
+            "si": 7951
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2334,
+            "lcp": 2324,
             "inp": 250,
             "cls": 0,
-            "fcp": 1555
+            "fcp": 1549
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 274025
+              "savingsBytes": 273995
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 126438
+              "savingsBytes": 126571
             }
           ],
           "audits": {
@@ -85,35 +85,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 67,
+            "performance": 75,
             "accessibility": 89,
             "bestPractices": 92,
             "seo": 100
           },
           "lab": {
-            "fcp": 1521,
-            "lcp": 2040,
-            "tbt": 345,
-            "cls": 0.00005995971447357072,
-            "si": 1996
+            "fcp": 1561,
+            "lcp": 1986,
+            "tbt": 234,
+            "cls": 0.0000873448669534082,
+            "si": 1742
           },
           "field": {
             "overall": "FAST",
-            "lcp": 1518,
+            "lcp": 1516,
             "inp": 127,
             "cls": 0,
-            "fcp": 1113
+            "fcp": 1112
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 289308
+              "savingsBytes": 287780
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 126622
+              "savingsBytes": 126623
             }
           ],
           "audits": {
@@ -168,35 +168,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 77,
+            "performance": 82,
             "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1833,
-            "lcp": 2435,
-            "tbt": 622,
+            "fcp": 1826,
+            "lcp": 2476,
+            "tbt": 424,
             "cls": 0.10618871926216983,
-            "si": 3546
+            "si": 2971
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2190,
-            "inp": 354,
+            "lcp": 2192,
+            "inp": 355,
             "cls": 12,
-            "fcp": 1242
+            "fcp": 1238
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 231675
+              "savingsBytes": 236778
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108388
+              "savingsBytes": 108397
             }
           ],
           "audits": {
@@ -241,17 +241,17 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 80,
+            "performance": 98,
             "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 505,
-            "lcp": 1141,
-            "tbt": 382,
-            "cls": 0.027584415104028166,
-            "si": 1306
+            "fcp": 499,
+            "lcp": 526,
+            "tbt": 129,
+            "cls": 0.02956364753350388,
+            "si": 975
           },
           "field": {
             "overall": "AVERAGE",
@@ -264,7 +264,7 @@
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 230201
+              "savingsBytes": 229001
             },
             {
               "id": "unused-css-rules",
@@ -324,35 +324,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 65,
+            "performance": 49,
             "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1820,
-            "lcp": 6901,
-            "tbt": 173,
+            "fcp": 1829,
+            "lcp": 7175,
+            "tbt": 652,
             "cls": 0.10618871926216983,
-            "si": 5535
+            "si": 6821
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2318,
-            "inp": 350,
+            "lcp": 2333,
+            "inp": 349,
             "cls": 12,
-            "fcp": 1401
+            "fcp": 1399
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 232700
+              "savingsBytes": 227722
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108408
+              "savingsBytes": 108370
             }
           ],
           "audits": {
@@ -397,35 +397,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 90,
+            "performance": 86,
             "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 501,
-            "lcp": 1101,
-            "tbt": 192,
-            "cls": 0.027367695758096423,
-            "si": 1663
+            "fcp": 503,
+            "lcp": 641,
+            "tbt": 315,
+            "cls": 0.029842933332423043,
+            "si": 1304
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 1626,
-            "inp": 207,
+            "lcp": 1640,
+            "inp": 205,
             "cls": 6,
-            "fcp": 838
+            "fcp": 840
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 205451
+              "savingsBytes": 229690
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108257
+              "savingsBytes": 108255
             }
           ],
           "audits": {
@@ -480,17 +480,17 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 99,
+            "performance": 100,
             "accessibility": 87,
             "bestPractices": 96,
             "seo": 80
           },
           "lab": {
-            "fcp": 1552,
-            "lcp": 1552,
+            "fcp": 1516,
+            "lcp": 1516,
             "tbt": 0,
             "cls": 0,
-            "si": 1552
+            "si": 1516
           },
           "field": null,
           "opportunities": [],
@@ -530,11 +530,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 420,
-            "lcp": 420,
+            "fcp": 415,
+            "lcp": 415,
             "tbt": 0,
             "cls": 0,
-            "si": 420
+            "si": 415
           },
           "field": null,
           "opportunities": [],
@@ -584,11 +584,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 1525,
-            "lcp": 1525,
+            "fcp": 1521,
+            "lcp": 1521,
             "tbt": 0,
             "cls": 0,
-            "si": 1525
+            "si": 1521
           },
           "field": null,
           "opportunities": [],
@@ -628,11 +628,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 204,
-            "lcp": 204,
+            "fcp": 404,
+            "lcp": 404,
             "tbt": 0,
             "cls": 0,
-            "si": 204
+            "si": 404
           },
           "field": null,
           "opportunities": [],
@@ -682,11 +682,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 1502,
-            "lcp": 1502,
+            "fcp": 756,
+            "lcp": 756,
             "tbt": 0,
             "cls": 0,
-            "si": 1502
+            "si": 756
           },
           "field": null,
           "opportunities": [],
@@ -726,11 +726,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 208,
-            "lcp": 208,
+            "fcp": 415,
+            "lcp": 415,
             "tbt": 0,
             "cls": 0,
-            "si": 208
+            "si": 415
           },
           "field": null,
           "opportunities": [],
