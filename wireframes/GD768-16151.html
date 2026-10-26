@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe GD768-16151 · Pop-up Plan Propietarios · Ciencuadras</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================
+     Wireframe de alta fidelidad — GD768-16151
+     Pop-up de advertencia al agregar plan Destacado / Turbo 360
+     Paleta REAL de marca Ciencuadras (tomada de ciencuadras.com):
+       --cc-green   #53a532  (primario / CTA "Publicar")
+       --cc-green-d #468c2a  (hover)
+       --cc-blue    #097ab2  (azul de marca / links)
+       --cc-blue-d  #006098  (azul oscuro)
+       --cc-ink     #293038  (texto fuerte)
+       --cc-amber   #f5a623  (advertencia / destaque)
+       --cc-soft    #e5f7ff  (fondo azul suave)
+       --cc-bg      #f4f6f8
+     Botones estilo pill (bordes muy redondeados), fuente Ciencuadras/Montserrat.
+     ========================================================== */
+  :root{
+    --cc-green:#53a532; --cc-green-d:#468c2a;
+    --cc-blue:#097ab2; --cc-blue-d:#006098;
+    --cc-ink:#293038; --cc-amber:#f5a623; --cc-soft:#e5f7ff;
+    --cc-bg:#f4f6f8; --cc-border:#dde3e8;
+    --cc-text:#434f5b; --cc-muted:#5d6f7e; --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  /* Font-stack de marca: la fuente propia "Ciencuadras" primero (como el sitio),
+     con Montserrat/system como respaldo para este wireframe. */
+  body{font-family:'Ciencuadras','Montserrat',-apple-system,'Segoe UI',sans-serif;background:var(--cc-bg);color:var(--cc-text)}
+
+  /* ---------- Barra de anotación del wireframe ---------- */
+  .wf-bar{background:var(--cc-ink);color:#fff;padding:10px 20px;font-size:13px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .wf-bar strong{color:var(--cc-amber)}
+  .wf-chip{background:rgba(255,255,255,.12);padding:3px 10px;border-radius:20px;font-size:11px}
+
+  /* ---------- Header del sitio ---------- */
+  header{background:#fff;border-bottom:1px solid var(--cc-border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  .nav{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+  .logo{font-weight:800;font-size:20px;color:var(--cc-ink);display:flex;align-items:center;gap:8px}
+  .logo .mark{width:22px;height:22px;border-radius:6px;background:var(--cc-green);display:inline-block}
+  .logo span{color:var(--cc-green)}
+  .nav a{color:var(--cc-ink);text-decoration:none;font-size:14px;font-weight:500}
+  .nav .spacer{flex:1}
+  .nav .cart{position:relative;color:var(--cc-blue)}
+  .nav .cart .count{position:absolute;top:-8px;right:-10px;background:var(--cc-green);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center}
+
+  /* ---------- Breadcrumb (visibilidad del estado) ---------- */
+  .crumb{max-width:1120px;margin:0 auto;padding:14px 24px 0;font-size:12px;color:var(--cc-muted)}
+  .crumb b{color:var(--cc-ink)}
+
+  /* ---------- Layout de planes ---------- */
+  main{max-width:1120px;margin:0 auto;padding:18px 24px 60px}
+  h1{color:var(--cc-ink);font-size:22px;margin-bottom:4px}
+  .lead{color:var(--cc-muted);font-size:14px;margin-bottom:22px}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .plan{background:#fff;border:1px solid var(--cc-border);border-radius:var(--radius);padding:22px;position:relative;transition:transform .2s,box-shadow .2s}
+  .plan:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .plan.featured{border:2px solid var(--cc-green)}
+  .plan .tag{position:absolute;top:-11px;left:22px;background:var(--cc-green);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px}
+  .plan h3{color:var(--cc-ink);font-size:17px;margin-bottom:6px}
+  .plan .price{font-size:26px;font-weight:800;color:var(--cc-ink);margin:8px 0 2px}
+  .plan .price small{font-size:12px;font-weight:500;color:var(--cc-muted)}
+  .plan ul{list-style:none;margin:14px 0 18px;font-size:13px;color:var(--cc-text)}
+  .plan li{padding:5px 0 5px 22px;position:relative}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--cc-green);font-weight:700}
+  .plan .owner-note{font-size:11px;color:var(--cc-muted);display:flex;gap:6px;align-items:center;margin-bottom:12px}
+  .btn{display:block;width:100%;text-align:center;padding:11px 18px;border-radius:24px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--cc-green);color:#fff}
+  .btn-primary:hover{background:var(--cc-green-d)}
+  .btn-ghost{background:#fff;color:var(--cc-blue);border:1.5px solid var(--cc-blue)}
+  .btn-ghost:hover{background:var(--cc-soft)}
+
+  /* ---------- Overlay + Modal (el foco del ticket) ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(0,39,61,.55);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+  .modal{background:#fff;width:100%;max-width:440px;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:pop .22s ease-out}
+  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1)}}
+  .modal__head{background:linear-gradient(135deg,#fff 0%,var(--cc-soft) 100%);padding:26px 26px 10px;text-align:center;position:relative}
+  .modal__icon{width:62px;height:62px;border-radius:50%;background:var(--cc-amber);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 6px 16px rgba(245,166,35,.35)}
+  .modal__icon svg{width:30px;height:30px;color:#fff}
+  .modal__close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--cc-muted);font-size:22px;line-height:1;width:32px;height:32px;border-radius:50%}
+  .modal__close:hover{background:#eef1f3;color:var(--cc-ink)}
+  .modal__title{color:var(--cc-ink);font-size:19px;font-weight:700}
+  .modal__body{padding:14px 28px 4px;text-align:center}
+  .modal__body p{font-size:14px;line-height:1.55;color:var(--cc-text)}
+  .modal__body strong{color:var(--cc-ink)}
+  .modal__plan{display:inline-flex;align-items:center;gap:7px;background:#eef6ea;color:var(--cc-green-d);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:12px}
+  .modal__plan .dot{width:8px;height:8px;border-radius:50%;background:var(--cc-green)}
+  .phone-box{margin:16px 0 4px;background:var(--cc-soft);border:1px dashed var(--cc-blue);border-radius:12px;padding:12px}
+  .phone-box .label{font-size:11px;color:var(--cc-blue-d);text-transform:uppercase;letter-spacing:.4px}
+  .phone-box a{display:inline-flex;align-items:center;gap:8px;color:var(--cc-blue-d);font-size:19px;font-weight:800;text-decoration:none;margin-top:2px}
+  .modal__foot{padding:18px 28px 26px;display:flex;flex-direction:column;gap:10px}
+  .modal__foot .row{display:flex;gap:10px}
+  .modal__foot .row .btn{flex:1}
+  .btn-wa{background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px}
+  .btn-wa:hover{background:#1ebe5a}
+  .modal__hint{font-size:11px;color:var(--cc-muted);text-align:center;margin-top:2px}
+
+  /* ---------- Panel de heurísticas de Nielsen ---------- */
+  .heuristics{max-width:1120px;margin:0 auto 60px;padding:0 24px}
+  .heuristics h2{color:var(--cc-ink);font-size:16px;margin-bottom:12px}
+  .h-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .h-card{background:#fff;border:1px solid var(--cc-border);border-left:4px solid var(--cc-green);border-radius:10px;padding:12px 14px}
+  .h-card b{color:var(--cc-ink);font-size:13px}
+  .h-card p{font-size:12px;color:var(--cc-muted);margin-top:3px;line-height:1.45}
+
+  @media(max-width:860px){.plans{grid-template-columns:1fr}.h-grid{grid-template-columns:1fr}.nav a:not(.logo):not(.cart){display:none}}
+</style>
+</head>
+<body data-brand="cien-cuadras">
+
+  <!-- Barra meta del wireframe (no es parte del producto) -->
+  <div class="wf-bar">
+    <strong>Wireframe · GD768-16151</strong>
+    <span class="wf-chip">Pop-up plan propietarios</span>
+    <span class="wf-chip">Trigger: agregar Destacado / Turbo 360 al carrito</span>
+    <span class="wf-chip">Alta fidelidad · estilos Ciencuadras</span>
+  </div>
+
+  <!-- ===== Capa de contexto: página de planes / carrito ===== -->
+  <header>
+    <div class="nav">
+      <div class="logo"><span class="mark"></span>cien<span>cuadras</span></div>
+      <a href="#">Comprar</a>
+      <a href="#">Arrendar</a>
+      <a href="#">Publicar</a>
+      <a href="#">Planes</a>
+      <span class="spacer"></span>
+      <a href="#" class="cart">🛒 Carrito<span class="count">1</span></a>
+    </div>
+  </header>
+
+  <nav class="crumb">Inicio › Publicar › <b>Elige tu plan</b></nav>
+
+  <main>
+    <h1>Elige el plan para tu publicación</h1>
+    <p class="lead">Potencia la visibilidad de tu inmueble. Cada plan para propietario permite publicar un único inmueble.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Gratuito</h3>
+        <div class="price">$0 <small>/ publicación</small></div>
+        <div class="owner-note">👤 Plan para propietarios · 1 inmueble</div>
+        <ul>
+          <li>Publicación básica</li>
+          <li>Visibilidad estándar</li>
+          <li>Duración 30 días</li>
+        </ul>
+        <button class="btn btn-ghost">Seleccionar</button>
+      </div>
+
+      <div class="plan featured">
+        <span class="tag">Más elegido</span>
+        <h3>Destacado</h3>
+        <div class="price">$49.900 <small>/ publicación</small></div>
+        <div class="owner-note">👤 Plan para propietarios · 1 inmueble</div>
+        <ul>
+          <li>Posición prioritaria</li>
+          <li>Insignia "Destacado"</li>
+          <li>Más visitas al aviso</li>
+        </ul>
+        <button class="btn btn-primary">Agregar al carrito</button>
+      </div>
+
+      <div class="plan">
+        <h3>Turbo 360</h3>
+        <div class="price">$129.900 <small>/ publicación</small></div>
+        <div class="owner-note">👤 Plan para propietarios · 1 inmueble</div>
+        <ul>
+          <li>Pauta en Google y redes</li>
+          <li>Posicionamiento máximo</li>
+          <li>Cierre en tiempo récord</li>
+        </ul>
+        <button class="btn btn-primary">Agregar al carrito</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Pop-up (estado: visible al agregar Destacado/Turbo 360) ===== -->
+  <div class="overlay" role="presentation">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="wf-title" aria-describedby="wf-desc">
+      <div class="modal__head">
+        <button class="modal__close" aria-label="Cerrar aviso" title="Cerrar">&times;</button>
+        <div class="modal__icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        </div>
+        <h2 class="modal__title" id="wf-title">Antes de continuar…</h2>
+      </div>
+
+      <div class="modal__body">
+        <span class="modal__plan"><span class="dot"></span> Plan Destacado agregado</span>
+        <p id="wf-desc">Ten en cuenta que este es un plan para <strong>propietarios</strong> y permite la publicación de un único inmueble.
+        <br><br>Si eres <strong>agente inmobiliario</strong> o tienes una <strong>inmobiliaria</strong>, contáctanos para encontrar tu plan ideal.</p>
+
+        <div class="phone-box">
+          <div class="label">Línea de atención inmobiliarias</div>
+          <a href="tel:+573132712966">📞 313 271 2966</a>
+        </div>
+      </div>
+
+      <div class="modal__foot">
+        <div class="row">
+          <button class="btn btn-ghost">Soy inmobiliaria</button>
+          <button class="btn btn-primary">Entendido, continuar</button>
+        </div>
+        <a class="btn btn-wa" href="https://wa.me/573132712966" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.511 5.26l-.999 3.648 3.986-.607z"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+        <p class="modal__hint">Puedes seguir con el plan de propietario o hablar con un asesor.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Documentación: heurísticas de Nielsen aplicadas ===== -->
+  <section class="heuristics">
+    <h2>Heurísticas de Nielsen aplicadas</h2>
+    <div class="h-grid">
+      <div class="h-card"><b>1 · Visibilidad del estado</b><p>El pop-up confirma "Plan Destacado agregado" y el carrito muestra el contador, así el usuario sabe qué acaba de pasar.</p></div>
+      <div class="h-card"><b>2 · Relación con el mundo real</b><p>Lenguaje claro y cercano ("propietarios", "agente inmobiliario"), sin tecnicismos. Mensaje literal del requerimiento.</p></div>
+      <div class="h-card"><b>3 · Control y libertad</b><p>La "X", "Entendido, continuar" y "Soy inmobiliaria" dan salidas claras; el usuario nunca queda atrapado.</p></div>
+      <div class="h-card"><b>4 · Consistencia y estándares</b><p>Colores reales de marca (verde #53a532, azul #097ab2), botones pill y texto #293038 reutilizan el sistema de Ciencuadras; el modal sigue patrones conocidos.</p></div>
+      <div class="h-card"><b>5 · Prevención de errores</b><p>Objetivo central del ticket: evitar que agentes compren un plan de persona natural por error, antes del pago.</p></div>
+      <div class="h-card"><b>6 · Reconocer antes que recordar</b><p>El teléfono 313 271 2966 y WhatsApp quedan visibles; no hay que memorizar ni buscar el contacto.</p></div>
+      <div class="h-card"><b>7 · Flexibilidad y eficiencia</b><p>Tel directo, WhatsApp o continuar: cada perfil (propietario / inmobiliaria) elige su camino en un clic.</p></div>
+      <div class="h-card"><b>8 · Diseño estético y minimalista</b><p>Una sola idea por pantalla: advertir y ofrecer contacto. Jerarquía visual con el ícono ámbar de atención.</p></div>
+      <div class="h-card"><b>9 · Ayuda a reconocer y recuperarse</b><p>Tono no culpabilizante ("Antes de continuar…") que orienta al usuario hacia la opción correcta.</p></div>
+      <div class="h-card"><b>10 · Ayuda y documentación</b><p>CTA de contacto directo con un asesor funciona como ayuda contextual inmediata para el caso de inmobiliarias.</p></div>
+    </div>
+  </section>
+
+</body>
+</html>
