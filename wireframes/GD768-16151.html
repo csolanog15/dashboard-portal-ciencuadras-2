@@ -8,106 +8,122 @@
 <style>
   /* ==========================================================
      Wireframe de alta fidelidad — GD768-16151
-     Pop-up de advertencia al agregar plan Destacado / Turbo 360
-     Paleta REAL de marca Ciencuadras (tomada de ciencuadras.com):
-       --cc-green   #53a532  (primario / CTA "Publicar")
-       --cc-green-d #468c2a  (hover)
-       --cc-blue    #097ab2  (azul de marca / links)
-       --cc-blue-d  #006098  (azul oscuro)
+     Pop-up de advertencia al agregar plan Destacado / Turbo 360.
+     Replica el patrón de modal real de la zona
+     /publicacion-inmuebles del portal Ciencuadras:
+       - header blanco con logo circular + "Cerrar X"
+       - ícono central, título y descripción centrados
+       - 2 acciones: link/secundario a la izq. + CTA sólido a la der.
+     Paleta REAL de marca Ciencuadras (verificada en ciencuadras.com):
+       --cc-green   #53a532  (CTA primario)   --cc-green-d #468c2a (hover)
+       --cc-teal    #00897b  (logo zona privada / acentos)
+       --cc-blue    #097ab2 / --cc-blue-d #006098 (links / info)
        --cc-ink     #293038  (texto fuerte)
-       --cc-amber   #f5a623  (advertencia / destaque)
-       --cc-soft    #e5f7ff  (fondo azul suave)
-       --cc-bg      #f4f6f8
-     Botones estilo pill (bordes muy redondeados), fuente Ciencuadras/Montserrat.
+       --cc-amber   #f5a623  (ícono de advertencia)
+       --cc-soft    #e5f7ff  (franja superior modal, como en el portal)
      ========================================================== */
   :root{
     --cc-green:#53a532; --cc-green-d:#468c2a;
+    --cc-teal:#00897b;
     --cc-blue:#097ab2; --cc-blue-d:#006098;
     --cc-ink:#293038; --cc-amber:#f5a623; --cc-soft:#e5f7ff;
-    --cc-bg:#f4f6f8; --cc-border:#dde3e8;
-    --cc-text:#434f5b; --cc-muted:#5d6f7e; --radius:14px;
+    --cc-bg:#f5f7fa; --cc-border:#e2e7ec;
+    --cc-text:#434f5b; --cc-muted:#6b7884;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  /* Font-stack de marca: la fuente propia "Ciencuadras" primero (como el sitio),
-     con Montserrat/system como respaldo para este wireframe. */
   body{font-family:'Ciencuadras','Montserrat',-apple-system,'Segoe UI',sans-serif;background:var(--cc-bg);color:var(--cc-text)}
 
-  /* ---------- Barra de anotación del wireframe ---------- */
-  .wf-bar{background:var(--cc-ink);color:#fff;padding:10px 20px;font-size:13px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  /* ---------- Barra de anotación del wireframe (fuera del producto) ---------- */
+  .wf-bar{background:var(--cc-ink);color:#fff;padding:10px 20px;font-size:13px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
   .wf-bar strong{color:var(--cc-amber)}
   .wf-chip{background:rgba(255,255,255,.12);padding:3px 10px;border-radius:20px;font-size:11px}
 
-  /* ---------- Header del sitio ---------- */
-  header{background:#fff;border-bottom:1px solid var(--cc-border);box-shadow:0 1px 4px rgba(0,0,0,.04)}
-  .nav{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
-  .logo{font-weight:800;font-size:20px;color:var(--cc-ink);display:flex;align-items:center;gap:8px}
-  .logo .mark{width:22px;height:22px;border-radius:6px;background:var(--cc-green);display:inline-block}
-  .logo span{color:var(--cc-green)}
-  .nav a{color:var(--cc-ink);text-decoration:none;font-size:14px;font-weight:500}
+  /* ---------- Header del portal ---------- */
+  header{background:#fff;border-bottom:1px solid var(--cc-border);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .nav{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:26px}
+  .logo{font-weight:700;font-size:19px;color:var(--cc-ink);display:flex;align-items:center;gap:7px}
+  .logo .mark{width:26px;height:26px;border-radius:50%;background:var(--cc-teal);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+  .logo span{color:var(--cc-teal)}
+  .nav a{color:#5b5b5b;text-decoration:none;font-size:13px;font-weight:500}
   .nav .spacer{flex:1}
-  .nav .cart{position:relative;color:var(--cc-blue)}
-  .nav .cart .count{position:absolute;top:-8px;right:-10px;background:var(--cc-green);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center}
+  .nav .ingresar{color:var(--cc-teal);font-weight:600}
+  .nav .cart{position:relative;color:var(--cc-teal);font-size:18px}
+  .nav .cart .count{position:absolute;top:-7px;right:-9px;background:var(--cc-green);color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+  .nav .btn-pub{background:var(--cc-green);color:#fff;border:none;padding:8px 18px;border-radius:24px;font-size:13px;font-weight:700;cursor:pointer}
 
-  /* ---------- Breadcrumb (visibilidad del estado) ---------- */
+  /* ---------- Encabezado de la página de publicación ---------- */
+  .pub-head{text-align:center;padding:26px 24px 6px}
+  .pub-head h1{color:var(--cc-teal);font-size:24px;font-weight:700}
+  .pub-head h1 span{color:var(--cc-amber)}
+  .pub-head p{color:var(--cc-muted);font-size:14px;margin-top:4px}
   .crumb{max-width:1120px;margin:0 auto;padding:14px 24px 0;font-size:12px;color:var(--cc-muted)}
   .crumb b{color:var(--cc-ink)}
 
+  /* ---------- Banda de tipos de plan (como en el portal) ---------- */
+  .band{max-width:1120px;margin:14px auto 0;padding:0 24px}
+  .band__inner{background:#fff;border:1px solid var(--cc-border);border-radius:10px;display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px 22px}
+  .band__item{border-left:3px solid var(--cc-amber);padding-left:12px}
+  .band__item h4{color:var(--cc-ink);font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px}
+  .band__item p{color:var(--cc-muted);font-size:12px;margin-top:2px}
+
   /* ---------- Layout de planes ---------- */
-  main{max-width:1120px;margin:0 auto;padding:18px 24px 60px}
-  h1{color:var(--cc-ink);font-size:22px;margin-bottom:4px}
-  .lead{color:var(--cc-muted);font-size:14px;margin-bottom:22px}
+  main{max-width:1120px;margin:0 auto;padding:18px 24px 48px}
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .plan{background:#fff;border:1px solid var(--cc-border);border-radius:var(--radius);padding:22px;position:relative;transition:transform .2s,box-shadow .2s}
-  .plan:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-  .plan.featured{border:2px solid var(--cc-green)}
+  .plan{background:#fff;border:1px solid var(--cc-border);border-radius:12px;padding:22px;position:relative;transition:box-shadow .2s}
+  .plan:hover{box-shadow:0 6px 18px rgba(0,0,0,.07)}
+  .plan.featured{border:1.5px solid var(--cc-green)}
   .plan .tag{position:absolute;top:-11px;left:22px;background:var(--cc-green);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px}
-  .plan h3{color:var(--cc-ink);font-size:17px;margin-bottom:6px}
-  .plan .price{font-size:26px;font-weight:800;color:var(--cc-ink);margin:8px 0 2px}
+  .plan h3{color:var(--cc-ink);font-size:16px;margin-bottom:4px}
+  .plan .price{font-size:24px;font-weight:800;color:var(--cc-ink);margin:6px 0 2px}
   .plan .price small{font-size:12px;font-weight:500;color:var(--cc-muted)}
-  .plan ul{list-style:none;margin:14px 0 18px;font-size:13px;color:var(--cc-text)}
-  .plan li{padding:5px 0 5px 22px;position:relative}
+  .plan .owner-note{font-size:11px;color:var(--cc-muted);display:flex;gap:6px;align-items:center;margin:8px 0 10px}
+  .plan ul{list-style:none;margin:8px 0 16px;font-size:12.5px;color:var(--cc-text)}
+  .plan li{padding:4px 0 4px 20px;position:relative}
   .plan li::before{content:"✓";position:absolute;left:0;color:var(--cc-green);font-weight:700}
-  .plan .owner-note{font-size:11px;color:var(--cc-muted);display:flex;gap:6px;align-items:center;margin-bottom:12px}
-  .btn{display:block;width:100%;text-align:center;padding:11px 18px;border-radius:24px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:inherit}
+  .plan .link{display:block;text-align:center;color:var(--cc-teal);font-size:13px;font-weight:600;text-decoration:none;margin-bottom:10px}
+  .plan .link:hover{text-decoration:underline}
+  .btn{display:block;width:100%;text-align:center;padding:10px 16px;border-radius:24px;font-weight:700;font-size:13.5px;border:none;cursor:pointer;font-family:inherit}
   .btn-primary{background:var(--cc-green);color:#fff}
   .btn-primary:hover{background:var(--cc-green-d)}
-  .btn-ghost{background:#fff;color:var(--cc-blue);border:1.5px solid var(--cc-blue)}
-  .btn-ghost:hover{background:var(--cc-soft)}
 
-  /* ---------- Overlay + Modal (el foco del ticket) ---------- */
-  .overlay{position:fixed;inset:0;background:rgba(0,39,61,.55);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
-  .modal{background:#fff;width:100%;max-width:440px;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:pop .22s ease-out}
-  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1)}}
-  .modal__head{background:linear-gradient(135deg,#fff 0%,var(--cc-soft) 100%);padding:26px 26px 10px;text-align:center;position:relative}
-  .modal__icon{width:62px;height:62px;border-radius:50%;background:var(--cc-amber);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 6px 16px rgba(245,166,35,.35)}
-  .modal__icon svg{width:30px;height:30px;color:#fff}
-  .modal__close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--cc-muted);font-size:22px;line-height:1;width:32px;height:32px;border-radius:50%}
-  .modal__close:hover{background:#eef1f3;color:var(--cc-ink)}
-  .modal__title{color:var(--cc-ink);font-size:19px;font-weight:700}
-  .modal__body{padding:14px 28px 4px;text-align:center}
-  .modal__body p{font-size:14px;line-height:1.55;color:var(--cc-text)}
+  /* ---------- Overlay + Modal (foco del ticket, patrón real del portal) ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+  .modal{background:#fff;width:100%;max-width:430px;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:pop .25s ease-out}
+  @keyframes pop{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  /* franja superior azul suave con logo + cerrar, como en el modal real */
+  .modal__top{background:var(--cc-soft);height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+  .modal__brand{width:26px;height:26px;border-radius:50%;background:var(--cc-teal);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+  .modal__close{display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;color:var(--cc-muted);font-size:13px;font-family:inherit}
+  .modal__close svg{width:14px;height:14px}
+  .modal__body{padding:22px 30px 6px;text-align:center}
+  .modal__icon{width:58px;height:58px;border-radius:50%;background:#fff6e8;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .modal__icon svg{width:30px;height:30px;color:var(--cc-amber)}
+  .modal__title{color:var(--cc-ink);font-size:17px;font-weight:700;line-height:1.3;margin-bottom:10px}
+  .modal__body p{font-size:13.5px;line-height:1.55;color:var(--cc-text)}
   .modal__body strong{color:var(--cc-ink)}
-  .modal__plan{display:inline-flex;align-items:center;gap:7px;background:#eef6ea;color:var(--cc-green-d);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:12px}
+  .modal__plan{display:inline-flex;align-items:center;gap:7px;background:#eef6ea;color:var(--cc-green-d);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px;margin-bottom:14px}
   .modal__plan .dot{width:8px;height:8px;border-radius:50%;background:var(--cc-green)}
-  .phone-box{margin:16px 0 4px;background:var(--cc-soft);border:1px dashed var(--cc-blue);border-radius:12px;padding:12px}
-  .phone-box .label{font-size:11px;color:var(--cc-blue-d);text-transform:uppercase;letter-spacing:.4px}
-  .phone-box a{display:inline-flex;align-items:center;gap:8px;color:var(--cc-blue-d);font-size:19px;font-weight:800;text-decoration:none;margin-top:2px}
-  .modal__foot{padding:18px 28px 26px;display:flex;flex-direction:column;gap:10px}
-  .modal__foot .row{display:flex;gap:10px}
-  .modal__foot .row .btn{flex:1}
-  .btn-wa{background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px}
+
+  /* CTA principal: línea de atención inmobiliarias -> WhatsApp */
+  .wa-cta{margin:18px 0 4px}
+  .wa-cta .wa-label{font-size:11px;color:var(--cc-muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+  .btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px 16px;border-radius:26px;background:#25D366;color:#fff;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 6px 16px rgba(37,211,102,.3)}
   .btn-wa:hover{background:#1ebe5a}
-  .modal__hint{font-size:11px;color:var(--cc-muted);text-align:center;margin-top:2px}
+  .btn-wa .num{font-weight:800}
+
+  .modal__foot{padding:14px 30px 24px;text-align:center}
+  .btn-continue{background:none;border:none;color:var(--cc-muted);font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;padding:8px 20px;border-radius:24px}
+  .btn-continue:hover{background:#f0f2f4;color:var(--cc-ink)}
 
   /* ---------- Panel de heurísticas de Nielsen ---------- */
-  .heuristics{max-width:1120px;margin:0 auto 60px;padding:0 24px}
+  .heuristics{max-width:1120px;margin:0 auto 56px;padding:0 24px}
   .heuristics h2{color:var(--cc-ink);font-size:16px;margin-bottom:12px}
   .h-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   .h-card{background:#fff;border:1px solid var(--cc-border);border-left:4px solid var(--cc-green);border-radius:10px;padding:12px 14px}
   .h-card b{color:var(--cc-ink);font-size:13px}
   .h-card p{font-size:12px;color:var(--cc-muted);margin-top:3px;line-height:1.45}
 
-  @media(max-width:860px){.plans{grid-template-columns:1fr}.h-grid{grid-template-columns:1fr}.nav a:not(.logo):not(.cart){display:none}}
+  @media(max-width:860px){.plans{grid-template-columns:1fr}.band__inner{grid-template-columns:1fr}.h-grid{grid-template-columns:1fr}.nav a:not(.logo):not(.cart):not(.ingresar){display:none}}
 </style>
 </head>
 <body data-brand="cien-cuadras">
@@ -117,28 +133,39 @@
     <strong>Wireframe · GD768-16151</strong>
     <span class="wf-chip">Pop-up plan propietarios</span>
     <span class="wf-chip">Trigger: agregar Destacado / Turbo 360 al carrito</span>
-    <span class="wf-chip">Alta fidelidad · estilos Ciencuadras</span>
+    <span class="wf-chip">Patrón de modal real · /publicacion-inmuebles</span>
   </div>
 
-  <!-- ===== Capa de contexto: página de planes / carrito ===== -->
+  <!-- ===== Capa de contexto: página de publicación / planes ===== -->
   <header>
     <div class="nav">
-      <div class="logo"><span class="mark"></span>cien<span>cuadras</span></div>
-      <a href="#">Comprar</a>
-      <a href="#">Arrendar</a>
-      <a href="#">Publicar</a>
-      <a href="#">Planes</a>
+      <div class="logo"><span class="mark">C</span>cien<span>cuadras</span></div>
+      <a href="#">Compra</a>
+      <a href="#">Arriendo</a>
+      <a href="#">Trámites y servicios</a>
+      <a href="#">Desde el exterior</a>
       <span class="spacer"></span>
-      <a href="#" class="cart">🛒 Carrito<span class="count">1</span></a>
+      <a href="#" class="cart">🛒<span class="count">1</span></a>
+      <a href="#" class="ingresar">Ingresar</a>
+      <button class="btn-pub">Publicar 🏠</button>
     </div>
   </header>
 
   <nav class="crumb">Inicio › Publicar › <b>Elige tu plan</b></nav>
 
-  <main>
-    <h1>Elige el plan para tu publicación</h1>
-    <p class="lead">Potencia la visibilidad de tu inmueble. Cada plan para propietario permite publicar un único inmueble.</p>
+  <div class="pub-head">
+    <h1>Publica tu <span>inmueble</span></h1>
+    <p>Elige un plan para vender o arrendar más rápido tu inmueble.</p>
+  </div>
 
+  <div class="band">
+    <div class="band__inner">
+      <div class="band__item"><h4>⭐ Destacado</h4><p>Destaca tu inmueble en las primeras posiciones durante 1 mes.</p></div>
+      <div class="band__item"><h4>⬆ Ascendido</h4><p>Arrienda tu inmueble en los primeros lugares durante 1 día.</p></div>
+    </div>
+  </div>
+
+  <main>
     <div class="plans">
       <div class="plan">
         <h3>Gratuito</h3>
@@ -149,7 +176,8 @@
           <li>Visibilidad estándar</li>
           <li>Duración 30 días</li>
         </ul>
-        <button class="btn btn-ghost">Seleccionar</button>
+        <a class="link" href="#">Ver más</a>
+        <button class="btn btn-primary">Publicar 🛒</button>
       </div>
 
       <div class="plan featured">
@@ -162,19 +190,21 @@
           <li>Insignia "Destacado"</li>
           <li>Más visitas al aviso</li>
         </ul>
-        <button class="btn btn-primary">Agregar al carrito</button>
+        <a class="link" href="#">Ver más</a>
+        <button class="btn btn-primary">Comprar 🛒</button>
       </div>
 
       <div class="plan">
         <h3>Turbo 360</h3>
-        <div class="price">$129.900 <small>/ publicación</small></div>
+        <div class="price">$249.900 <small>/ publicación</small></div>
         <div class="owner-note">👤 Plan para propietarios · 1 inmueble</div>
         <ul>
-          <li>Pauta en Google y redes</li>
+          <li>Publicación por 90 días</li>
+          <li>Pauta en Google (Ads)</li>
           <li>Posicionamiento máximo</li>
-          <li>Cierre en tiempo récord</li>
         </ul>
-        <button class="btn btn-primary">Agregar al carrito</button>
+        <a class="link" href="#">Ver más</a>
+        <button class="btn btn-primary">Comprar 🛒</button>
       </div>
     </div>
   </main>
@@ -182,35 +212,39 @@
   <!-- ===== Pop-up (estado: visible al agregar Destacado/Turbo 360) ===== -->
   <div class="overlay" role="presentation">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="wf-title" aria-describedby="wf-desc">
-      <div class="modal__head">
-        <button class="modal__close" aria-label="Cerrar aviso" title="Cerrar">&times;</button>
-        <div class="modal__icon" aria-hidden="true">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-        </div>
-        <h2 class="modal__title" id="wf-title">Antes de continuar…</h2>
+
+      <!-- Franja superior: logo + Cerrar (idéntico al modal real del portal) -->
+      <div class="modal__top">
+        <span class="modal__brand" aria-hidden="true">C</span>
+        <button class="modal__close" aria-label="Cerrar aviso">Cerrar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
       </div>
 
       <div class="modal__body">
+        <div class="modal__icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        </div>
+
         <span class="modal__plan"><span class="dot"></span> Plan Destacado agregado</span>
+
+        <h2 class="modal__title" id="wf-title">Antes de continuar…</h2>
         <p id="wf-desc">Ten en cuenta que este es un plan para <strong>propietarios</strong> y permite la publicación de un único inmueble.
         <br><br>Si eres <strong>agente inmobiliario</strong> o tienes una <strong>inmobiliaria</strong>, contáctanos para encontrar tu plan ideal.</p>
 
-        <div class="phone-box">
-          <div class="label">Línea de atención inmobiliarias</div>
-          <a href="tel:+573132712966">📞 313 271 2966</a>
+        <!-- CTA PRINCIPAL: línea de atención inmobiliarias -> WhatsApp Web -->
+        <div class="wa-cta">
+          <div class="wa-label">Línea de atención inmobiliarias</div>
+          <a class="btn-wa" href="https://wa.me/573132712966" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.511 5.26l-.999 3.648 3.986-.607z"/></svg>
+            Escríbenos por WhatsApp <span class="num">313 271 2966</span>
+          </a>
         </div>
       </div>
 
+      <!-- Acción secundaria: solo "Continuar" -->
       <div class="modal__foot">
-        <div class="row">
-          <button class="btn btn-ghost">Soy inmobiliaria</button>
-          <button class="btn btn-primary">Entendido, continuar</button>
-        </div>
-        <a class="btn btn-wa" href="https://wa.me/573132712966" target="_blank" rel="noopener">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.13c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.511 5.26l-.999 3.648 3.986-.607z"/></svg>
-          Escríbenos por WhatsApp
-        </a>
-        <p class="modal__hint">Puedes seguir con el plan de propietario o hablar con un asesor.</p>
+        <button class="btn-continue">Continuar</button>
       </div>
     </div>
   </div>
@@ -221,14 +255,14 @@
     <div class="h-grid">
       <div class="h-card"><b>1 · Visibilidad del estado</b><p>El pop-up confirma "Plan Destacado agregado" y el carrito muestra el contador, así el usuario sabe qué acaba de pasar.</p></div>
       <div class="h-card"><b>2 · Relación con el mundo real</b><p>Lenguaje claro y cercano ("propietarios", "agente inmobiliario"), sin tecnicismos. Mensaje literal del requerimiento.</p></div>
-      <div class="h-card"><b>3 · Control y libertad</b><p>La "X", "Entendido, continuar" y "Soy inmobiliaria" dan salidas claras; el usuario nunca queda atrapado.</p></div>
-      <div class="h-card"><b>4 · Consistencia y estándares</b><p>Colores reales de marca (verde #53a532, azul #097ab2), botones pill y texto #293038 reutilizan el sistema de Ciencuadras; el modal sigue patrones conocidos.</p></div>
-      <div class="h-card"><b>5 · Prevención de errores</b><p>Objetivo central del ticket: evitar que agentes compren un plan de persona natural por error, antes del pago.</p></div>
-      <div class="h-card"><b>6 · Reconocer antes que recordar</b><p>El teléfono 313 271 2966 y WhatsApp quedan visibles; no hay que memorizar ni buscar el contacto.</p></div>
-      <div class="h-card"><b>7 · Flexibilidad y eficiencia</b><p>Tel directo, WhatsApp o continuar: cada perfil (propietario / inmobiliaria) elige su camino en un clic.</p></div>
-      <div class="h-card"><b>8 · Diseño estético y minimalista</b><p>Una sola idea por pantalla: advertir y ofrecer contacto. Jerarquía visual con el ícono ámbar de atención.</p></div>
-      <div class="h-card"><b>9 · Ayuda a reconocer y recuperarse</b><p>Tono no culpabilizante ("Antes de continuar…") que orienta al usuario hacia la opción correcta.</p></div>
-      <div class="h-card"><b>10 · Ayuda y documentación</b><p>CTA de contacto directo con un asesor funciona como ayuda contextual inmediata para el caso de inmobiliarias.</p></div>
+      <div class="h-card"><b>3 · Control y libertad</b><p>"Cerrar" en la esquina y "Continuar" dan salidas claras; el usuario decide, nunca queda atrapado.</p></div>
+      <div class="h-card"><b>4 · Consistencia y estándares</b><p>Mismo patrón de modal de /publicacion-inmuebles: franja con logo + Cerrar, ícono, título y una acción dominante. Colores reales de marca.</p></div>
+      <div class="h-card"><b>5 · Prevención de errores</b><p>Objetivo central del ticket: evitar que agentes/inmobiliarias compren un plan de propietario por error, antes del pago.</p></div>
+      <div class="h-card"><b>6 · Reconocer antes que recordar</b><p>El número 313 271 2966 va visible dentro del propio botón de WhatsApp; no hay que memorizar ni buscar el contacto.</p></div>
+      <div class="h-card"><b>7 · Flexibilidad y eficiencia</b><p>Un único CTA dominante (WhatsApp) para el caso prioritario y "Continuar" para quien sí es propietario. Dos caminos, cero ruido.</p></div>
+      <div class="h-card"><b>8 · Diseño estético y minimalista</b><p>Una sola idea por pantalla: advertir y ofrecer contacto. Jerarquía clara: CTA WhatsApp destacado, "Continuar" discreto.</p></div>
+      <div class="h-card"><b>9 · Ayuda a reconocer y recuperarse</b><p>Tono no culpabilizante ("Antes de continuar…") que orienta al perfil correcto hacia su plan ideal.</p></div>
+      <div class="h-card"><b>10 · Ayuda y documentación</b><p>El contacto directo por WhatsApp funciona como ayuda contextual inmediata para inmobiliarias y agentes.</p></div>
     </div>
   </section>
 
