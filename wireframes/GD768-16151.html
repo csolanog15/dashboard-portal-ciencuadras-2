@@ -8,13 +8,10 @@
   <style>
     /* ==========================================================================
        Wireframe GD768-16151 — Pop-up al agregar plan Destacado / Turbo 360.
-       El MODAL replica 1:1 el componente real de Ciencuadras
+       El MODAL replica el componente real de Ciencuadras
        (mat-dialog de /publicacion-inmuebles, "Elegiste un plan para perfiles
-       de Propietario"), con sus valores computados reales:
-         - ancho 444px, radius 4px, sombra rgba(115,115,115,.16) 0 0 6px
-         - header franja azul clara con isotipo + "Cerrar X"
-         - icono gris, titulo 20px/600 #1b1b1b, desc 14px #5d6f7e
-         - acciones: link azul #097ab2 + boton verde #53a532 (radius 8px, border 2px)
+       de Propietario"): header franja azul clara con isotipo circular + "Cerrar X",
+       icono gris, titulo 20px #1b1b1b, desc 14px #5d6f7e, verde de marca #53a532.
        Ajustes del ticket:
          - CTA principal: Escríbenos por WhatsApp (wa.me/573132712966)
          - Accion secundaria unica: Continuar
@@ -65,22 +62,22 @@
 
     /* ====== OVERLAY + MODAL REAL (mat-dialog de Ciencuadras) ====== */
     .cdk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000}
-    .cc-modal{background:#fff;width:444px;max-width:100%;border-radius:4px;box-shadow:rgba(115,115,115,.16) 0 0 6px 0;overflow:hidden;animation:fade .2s ease-out}
+    .cc-modal{background:#fff;width:444px;max-width:100%;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.18);overflow:hidden;animation:fade .2s ease-out}
     @keyframes fade{from{opacity:0}to{opacity:1}}
 
-    /* Header: franja azul clara con pestaña del isotipo + Cerrar */
-    .cc-modal__header{background:#eaf6fb;position:relative;height:52px;display:flex;align-items:center;justify-content:flex-end;padding:0 18px}
-    .cc-modal__tab{position:absolute;left:16px;top:8px;width:44px;height:44px;background:#fff;border-radius:12px 12px 10px 10px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-    .cc-modal__tab img{width:26px;height:26px}
-    .cc-modal__close{display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:#5d6f7e;font-size:15px;font-family:inherit}
-    .cc-modal__close svg{width:15px;height:15px}
+    /* Header: franja azul clara con isotipo (circulo) + Cerrar, alineados */
+    .cc-modal__header{background:#eaf6fb;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+    .cc-modal__brand{width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+    .cc-modal__brand img{width:22px;height:22px}
+    .cc-modal__close{display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;color:#5d6f7e;font-size:15px;font-weight:500;font-family:inherit;line-height:1}
+    .cc-modal__close svg{width:15px;height:15px;display:block}
 
     /* Cuerpo */
-    .cc-modal__body{padding:18px 24px 6px;text-align:center}
-    .cc-modal__icon{color:#8a99a6;margin-bottom:12px}
-    .cc-modal__icon svg{width:40px;height:40px}
+    .cc-modal__body{padding:22px 28px 6px;text-align:center}
+    .cc-modal__icon{color:#8a99a6;margin-bottom:12px;display:flex;justify-content:center}
+    .cc-modal__icon svg{width:40px;height:40px;display:block}
     .cc-modal__title{color:#1b1b1b;font-size:20px;font-weight:700;line-height:1.3;margin-bottom:8px}
-    .cc-modal__desc{color:#5d6f7e;font-size:14px;line-height:1.45;max-width:380px;margin:0 auto}
+    .cc-modal__desc{color:#5d6f7e;font-size:14px;line-height:1.5;max-width:360px;margin:0 auto}
     .cc-modal__desc strong{color:#1b1b1b;font-weight:700}
 
     /* CTA principal: linea inmobiliarias -> WhatsApp */
@@ -171,9 +168,9 @@
   <div class="cdk-overlay" id="modalOverlay" style="display:flex;">
     <div class="cc-modal" role="dialog" aria-modal="true" aria-labelledby="wf-title" aria-describedby="wf-desc">
 
-      <!-- Header: franja azul + pestaña isotipo + Cerrar -->
+      <!-- Header: franja azul + isotipo (circulo) + Cerrar -->
       <div class="cc-modal__header">
-        <div class="cc-modal__tab"><img src="https://www.ciencuadras.com/sources/images/result/isotipo.png" alt="Ciencuadras"></div>
+        <div class="cc-modal__brand"><img src="https://www.ciencuadras.com/sources/images/result/isotipo.png" alt="Ciencuadras"></div>
         <button class="cc-modal__close" onclick="closeModal()" aria-label="Cerrar">Cerrar
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
