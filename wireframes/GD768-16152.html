@@ -7,126 +7,153 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
-       Wireframe GD768-16152 — Planes de arrendamiento para inmobiliarias
-       URL real: https://www.ciencuadras.com/publicacion-inmuebles/inmobiliaria
+       Wireframe GD768-16152 — ALTA FIDELIDAD
+       Replica la landing real: https://www.ciencuadras.com/publicacion-inmuebles/inmobiliaria
+       (capturada en vivo con Playwright) y los colores del design system v2 del
+       monorepo ciencuadras-monorepo-mf (_variables.scss).
 
-       Estilos tomados del monorepo ciencuadras-monorepo-mf (design system v2):
-         libs/ds/src/lib/assets/styles/config/_variables.scss
-         apps/products/src/app/components/advisory-banner/*
+       Estructura fiel: header blanco, breadcrumb, hero con banner de ciudad +
+       tarjeta "Publica tu inmueble", caja Destacado/Ascendido, 3 planes
+       (Cuadra Todo "Mejor opción", Inicial, Impulsa), banner de asesoría azul,
+       footer azul oscuro.
 
-       Paleta DS v2 usada:
-         $primary200-2   #074973   (gradiente banner inicio)
-         $primary-100-2  #3E98CC   (gradiente banner fin)
-         $primaryBase-2  #006098   (borde banner / acento primario)
-         $tertiaryBase-2 #6FB453   (verde CTA)
-         $tertiary200-2  #579C3D   (verde borde / hover)
-         $secondaryBase-2 #FFA533  (naranja destacado)
-         $grayscaleWhite-2 #FFFFFF
+       Cambio del ticket GD768-16152:
+       contacto de asesoría -> BOTON FLOTANTE estilo MIA (recuadro con esquinas
+       redondeadas, NO circulo), en verde con icono de WhatsApp, fijo abajo-derecha,
+       enlaza a https://wa.me/573132712966.
 
-       Cambio del ticket:
-         El contacto de asesoría se resuelve con un BOTON FLOTANTE verde con
-         icono de WhatsApp (estilo del boton flotante de MIA, pero verde),
-         persistente abajo a la derecha, que dirige a wa.me/573132712966.
+       Paleta real DS v2:
+         primario #006098 / #097AB2 ; gradiente banner #074973 -> #3E98CC
+         verde secundario #53A532 ; naranja #FF9D21 ; footer #00204D
        ========================================================================== */
-
-    :root{
-      --primary-200-2:#074973;
-      --primary-100-2:#3E98CC;
-      --primary-base-2:#006098;
-      --tertiary-base-2:#6FB453;
-      --tertiary-200-2:#579C3D;
-      --secondary-base-2:#FFA533;
-      --gray-black:#1B1B1B;
-      --gray-100:#666666;
-      --gray-300:#F5F5F5;
-      --gray-200-neg:#E1E1E1;
-      --white:#FFFFFF;
-      --wa-green:#25D366;
-      --wa-green-dark:#1EBE57;
-    }
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Ciencuadras','Montserrat',-apple-system,'Segoe UI',sans-serif;background:var(--gray-300);color:var(--gray-black);line-height:1.45}
+    body{font-family:'Montserrat',-apple-system,'Segoe UI',sans-serif;background:#fff;color:#434F5B}
 
     /* Barra meta del wireframe (no es parte del producto) */
     .wf-bar{background:#1B1B1B;color:#fff;padding:9px 20px;font-size:12.5px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .wf-bar strong{color:#FFA533}
+    .wf-bar strong{color:#FF9D21}
     .wf-chip{background:rgba(255,255,255,.12);padding:3px 10px;border-radius:20px;font-size:11px}
 
-    /* Header del portal */
-    header{background:#fff;border-bottom:1px solid #E1E1E1}
-    .nav{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
-    .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:#006098;letter-spacing:-.3px}
-    .logo-mark{width:30px;height:30px;border-radius:50%;background:#006098;display:flex;align-items:center;justify-content:center}
-    .logo-mark span{color:#6FB453;font-size:15px;font-weight:800}
-    .nav-links{display:flex;gap:20px}
-    .nav-links a{color:#5B5B5B;text-decoration:none;font-size:13.5px;font-weight:500}
-    .nav .spacer{flex:1}
-    .nav .ingresar{color:#006098;font-weight:600;font-size:13.5px;text-decoration:none}
-    .nav .cta-top{background:#006098;color:#fff;padding:9px 18px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none}
+    /* ===== Header ===== */
+    header{background:#fff;border-bottom:1px solid #EDF1F4;position:relative;z-index:5}
+    .nav{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:26px}
+    .brand{display:flex;align-items:center;gap:8px}
+    .brand-mark{width:30px;height:28px;position:relative}
+    .brand-mark svg{width:30px;height:28px}
+    .brand-txt{font-size:20px;font-weight:800;letter-spacing:-.4px}
+    .brand-txt .c1{color:#097AB2}.brand-txt .c2{color:#53A532}
+    .nav-links{display:flex;gap:22px;align-items:center}
+    .nav-links a{color:#434F5B;text-decoration:none;font-size:14px;font-weight:500;display:flex;align-items:center;gap:4px}
+    .nav-links a .caret{font-size:9px;color:#9EADB7}
+    .spacer{flex:1}
+    .cart{position:relative;color:#097AB2;font-size:20px}
+    .cart .count{position:absolute;top:-6px;right:-8px;background:#097AB2;color:#fff;font-size:10px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .ingresar{color:#097AB2;font-weight:600;font-size:14px;text-decoration:none}
+    .btn-publicar{background:#53A532;color:#fff;border:none;padding:10px 20px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px}
 
-    /* Hero de la landing de inmobiliarias */
-    .hero{background:linear-gradient(135deg,#074973 0%,#3E98CC 100%);color:#fff;padding:46px 24px}
-    .hero-inner{max-width:1200px;margin:0 auto}
-    .hero .eyebrow{display:inline-block;background:rgba(255,255,255,.16);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.4px;margin-bottom:14px}
-    .hero h1{font-size:30px;font-weight:800;max-width:720px;line-height:1.2}
-    .hero p{font-size:16px;margin-top:12px;max-width:620px;opacity:.95}
+    /* ===== Breadcrumb ===== */
+    .crumb{max-width:1200px;margin:0 auto;padding:18px 24px 0;font-size:13px;color:#097AB2;display:flex;align-items:center;gap:8px;font-weight:600}
+    .crumb .sep{color:#BFC9CF}
+    .crumb .home{font-size:15px}
 
-    /* Contenedor principal */
-    .wrap{max-width:1200px;margin:0 auto;padding:34px 24px 80px}
-    .section-title{font-size:22px;font-weight:800;color:#1B1B1B;text-align:center}
-    .section-sub{font-size:14.5px;color:#666;text-align:center;margin-top:6px;margin-bottom:10px}
+    /* ===== Hero ===== */
+    .hero{max-width:1200px;margin:16px auto 0;padding:0 24px}
+    .hero-banner{position:relative;border-radius:10px;overflow:hidden;
+      background:linear-gradient(120deg,#dfe8ef 0%,#eef3f7 55%,#dbe5ee 100%);
+      min-height:230px;display:flex;align-items:flex-end;justify-content:center}
+    .hero-city{position:absolute;inset:0;background:
+      repeating-linear-gradient(90deg,rgba(120,150,175,.18) 0 2px,transparent 2px 46px),
+      linear-gradient(180deg,transparent 40%,rgba(150,175,195,.35) 100%);opacity:.9}
+    .hero-city::after{content:"";position:absolute;right:4%;bottom:0;width:62%;height:78%;
+      background:
+        linear-gradient(90deg,#b9cad6 0 10%,transparent 10% 12%,#c6d5e0 12% 20%,transparent 20% 23%,#aebfcc 23% 33%,transparent 33% 36%,#cdd9e3 36% 48%,transparent 48% 51%,#b4c5d2 51% 62%,transparent 62% 66%,#c9d6e0 66% 80%,transparent 80% 83%,#bccbd8 83% 100%);
+      opacity:.55;clip-path:polygon(0 100%,0 40%,6% 40%,6% 20%,14% 20%,14% 55%,22% 55%,22% 10%,32% 10%,32% 45%,44% 45%,44% 28%,54% 28%,54% 60%,66% 60%,66% 15%,78% 15%,78% 50%,90% 50%,90% 35%,100% 35%,100% 100%)}
+    .hero-photos{position:absolute;top:26px;left:7%;display:flex;gap:18px;z-index:2}
+    .hero-photo{width:150px;height:96px;border-radius:10px;border:3px solid #FF9D21;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.18);background:#cbd5dd;position:relative}
+    .hero-photo.b{border-color:#FFBC58;transform:translateY(16px)}
+    .hero-photo .pin{position:absolute;top:7px;right:7px;width:22px;height:22px;background:#097AB2;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px}
+    .hero-photo .ph{position:absolute;inset:0;background:linear-gradient(135deg,#d8c3a8,#b89b78)}
+    .hero-photo.b .ph{background:linear-gradient(135deg,#9aa7b2,#6d7a86)}
+    .hero-card{position:relative;z-index:3;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,32,77,.12);
+      width:min(760px,92%);text-align:center;padding:26px 24px;margin-bottom:24px}
+    .hero-card h1{font-size:30px;font-weight:800;color:#004A80}
+    .hero-card h1 .acc{color:#FF9D21}
+    .hero-card p{font-size:14px;color:#5D6F7E;margin-top:6px;font-weight:600}
 
-    /* Selector de meses + descuento */
-    .months{display:flex;justify-content:center;align-items:center;gap:14px;margin:18px 0 28px;flex-wrap:wrap}
-    .months .pill{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E1E1E1;border-radius:10px;padding:8px 14px;font-size:14px;font-weight:600;color:#1B1B1B}
-    .months select{border:none;font:inherit;font-weight:700;color:#006098;background:transparent;outline:none}
-    .months .badge-disc{background:#6FB453;color:#fff;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:20px}
+    /* ===== Features Destacado / Ascendido ===== */
+    .wrap{max-width:1200px;margin:0 auto;padding:26px 24px 40px}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:34px;border:1px solid #E0E3E5;border-radius:12px;padding:24px 28px;margin-bottom:34px}
+    .feature{display:flex;gap:12px;padding-left:14px;border-left:3px solid #FF9D21}
+    .feature .ico{color:#FF9D21;font-size:17px;margin-top:1px}
+    .feature h4{font-size:15px;font-weight:700;color:#293038}
+    .feature p{font-size:12.5px;color:#7B8F9D;margin-top:3px}
 
-    /* Grid de planes */
+    /* ===== Planes ===== */
     .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-    .plan{background:#fff;border:1px solid #E1E1E1;border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;position:relative}
-    .plan.best{border:2px solid #006098;box-shadow:0 10px 26px rgba(0,96,152,.14)}
-    .plan .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#006098;color:#fff;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px;white-space:nowrap}
-    .plan .tag-limit{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#FFA533;color:#1B1B1B;font-size:12px;font-weight:700;padding:5px 16px;border-radius:20px}
-    .plan h3{font-size:18px;font-weight:800;color:#1B1B1B}
-    .plan .months-lbl{font-size:13px;color:#666;margin-top:4px}
-    .plan .price{font-size:27px;font-weight:800;color:#006098;margin:16px 0 2px}
-    .plan .price small{font-size:13px;font-weight:600;color:#666}
-    .plan .old-price{font-size:14px;color:#9B9B9B;text-decoration:line-through}
-    .plan ul{list-style:none;margin:18px 0 22px;display:flex;flex-direction:column;gap:11px}
-    .plan li{display:flex;gap:9px;font-size:13.5px;color:#414141;align-items:flex-start}
-    .plan li .ck{color:#6FB453;font-weight:800;flex-shrink:0}
-    .plan .buy{margin-top:auto;display:block;text-align:center;background:#006098;color:#fff;text-decoration:none;font-size:15px;font-weight:700;padding:12px;border-radius:8px}
-    .plan.best .buy{background:#6FB453}
-    .plan .buy:hover{filter:brightness(.96)}
+    .plan{background:#fff;border:1px solid #E0E3E5;border-radius:12px;padding:22px 20px 20px;display:flex;flex-direction:column;position:relative}
+    .plan.best{border:1.5px solid #FF9D21;box-shadow:0 8px 22px rgba(255,157,33,.12)}
+    .plan .best-tag{position:absolute;top:14px;right:16px;color:#FF9D21;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:4px}
+    .plan .pname{text-align:center;font-size:15.5px;font-weight:700;color:#293038;margin-bottom:2px}
+    .plan .price{text-align:center;font-size:21px;font-weight:800;color:#293038}
+    .plan .disc{text-align:center;font-size:12px;color:#7B8F9D;font-weight:600;margin-top:2px}
+    .plan .before{text-align:center;font-size:12px;color:#FF9D21;text-decoration:line-through;font-weight:600;margin-top:1px}
+    .plan .sel-lbl{font-size:11.5px;color:#7B8F9D;margin:14px 0 6px}
+    .plan .sel{width:100%;border:1px solid #DFE4E7;border-radius:8px;padding:11px 12px;font-size:13px;color:#434F5B;display:flex;justify-content:space-between;align-items:center;font-weight:600}
+    .plan .sel .arr{color:#9EADB7}
+    .plan .incl{text-align:center;font-size:12.5px;color:#7B8F9D;margin:16px 0 12px;position:relative}
+    .plan .incl::before{content:"";position:absolute;left:0;right:0;top:-8px;border-top:1px solid #EEF1F4}
+    .plan ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:16px}
+    .plan li{display:flex;gap:9px;font-size:13px;color:#434F5B;align-items:flex-start}
+    .plan li .ck{color:#53A532;font-weight:800;flex-shrink:0}
+    .plan .foot-note{font-size:11px;color:#9EADB7;line-height:1.4;margin-top:auto;padding-top:12px;border-top:1px solid #EEF1F4}
+    .plan .buy{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:#097AB2;color:#fff;text-decoration:none;font-size:14px;font-weight:700;padding:11px;border-radius:24px}
+    .plan .buy:hover{background:#006098}
 
-    /* Boton flotante de contacto WhatsApp (estilo flotante MIA, en verde) */
-    .wa-fab{
-      position:fixed;right:24px;bottom:24px;z-index:60;
-      display:flex;align-items:center;gap:10px;
-      background:var(--wa-green);color:#fff;text-decoration:none;
-      padding:14px 20px;border-radius:50px;
-      box-shadow:0 8px 22px rgba(37,211,102,.45);
-      font-size:15px;font-weight:700;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-    .wa-fab:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.55);background:var(--wa-green-dark)}
-    .wa-fab svg{width:26px;height:26px;flex-shrink:0}
-    .wa-fab .wa-label{white-space:nowrap}
-    .wa-pulse{position:absolute;inset:0;border-radius:50px;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:wapulse 2.4s infinite;z-index:-1}
-    @keyframes wapulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+    /* ===== Banner de asesoría (real, mantenido) ===== */
+    .advisory{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:34px;
+      background:linear-gradient(120deg,#074973 0%,#3E98CC 100%);border-radius:10px;padding:26px 34px;color:#fff}
+    .advisory h3{font-size:19px;font-weight:700}
+    .advisory p{font-size:14px;margin-top:5px;opacity:.95}
+    .advisory .cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;background:#53A532;color:#fff;text-decoration:none;
+      font-size:14px;font-weight:700;padding:11px 22px;border-radius:24px;white-space:nowrap}
+    .advisory .cta:hover{background:#3B8D24}
 
-    /* Nota anclada del wireframe */
-    .wf-note{max-width:1200px;margin:0 auto 10px;padding:14px 18px;background:#EAF7FF;border:1px solid #C1EAFF;border-left:4px solid #006098;border-radius:8px;font-size:13px;color:#074973}
-    .wf-note b{color:#006098}
+    .regresar{text-align:center;margin:30px 0;color:#097AB2;font-size:14px;font-weight:600}
 
-    /* Responsive */
+    /* ===== Footer ===== */
+    footer{background:linear-gradient(180deg,#00204D 0%,#004A82 100%);color:#cfe0ee;padding:30px 24px}
+    .foot-inner{max-width:1200px;margin:0 auto}
+    .foot-social{display:flex;justify-content:flex-end;gap:16px;font-size:16px;margin-bottom:18px}
+    .foot-social a{color:#cfe0ee;text-decoration:none}
+    .foot-line{border-top:1px solid rgba(255,255,255,.18);padding-top:14px;font-size:12.5px;display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+    .foot-line a{color:#cfe0ee;text-decoration:underline}
+    .foot-legal{margin-top:12px;font-size:12px;display:flex;gap:18px;flex-wrap:wrap}
+    .foot-legal a{color:#cfe0ee;text-decoration:underline}
+    .foot-copy{margin-top:14px;font-size:11.5px;color:#9db6cf}
+
+    /* ===== Botón flotante estilo MIA (recuadro redondeado), en verde WhatsApp ===== */
+    .mia-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:12px;
+      background:#25D366;color:#fff;text-decoration:none;
+      padding:12px 18px 12px 14px;border-radius:16px;
+      box-shadow:0 10px 26px rgba(37,211,102,.4);
+      transition:transform .15s ease,box-shadow .15s ease}
+    .mia-fab:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,211,102,.5);background:#1EBE57}
+    .mia-fab .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .mia-fab .ic svg{width:28px;height:28px}
+    .mia-fab .tx{display:flex;flex-direction:column;line-height:1.2}
+    .mia-fab .tx .t1{font-size:11px;font-weight:600;opacity:.9}
+    .mia-fab .tx .t2{font-size:15px;font-weight:800}
+
+    /* ===== Responsive ===== */
     @media (max-width:900px){
-      .plans{grid-template-columns:1fr;gap:28px;margin-top:10px}
-      .hero h1{font-size:24px}
+      .plans{grid-template-columns:1fr;gap:26px}
+      .features{grid-template-columns:1fr;gap:20px}
       .nav-links{display:none}
-      .wa-fab .wa-label{display:none}
-      .wa-fab{padding:16px;border-radius:50%}
+      .hero-photos{display:none}
+      .advisory{flex-direction:column;text-align:center;align-items:stretch}
+      .advisory .cta{justify-content:center}
+      .mia-fab .tx{display:none}
+      .mia-fab{padding:12px}
     }
   </style>
 </head>
@@ -135,125 +162,178 @@
   <!-- Barra meta (solo wireframe) -->
   <div class="wf-bar">
     <strong>WIREFRAME · GD768-16152</strong>
-    <span class="wf-chip">Planes inmobiliarias</span>
-    <span class="wf-chip">Contacto flotante WhatsApp</span>
-    <span class="wf-chip">Estilos DS v2 (monorepo)</span>
+    <span class="wf-chip">Alta fidelidad · landing real</span>
+    <span class="wf-chip">Botón flotante estilo MIA (verde)</span>
     <span class="wf-chip">wa.me/573132712966</span>
   </div>
 
   <!-- Header -->
   <header>
     <nav class="nav">
-      <div class="logo">
-        <span class="logo-mark"><span>c</span></span>
-        cien<span style="color:#6FB453">cuadras</span>
+      <div class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 30 28" fill="none">
+            <path d="M15 26C8 21 2 16 2 9.5 2 5.4 5.3 2 9.4 2c2.4 0 4.6 1.2 5.6 3 1-1.8 3.2-3 5.6-3C24.7 2 28 5.4 28 9.5 28 16 22 21 15 26Z" fill="#097AB2"/>
+            <circle cx="15" cy="10" r="3.4" fill="#fff"/>
+            <circle cx="15" cy="10" r="1.5" fill="#53A532"/>
+          </svg>
+        </span>
+        <span class="brand-txt"><span class="c1">cien</span><span class="c2">cuadras</span></span>
       </div>
       <div class="nav-links">
+        <a href="#">Compra <span class="caret">▾</span></a>
         <a href="#">Arriendo</a>
-        <a href="#">Venta</a>
-        <a href="#">Proyectos</a>
-        <a href="#">Publica tu inmueble</a>
+        <a href="#">Trámites y servicios <span class="caret">▾</span></a>
+        <a href="#">Desde el exterior</a>
       </div>
       <span class="spacer"></span>
+      <a href="#" class="cart">🛒<span class="count">0</span></a>
       <a href="#" class="ingresar">Ingresar</a>
-      <a href="#" class="cta-top">Publicar</a>
+      <button class="btn-publicar">Publicar 💼</button>
     </nav>
   </header>
 
+  <!-- Breadcrumb -->
+  <div class="crumb">
+    <span class="home">🏠</span><span class="sep">›</span>
+    <span>Elige Tu Perfil</span><span class="sep">›</span>
+    <span style="color:#293038">Inmobiliaria</span>
+  </div>
+
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-inner">
-      <span class="eyebrow">PLANES PARA INMOBILIARIAS</span>
-      <h1>Elige el plan de arrendamiento ideal para tu inmobiliaria</h1>
-      <p>Publica más inmuebles, llega a más clientes y gestiona tus arriendos con el respaldo de Ciencuadras.</p>
+    <div class="hero-banner">
+      <div class="hero-city"></div>
+      <div class="hero-photos">
+        <div class="hero-photo"><div class="ph"></div><span class="pin">♥</span></div>
+        <div class="hero-photo b"><div class="ph"></div><span class="pin">♥</span></div>
+      </div>
+      <div class="hero-card">
+        <h1>Publica tu <span class="acc">inmueble</span></h1>
+        <p>Elige un plan para vender o arrendar más rápido:</p>
+      </div>
     </div>
   </section>
 
   <div class="wrap">
 
-    <div class="wf-note">
-      <b>Cambio del service request:</b> el contacto de asesoría ahora se resuelve con el
-      botón flotante verde de WhatsApp (abajo a la derecha), persistente en toda la vista,
-      que abre un chat con el asesor en <b>wa.me/573132712966</b>.
-    </div>
-
-    <h2 class="section-title">Nuestros planes</h2>
-    <p class="section-sub">Precios con 15% de descuento por pago anticipado</p>
-
-    <!-- Selector de meses -->
-    <div class="months">
-      <div class="pill">
-        Duración:
-        <select>
-          <option>12 meses</option>
-          <option>6 meses</option>
-          <option>3 meses</option>
-        </select>
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <span class="ico">★</span>
+        <div><h4>Destacado</h4><p>Destaca tu inmueble en las primeras posiciones durante 1 mes</p></div>
       </div>
-      <span class="badge-disc">15% de descuento</span>
+      <div class="feature">
+        <span class="ico">⬆</span>
+        <div><h4>Ascendido</h4><p>Asciende tu inmueble a los primeros lugares durante 1 día</p></div>
+      </div>
     </div>
 
     <!-- Planes -->
     <div class="plans">
 
-      <!-- Plan Inicial -->
-      <article class="plan">
-        <h3>Plan Inicial</h3>
-        <div class="months-lbl">12 meses</div>
-        <div class="old-price">$1.423.529</div>
-        <div class="price">$1.210.000 <small>/ año</small></div>
-        <ul>
-          <li><span class="ck">✓</span> Publicación de inmuebles en arriendo</li>
-          <li><span class="ck">✓</span> Fichas estándar con fotos</li>
-          <li><span class="ck">✓</span> Panel de gestión básico</li>
-          <li><span class="ck">✓</span> Soporte por correo</li>
-        </ul>
-        <a href="#" class="buy">Comprar</a>
-      </article>
-
-      <!-- Plan Cuadra Todo (mejor opcion) -->
+      <!-- Cuadra Todo -->
       <article class="plan best">
-        <span class="ribbon">Mejor opción</span>
-        <h3>Plan Cuadra Todo</h3>
-        <div class="months-lbl">12 meses</div>
-        <div class="old-price">$5.409.411</div>
-        <div class="price">$4.598.000 <small>/ año</small></div>
+        <span class="best-tag">★ Mejor opción</span>
+        <div class="pname">Plan Cuadra Todo 12 meses</div>
+        <div class="price">$4.598.000</div>
+        <div class="disc">15% de descuento</div>
+        <div class="before">Antes $5.409.412</div>
+        <div class="sel-lbl">Selecciona la cantidad de meses</div>
+        <div class="sel">12 meses <span class="arr">▾</span></div>
+        <div class="incl">Incluye:</div>
         <ul>
-          <li><span class="ck">✓</span> Publicaciones ilimitadas</li>
-          <li><span class="ck">✓</span> Inmuebles destacados y Turbo 360</li>
-          <li><span class="ck">✓</span> Posicionamiento prioritario en búsquedas</li>
-          <li><span class="ck">✓</span> Panel avanzado con métricas</li>
-          <li><span class="ck">✓</span> Asesor comercial asignado</li>
+          <li><span class="ck">✓</span> Máximo 10.000 inmuebles</li>
+          <li><span class="ck">✓</span> Reporte en zona privada</li>
+          <li><span class="ck">✓</span> Cuadra precio Gratis</li>
+          <li><span class="ck">✓</span> 30 Ascendidos por mes</li>
+          <li><span class="ck">✓</span> 30 Destacados por mes</li>
         </ul>
-        <a href="#" class="buy">Comprar</a>
+        <div class="foot-note">Se emitirá una única factura con el valor total del plan, indicando el costo mensual del plan a pagar.</div>
+        <a href="#" class="buy">Comprar 🛒</a>
       </article>
 
-      <!-- Plan Impulsa (limitado) -->
+      <!-- Inicial -->
       <article class="plan">
-        <span class="tag-limit">Limitado</span>
-        <h3>Plan Impulsa</h3>
-        <div class="months-lbl">12 meses</div>
-        <div class="old-price">$3.112.941</div>
-        <div class="price">$2.646.000 <small>/ año</small></div>
+        <div class="pname">Plan Inicial 12 meses</div>
+        <div class="price">$1.210.000</div>
+        <div class="disc">15% de descuento</div>
+        <div class="before">Antes $1.423.530</div>
+        <div class="sel-lbl">Selecciona la cantidad de meses</div>
+        <div class="sel">12 meses <span class="arr">▾</span></div>
+        <div class="incl">Incluye:</div>
         <ul>
-          <li><span class="ck">✓</span> Publicaciones ampliadas</li>
-          <li><span class="ck">✓</span> Inmuebles destacados</li>
-          <li><span class="ck">✓</span> Panel de gestión intermedio</li>
-          <li><span class="ck">✓</span> Soporte prioritario</li>
+          <li><span class="ck">✓</span> 10 Publicaciones activas todo el mes</li>
+          <li><span class="ck">✓</span> No aplica ascendidos ni destacados.</li>
         </ul>
-        <a href="#" class="buy">Comprar</a>
+        <div class="foot-note">Se emitirá una única factura con el valor total del plan, indicando el costo mensual del plan a pagar.</div>
+        <a href="#" class="buy">Comprar 🛒</a>
+      </article>
+
+      <!-- Impulsa -->
+      <article class="plan">
+        <div class="pname">Plan Impulsa 12 mes Limitado</div>
+        <div class="price">$2.646.000</div>
+        <div class="disc">15% de descuento</div>
+        <div class="before">Antes $3.112.942</div>
+        <div class="sel-lbl">Selecciona la cantidad de meses</div>
+        <div class="sel">12 meses <span class="arr">▾</span></div>
+        <div class="incl">Incluye:</div>
+        <ul>
+          <li><span class="ck">✓</span> 40 Publicaciones Activas por mes</li>
+          <li><span class="ck">✓</span> Reporte en zona privada</li>
+          <li><span class="ck">✓</span> 20 ascendidos por mes</li>
+          <li><span class="ck">✓</span> 20 destacados por mes</li>
+        </ul>
+        <div class="foot-note">Se emitirá una única factura con el valor total del plan, indicando el costo mensual del plan a pagar.</div>
+        <a href="#" class="buy">Comprar 🛒</a>
       </article>
 
     </div>
+
+    <!-- Banner de asesoría real (se conserva) -->
+    <div class="advisory">
+      <div>
+        <h3>¿Listo para llevar tu negocio al siguiente nivel?</h3>
+        <p>Recibe asesoría personalizada y elige el plan ideal para destacar tus inmuebles.</p>
+      </div>
+      <a class="cta" href="#" onclick="return false;">Pedir asesoría ›</a>
+    </div>
+
+    <div class="regresar">‹ Regresar</div>
   </div>
 
-  <!-- Boton flotante de contacto WhatsApp -->
-  <a class="wa-fab" href="https://wa.me/573132712966" target="_blank" rel="noopener" aria-label="Contactar asesor por WhatsApp">
-    <span class="wa-pulse" aria-hidden="true"></span>
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.746 3.046 9.38L1.05 31.3l6.13-1.96A15.9 15.9 0 0 0 16.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.598c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.604-1.204-4.702-1.948-7.73-6.726-7.966-7.036-.226-.31-1.9-2.53-1.9-4.826 0-2.296 1.166-3.424 1.636-3.904.386-.394.84-.574 1.12-.574.34 0 .682.004.98.018.314.016.736-.12 1.15.878.426 1.024 1.448 3.54 1.574 3.796.128.256.214.556.04.866-.164.31-.246.5-.49.77-.246.27-.52.602-.74.808-.246.246-.502.512-.216 1.002.286.49 1.272 2.098 2.732 3.4 1.878 1.674 3.46 2.192 3.95 2.438.49.246.776.206 1.062-.124.286-.33 1.224-1.428 1.552-1.918.326-.49.654-.408 1.104-.246.45.164 2.864 1.35 3.354 1.596.49.246.816.37.936.574.12.206.12 1.184-.266 2.274z"/>
-    </svg>
-    <span class="wa-label">Habla con un asesor</span>
+  <!-- Footer -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-social">
+        <a href="#">◎</a><a href="#">♪</a><a href="#">f</a><a href="#">in</a><a href="#">♫</a>
+      </div>
+      <div class="foot-line">
+        <span>🎧 <a href="#">#923</a></span>
+        <span>☎ <a href="#">601 3905331</a></span>
+        <span>✉ <a href="#">lineadesoporte923@serviciosbolivar.com</a></span>
+        <a href="#">Canales de preferencia</a>
+        <a href="#">Preguntas frecuentes</a>
+      </div>
+      <div class="foot-legal">
+        <a href="#">Políticas de Cookies</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Política de Tratamiento de Datos Personales</a>
+        <a href="#">Vigilado Superintendencia de Industria y Comercio (SIC)</a>
+      </div>
+      <div class="foot-copy">Ciencuadras 2026 © – Servicios Bolívar S.A. NIT: 900.311.092-7. Dirección de notificaciones: Av. Cl 26 # 69 76 Bogotá D.C.</div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante estilo MIA, verde WhatsApp -->
+  <a class="mia-fab" href="https://wa.me/573132712966" target="_blank" rel="noopener" aria-label="Habla con un asesor por WhatsApp">
+    <span class="ic">
+      <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true">
+        <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.128 6.746 3.046 9.38L1.05 31.3l6.13-1.96A15.9 15.9 0 0 0 16.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.598c-.386 1.09-1.92 1.994-3.142 2.258-.836.178-1.928.32-5.604-1.204-4.702-1.948-7.73-6.726-7.966-7.036-.226-.31-1.9-2.53-1.9-4.826 0-2.296 1.166-3.424 1.636-3.904.386-.394.84-.574 1.12-.574.34 0 .682.004.98.018.314.016.736-.12 1.15.878.426 1.024 1.448 3.54 1.574 3.796.128.256.214.556.04.866-.164.31-.246.5-.49.77-.246.27-.52.602-.74.808-.246.246-.502.512-.216 1.002.286.49 1.272 2.098 2.732 3.4 1.878 1.674 3.46 2.192 3.95 2.438.49.246.776.206 1.062-.124.286-.33 1.224-1.428 1.552-1.918.326-.49.654-.408 1.104-.246.45.164 2.864 1.35 3.354 1.596.49.246.816.37.936.574.12.206.12 1.184-.266 2.274z"/>
+      </svg>
+    </span>
+    <span class="tx"><span class="t1">¿Tienes dudas?</span><span class="t2">Habla con un asesor</span></span>
   </a>
 
 </body>
