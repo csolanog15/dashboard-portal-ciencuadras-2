@@ -18,9 +18,9 @@
        footer azul oscuro.
 
        Cambio del ticket GD768-16152:
-       contacto de asesoría -> BOTON FLOTANTE estilo MIA: tarjeta CUADRADA blanca
-       con esquinas redondeadas + circulo verde con icono de WhatsApp (igual al
-       mockup de Figma), fijo abajo-derecha, enlaza a https://wa.me/573132712966.
+       contacto de asesoría -> BOTON FLOTANTE estilo MIA: tarjeta CUADRADA
+       completamente verde con icono de WhatsApp blanco (mayor visibilidad,
+       feedback del equipo UI), fijo abajo-derecha, enlaza a https://wa.me/573132712966.
 
        Paleta real DS v2:
          primario #006098 / #097AB2 ; gradiente banner #074973 -> #3E98CC
@@ -131,16 +131,15 @@
     .foot-legal a{color:#cfe0ee;text-decoration:underline}
     .foot-copy{margin-top:14px;font-size:11.5px;color:#9db6cf}
 
-    /* ===== Botón flotante estilo MIA: tarjeta CUADRADA blanca + círculo verde con ícono WhatsApp ===== */
+    /* ===== Botón flotante estilo MIA: tarjeta CUADRADA verde con ícono WhatsApp blanco ===== */
     .mia-fab{position:fixed;right:22px;bottom:22px;z-index:60;
       width:64px;height:64px;border-radius:16px;
-      background:#fff;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 8px 20px rgba(0,0,0,.18);text-decoration:none;
+      background:#53A532;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 20px rgba(83,165,50,.4);text-decoration:none;
       transition:transform .15s ease,box-shadow .15s ease}
-    .mia-fab:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.24)}
-    .mia-fab .circle{width:44px;height:44px;border-radius:50%;background:#53A532;
-      display:flex;align-items:center;justify-content:center}
-    .mia-fab .circle svg{width:26px;height:26px}
+    .mia-fab:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(83,165,50,.5);background:#3B8D24}
+    .mia-fab .circle{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+    .mia-fab .circle svg{width:34px;height:34px}
 
     /* ===== Responsive ===== */
     @media (max-width:900px){
@@ -159,7 +158,7 @@
   <div class="wf-bar">
     <strong>WIREFRAME · GD768-16152</strong>
     <span class="wf-chip">Alta fidelidad · landing real</span>
-    <span class="wf-chip">Botón flotante estilo MIA (cuadrado)</span>
+    <span class="wf-chip">Botón flotante verde (cuadrado)</span>
     <span class="wf-chip">wa.me/573132712966</span>
   </div>
 
@@ -322,7 +321,7 @@
     </div>
   </footer>
 
-  <!-- Botón flotante estilo MIA: tarjeta cuadrada blanca + círculo verde con ícono WhatsApp -->
+  <!-- Botón flotante estilo MIA: tarjeta cuadrada verde con ícono WhatsApp blanco -->
   <a class="mia-fab" href="https://wa.me/573132712966" target="_blank" rel="noopener" aria-label="Habla con un asesor por WhatsApp">
     <span class="circle">
       <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true">
