@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T22:01:22.108Z",
+  "generatedAt": "2026-11-13T21:47:03.002Z",
   "source": "PageSpeed Insights API (Lighthouse + CrUX)",
   "targets": [
     {
@@ -12,22 +12,22 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 39,
-            "accessibility": 85,
+            "performance": 61,
+            "accessibility": 90,
             "bestPractices": 88,
-            "seo": 92
+            "seo": 100
           },
           "lab": {
-            "fcp": 4377,
-            "lcp": 12252,
-            "tbt": 887,
-            "cls": 0.004186755150911374,
-            "si": 7765
+            "fcp": 2105,
+            "lcp": 11922,
+            "tbt": 298,
+            "cls": 0.003826796135998901,
+            "si": 6273
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 2287,
-            "inp": 248,
+            "lcp": 2282,
+            "inp": 249,
             "cls": 0,
             "fcp": 1528
           },
@@ -35,18 +35,18 @@
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 289769
+              "savingsBytes": 290036
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 126915
+              "savingsBytes": 126559
             }
           ],
           "audits": {
             "image-alt": {
-              "score": 0,
-              "title": "Image elements do not have `[alt]` attributes"
+              "score": 1,
+              "title": "Image elements have `[alt]` attributes"
             },
             "color-contrast": {
               "score": 0,
@@ -85,35 +85,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 69,
+            "performance": 76,
             "accessibility": 85,
             "bestPractices": 92,
             "seo": 92
           },
           "lab": {
-            "fcp": 526,
-            "lcp": 1274,
-            "tbt": 610,
-            "cls": 0.008235909989395876,
-            "si": 1943
+            "fcp": 528,
+            "lcp": 1277,
+            "tbt": 418,
+            "cls": 0.008175950274922305,
+            "si": 1691
           },
           "field": {
             "overall": "FAST",
-            "lcp": 1498,
-            "inp": 126,
+            "lcp": 1493,
+            "inp": 125,
             "cls": 1,
-            "fcp": 1094
+            "fcp": 1091
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 291979
+              "savingsBytes": 290666
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 126995
+              "savingsBytes": 126605
             }
           ],
           "audits": {
@@ -168,35 +168,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 86,
+            "performance": 66,
             "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1070,
-            "lcp": 2109,
-            "tbt": 385,
+            "fcp": 1067,
+            "lcp": 4726,
+            "tbt": 476,
             "cls": 0.10618871926216983,
-            "si": 2879
+            "si": 4242
           },
           "field": {
             "overall": "AVERAGE",
             "lcp": 1565,
-            "inp": 360,
+            "inp": 361,
             "cls": 12,
-            "fcp": 1207
+            "fcp": 1205
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 242439
+              "savingsBytes": 236270
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108398
+              "savingsBytes": 108405
             }
           ],
           "audits": {
@@ -241,35 +241,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 91,
+            "performance": 61,
             "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 303,
-            "lcp": 1502,
-            "tbt": 158,
-            "cls": 0.05831640295882835,
-            "si": 1034
+            "fcp": 309,
+            "lcp": 1997,
+            "tbt": 784,
+            "cls": 0.057247861603488104,
+            "si": 1728
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 1103,
+            "lcp": 1093,
             "inp": 207,
             "cls": 7,
-            "fcp": 769
+            "fcp": 766
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 238686
+              "savingsBytes": 236640
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108261
+              "savingsBytes": 108269
             }
           ],
           "audits": {
@@ -324,35 +324,35 @@
         "mobile": {
           "strategy": "mobile",
           "score": {
-            "performance": 85,
+            "performance": 67,
             "accessibility": 88,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
-            "fcp": 1073,
-            "lcp": 2273,
-            "tbt": 401,
-            "cls": 0.10747303295997601,
-            "si": 3033
+            "fcp": 1070,
+            "lcp": 5708,
+            "tbt": 309,
+            "cls": 0.1061922023897208,
+            "si": 4085
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 1686,
-            "inp": 361,
+            "lcp": 1687,
+            "inp": 360,
             "cls": 12,
-            "fcp": 1341
+            "fcp": 1342
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 235409
+              "savingsBytes": 238470
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108443
+              "savingsBytes": 108405
             }
           ],
           "audits": {
@@ -397,35 +397,35 @@
         "desktop": {
           "strategy": "desktop",
           "score": {
-            "performance": 91,
+            "performance": 71,
             "accessibility": 84,
             "bestPractices": 100,
             "seo": 100
           },
           "lab": {
             "fcp": 298,
-            "lcp": 1597,
-            "tbt": 138,
-            "cls": 0.05864417403254897,
-            "si": 1026
+            "lcp": 1747,
+            "tbt": 452,
+            "cls": 0.05811346786514465,
+            "si": 1406
           },
           "field": {
             "overall": "AVERAGE",
-            "lcp": 1232,
+            "lcp": 1224,
             "inp": 201,
             "cls": 7,
-            "fcp": 839
+            "fcp": 835
           },
           "opportunities": [
             {
               "id": "unused-javascript",
               "title": "Reduce unused JavaScript",
-              "savingsBytes": 239078
+              "savingsBytes": 235029
             },
             {
               "id": "unused-css-rules",
               "title": "Reduce unused CSS",
-              "savingsBytes": 108262
+              "savingsBytes": 108268
             }
           ],
           "audits": {
@@ -476,104 +476,6 @@
       "url": "https://pre.ciencuadras.com/",
       "env": "preprod",
       "type": "home",
-      "strategies": {
-        "mobile": {
-          "strategy": "mobile",
-          "score": {
-            "performance": 100,
-            "accessibility": 87,
-            "bestPractices": 96,
-            "seo": 80
-          },
-          "lab": {
-            "fcp": 755,
-            "lcp": 755,
-            "tbt": 0,
-            "cls": 0,
-            "si": 755
-          },
-          "field": null,
-          "opportunities": [],
-          "audits": {
-            "color-contrast": {
-              "score": 0,
-              "title": "Background and foreground colors do not have a sufficient contrast ratio."
-            },
-            "meta-viewport": {
-              "score": 1,
-              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
-            },
-            "document-title": {
-              "score": 1,
-              "title": "Document has a `<title>` element"
-            },
-            "heading-order": {
-              "score": 1,
-              "title": "Heading elements appear in a sequentially-descending order"
-            },
-            "errors-in-console": {
-              "score": 0,
-              "title": "Browser errors were logged to the console"
-            },
-            "is-crawlable": {
-              "score": 1,
-              "title": "Page isn’t blocked from indexing"
-            }
-          }
-        },
-        "desktop": {
-          "strategy": "desktop",
-          "score": {
-            "performance": 100,
-            "accessibility": 87,
-            "bestPractices": 96,
-            "seo": 80
-          },
-          "lab": {
-            "fcp": 234,
-            "lcp": 234,
-            "tbt": 0,
-            "cls": 0,
-            "si": 234
-          },
-          "field": null,
-          "opportunities": [],
-          "audits": {
-            "color-contrast": {
-              "score": 0,
-              "title": "Background and foreground colors do not have a sufficient contrast ratio."
-            },
-            "meta-viewport": {
-              "score": 1,
-              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
-            },
-            "document-title": {
-              "score": 1,
-              "title": "Document has a `<title>` element"
-            },
-            "heading-order": {
-              "score": 1,
-              "title": "Heading elements appear in a sequentially-descending order"
-            },
-            "errors-in-console": {
-              "score": 0,
-              "title": "Browser errors were logged to the console"
-            },
-            "is-crawlable": {
-              "score": 1,
-              "title": "Page isn’t blocked from indexing"
-            }
-          }
-        }
-      },
-      "error": null
-    },
-    {
-      "id": "arriendo-preprod",
-      "label": "Arriendo (Pre-prod)",
-      "url": "https://pre.ciencuadras.com/arriendo",
-      "env": "preprod",
-      "type": "listado",
       "strategies": {
         "mobile": {
           "strategy": "mobile",
@@ -667,9 +569,9 @@
       "error": null
     },
     {
-      "id": "venta-preprod",
-      "label": "Venta (Pre-prod)",
-      "url": "https://pre.ciencuadras.com/venta",
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/arriendo",
       "env": "preprod",
       "type": "listado",
       "strategies": {
@@ -682,11 +584,11 @@
             "seo": 80
           },
           "lab": {
-            "fcp": 754,
-            "lcp": 754,
+            "fcp": 756,
+            "lcp": 756,
             "tbt": 0,
             "cls": 0,
-            "si": 754
+            "si": 756
           },
           "field": null,
           "opportunities": [],
@@ -731,6 +633,104 @@
             "tbt": 0,
             "cls": 0,
             "si": 205
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "venta-preprod",
+      "label": "Venta (Pre-prod)",
+      "url": "https://pre.ciencuadras.com/venta",
+      "env": "preprod",
+      "type": "listado",
+      "strategies": {
+        "mobile": {
+          "strategy": "mobile",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 756,
+            "lcp": 756,
+            "tbt": 0,
+            "cls": 0,
+            "si": 756
+          },
+          "field": null,
+          "opportunities": [],
+          "audits": {
+            "color-contrast": {
+              "score": 0,
+              "title": "Background and foreground colors do not have a sufficient contrast ratio."
+            },
+            "meta-viewport": {
+              "score": 1,
+              "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5."
+            },
+            "document-title": {
+              "score": 1,
+              "title": "Document has a `<title>` element"
+            },
+            "heading-order": {
+              "score": 1,
+              "title": "Heading elements appear in a sequentially-descending order"
+            },
+            "errors-in-console": {
+              "score": 0,
+              "title": "Browser errors were logged to the console"
+            },
+            "is-crawlable": {
+              "score": 1,
+              "title": "Page isn’t blocked from indexing"
+            }
+          }
+        },
+        "desktop": {
+          "strategy": "desktop",
+          "score": {
+            "performance": 100,
+            "accessibility": 87,
+            "bestPractices": 96,
+            "seo": 80
+          },
+          "lab": {
+            "fcp": 204,
+            "lcp": 204,
+            "tbt": 0,
+            "cls": 0,
+            "si": 204
           },
           "field": null,
           "opportunities": [],
