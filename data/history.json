@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T23:59:23.468Z",
+  "updatedAt": "2026-11-27T00:15:21.080Z",
   "note": "Historico diario de Core Web Vitals. Se acumula automaticamente en cada corrida del workflow (una entrada por URL/estrategia/dia). Empieza a llenarse desde la primera corrida.",
   "entries": [
     {
@@ -11521,6 +11521,150 @@
       "lcp": 2102,
       "tbt": 276,
       "cls": 0.10646884820529419
+    },
+    {
+      "date": "2026-11-27",
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "env": "preprod",
+      "type": "listado",
+      "strategy": "desktop",
+      "score": 100,
+      "lcp": 205,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "arriendo-preprod",
+      "label": "Arriendo (Pre-prod)",
+      "env": "preprod",
+      "type": "listado",
+      "strategy": "mobile",
+      "score": 100,
+      "lcp": 758,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "arriendo-prod",
+      "label": "Arriendo",
+      "env": "prod",
+      "type": "listado",
+      "strategy": "desktop",
+      "score": 74,
+      "lcp": 1736,
+      "tbt": 397,
+      "cls": 0.05768076313137145
+    },
+    {
+      "date": "2026-11-27",
+      "id": "arriendo-prod",
+      "label": "Arriendo",
+      "env": "prod",
+      "type": "listado",
+      "strategy": "mobile",
+      "score": 88,
+      "lcp": 2197,
+      "tbt": 338,
+      "cls": 0.10632916475679953
+    },
+    {
+      "date": "2026-11-27",
+      "id": "home-preprod",
+      "label": "Home (Pre-prod)",
+      "env": "preprod",
+      "type": "home",
+      "strategy": "desktop",
+      "score": 100,
+      "lcp": 205,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "home-preprod",
+      "label": "Home (Pre-prod)",
+      "env": "preprod",
+      "type": "home",
+      "strategy": "mobile",
+      "score": 100,
+      "lcp": 764,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "home-prod",
+      "label": "Home",
+      "env": "prod",
+      "type": "home",
+      "strategy": "desktop",
+      "score": 67,
+      "lcp": 2113,
+      "tbt": 462,
+      "cls": 0.008235909989395876
+    },
+    {
+      "date": "2026-11-27",
+      "id": "home-prod",
+      "label": "Home",
+      "env": "prod",
+      "type": "home",
+      "strategy": "mobile",
+      "score": 57,
+      "lcp": 12140,
+      "tbt": 420,
+      "cls": 0.003826796135998901
+    },
+    {
+      "date": "2026-11-27",
+      "id": "venta-preprod",
+      "label": "Venta (Pre-prod)",
+      "env": "preprod",
+      "type": "listado",
+      "strategy": "desktop",
+      "score": 100,
+      "lcp": 205,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "venta-preprod",
+      "label": "Venta (Pre-prod)",
+      "env": "preprod",
+      "type": "listado",
+      "strategy": "mobile",
+      "score": 100,
+      "lcp": 755,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "date": "2026-11-27",
+      "id": "venta-prod",
+      "label": "Venta",
+      "env": "prod",
+      "type": "listado",
+      "strategy": "desktop",
+      "score": 89,
+      "lcp": 1614,
+      "tbt": 173,
+      "cls": 0.05809495288767656
+    },
+    {
+      "date": "2026-11-27",
+      "id": "venta-prod",
+      "label": "Venta",
+      "env": "prod",
+      "type": "listado",
+      "strategy": "mobile",
+      "score": 82,
+      "lcp": 2338,
+      "tbt": 470,
+      "cls": 0.10618871926216983
     }
   ]
 }
