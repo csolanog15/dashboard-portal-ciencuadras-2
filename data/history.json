@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T00:15:21.080Z",
+  "updatedAt": "2026-11-27T23:55:08.165Z",
   "note": "Historico diario de Core Web Vitals. Se acumula automaticamente en cada corrida del workflow (una entrada por URL/estrategia/dia). Empieza a llenarse desde la primera corrida.",
   "entries": [
     {
@@ -11530,7 +11530,7 @@
       "type": "listado",
       "strategy": "desktop",
       "score": 100,
-      "lcp": 205,
+      "lcp": 206,
       "tbt": 0,
       "cls": 0
     },
@@ -11542,7 +11542,7 @@
       "type": "listado",
       "strategy": "mobile",
       "score": 100,
-      "lcp": 758,
+      "lcp": 755,
       "tbt": 0,
       "cls": 0
     },
@@ -11553,10 +11553,10 @@
       "env": "prod",
       "type": "listado",
       "strategy": "desktop",
-      "score": 74,
-      "lcp": 1736,
-      "tbt": 397,
-      "cls": 0.05768076313137145
+      "score": 65,
+      "lcp": 1905,
+      "tbt": 612,
+      "cls": 0.05806999968363713
     },
     {
       "date": "2026-11-27",
@@ -11565,10 +11565,10 @@
       "env": "prod",
       "type": "listado",
       "strategy": "mobile",
-      "score": 88,
-      "lcp": 2197,
-      "tbt": 338,
-      "cls": 0.10632916475679953
+      "score": 65,
+      "lcp": 2926,
+      "tbt": 1192,
+      "cls": 0.1055477091219255
     },
     {
       "date": "2026-11-27",
@@ -11578,7 +11578,7 @@
       "type": "home",
       "strategy": "desktop",
       "score": 100,
-      "lcp": 205,
+      "lcp": 207,
       "tbt": 0,
       "cls": 0
     },
@@ -11590,7 +11590,7 @@
       "type": "home",
       "strategy": "mobile",
       "score": 100,
-      "lcp": 764,
+      "lcp": 754,
       "tbt": 0,
       "cls": 0
     },
@@ -11602,9 +11602,9 @@
       "type": "home",
       "strategy": "desktop",
       "score": 67,
-      "lcp": 2113,
-      "tbt": 462,
-      "cls": 0.008235909989395876
+      "lcp": 1232,
+      "tbt": 754,
+      "cls": 0.008175950274922305
     },
     {
       "date": "2026-11-27",
@@ -11613,9 +11613,9 @@
       "env": "prod",
       "type": "home",
       "strategy": "mobile",
-      "score": 57,
-      "lcp": 12140,
-      "tbt": 420,
+      "score": 37,
+      "lcp": 12139,
+      "tbt": 1037,
       "cls": 0.003826796135998901
     },
     {
@@ -11626,7 +11626,7 @@
       "type": "listado",
       "strategy": "desktop",
       "score": 100,
-      "lcp": 205,
+      "lcp": 206,
       "tbt": 0,
       "cls": 0
     },
@@ -11638,7 +11638,7 @@
       "type": "listado",
       "strategy": "mobile",
       "score": 100,
-      "lcp": 755,
+      "lcp": 756,
       "tbt": 0,
       "cls": 0
     },
@@ -11649,10 +11649,10 @@
       "env": "prod",
       "type": "listado",
       "strategy": "desktop",
-      "score": 89,
-      "lcp": 1614,
-      "tbt": 173,
-      "cls": 0.05809495288767656
+      "score": 86,
+      "lcp": 1688,
+      "tbt": 205,
+      "cls": 0.05809437269014078
     },
     {
       "date": "2026-11-27",
@@ -11661,10 +11661,10 @@
       "env": "prod",
       "type": "listado",
       "strategy": "mobile",
-      "score": 82,
-      "lcp": 2338,
-      "tbt": 470,
-      "cls": 0.10618871926216983
+      "score": 71,
+      "lcp": 2851,
+      "tbt": 792,
+      "cls": 0.1055477091219255
     }
   ]
 }
